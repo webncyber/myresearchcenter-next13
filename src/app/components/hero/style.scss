@@ -1,0 +1,53 @@
+
+.hero{
+    border: 0;
+    height: 90vh;
+    display: flex;
+    padding: 0;
+/*     overflow: hidden;
+    position: relative; */
+    max-height: 1000px;
+    align-items: baseline;
+    background-size: cover;
+    background-position: center center;
+   div:first-child {
+   
+    padding-left: 2rem;
+    width: 100%;
+        h1{
+            width: 95%;
+            padding-top: 3rem;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 3rem;
+            letter-spacing: 6px;
+        }
+        .title{
+            width: 40%;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 3rem;
+        }
+        .sub-title{
+            width: 80%;
+            text-align: right;
+            color: white;
+            font-weight: 400;
+            font-size: 3rem;
+            padding-top: 1rem;
+        }
+
+        @media screen and (max-width: 660px) {
+          padding-top: 2rem;
+            
+        }
+      
+         @media screen and (min-width: 661px) {
+          padding-top: 4.5rem;
+        }
+   }
+
+  
+}

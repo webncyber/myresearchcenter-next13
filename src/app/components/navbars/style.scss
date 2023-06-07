@@ -1,0 +1,134 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    z-index: 500;
+    ul {
+        list-style-type: none;
+        display: inline-block;
+        width: 100%;
+        padding-top: 1rem;
+
+        li:first-child{
+            padding-right: 5rem;
+        }
+
+        li 
+        {
+            display: inline;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            
+            svg {
+                margin-right: 6px;
+                vertical-align: text-bottom;
+            }
+    
+            a {
+                color: rgb(253, 253, 253);
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+           
+        }
+    }
+    .social-link{
+        padding-left: 1rem;
+        padding-right: 1rem;
+        @media screen and (max-width: 800px) {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+    }
+
+}
+
+.nav-bg-color{
+    background-color: rgb(51, 51, 51);
+}
+#nav-desktop{
+    @media screen and (max-width: 660px) {
+        display: none;
+      }
+      @media screen and (max-width: 700px) {
+        justify-content: left;
+      }
+}
+
+
+.navbar-footer{
+    text-align: center;
+    font-size: 13px;
+    ul{
+        list-style-type: none;
+        display: inline-block;
+        width: 100%;
+
+        li{
+            display: inline;
+          
+            .separator{
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            a {
+                color: rgb(6, 3, 168);
+                text-decoration: none;
+                text-transform: uppercase;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+#nav-mobile{
+    position: fixed;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    top: 20px;
+    overflow: hidden;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    .hamburgerMenu{
+        cursor: pointer;
+    }
+    ul {
+        border-radius: 5px;
+        background-color: white;
+        opacity: 0.7;
+        list-style-type: none;
+        width: 85%;
+        margin: 0px;
+        padding-left: 5px;
+        padding-top: 0rem;
+        li {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+            text-align: left;
+            a {
+                margin-right: 0.5rem;
+                color: rgb(61, 59, 59);
+                text-decoration: none;
+                text-transform: uppercase;
+               &:hover{
+                color: rgb(13, 47, 238);
+               }
+            }
+    }
+
+
+}
+@media screen and (min-width: 660px) {
+    display: none;
+  }
+}

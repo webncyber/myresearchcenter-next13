@@ -1,95 +1,51 @@
 import Image from 'next/image'
-import styles from './page.module.css'
-
+import type { Metadata } from 'next';
+import { title } from 'process';
+import Hero from './components/hero/HERO'
+import TopNav from './components/navbars/topnav'
+import FooterNav from './components/navbars/footernav';
+import SingleColumnContent from './components/singleColumnContent/SingleColumnContent'
 export default function Home() {
+  let heroImagePath = "/Images/bkgHome.jpg";
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className='container'>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    <div className='heading-section'>
+       <TopNav />
+       <Hero url={heroImagePath} headingOne="Ideas........." headingTwo="are where your research begins!" />
+    </div>
+    <div className='content-section'>
+      {
+        <SingleColumnContent heading="Welcome to research center" content={GetContent()} />
+      }
+      <div className='footer-section'>
+          <FooterNav/>
+        </div> 
+    </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+  </div>
   )
+}
+
+
+function GetContent() {
+  return (
+    <div>
+      <div className='content'>
+        <div>
+
+          <div>
+            A place where you can find many topics on certain products, compare products, and more!
+          </div>
+        </div>
+        {/* <div>
+          <h3>Recent Blogs</h3>
+          <div>
+            <BlogListing />
+          </div>
+        </div> */}
+      </div>
+    </div>
+  );
 }
