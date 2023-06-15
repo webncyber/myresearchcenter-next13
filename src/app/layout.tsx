@@ -1,38 +1,14 @@
-
 import './Styles/Layout.scss'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next';
+import Hero from './components/hero/HERO'
+import TopNav from './components/navbars/topnav'
+import FooterNav from './components/navbars/footernav';
+import SingleColumnContent from './components/singleColumnContent/SingleColumnContent'
+import {getCurrentPage} from '../../lib/page'
 const inter = Inter({ subsets: ['latin'] })
 
-
-export async function generateMetadata(): Promise<Metadata> {
-
-const siteUrl = process.env.Site_URL;
-  const canonicalUrl = siteUrl;
-  let heroImagePath = siteUrl + "/Images/bkgHome.jpg";
-  const canonical = { canonical: canonicalUrl }
-  const twitter = { card: "summary_large_image", site: siteUrl, creator: "Nazareth", "images": heroImagePath }
-  const metaDesc = "Research Center is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
-  return {
-    title: "My Research Center",
-    description: metaDesc,
-    keywords: "research center, Search, research, products compare, compare",
-    robots: "index, follow",
-    alternates: canonical,
-    twitter: twitter,
-    openGraph: {
-      type: "website",
-      url: canonicalUrl,
-      title: "My Research Center",
-      description: metaDesc,
-      siteName: "myresearchcenter.com",
-      images: [{
-        url: heroImagePath,
-      }],
-    }
-   }
-}
-
+let heroImagePath = "/Images/bkgHome.jpg";
 
 export default function RootLayout({
   children,
@@ -42,7 +18,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+      <div className='container'>
+      <div className='heading-section'>
+        <TopNav />
+        <Hero url={heroImagePath} headingOne="Ideas........." headingTwo="are where your research begins!" />
+      </div>
+
+      {children}
+    
+      </div>
+      
+      <div className='footer-section'>
+            <FooterNav/>
+      </div> 
         
       </body>
     </html>

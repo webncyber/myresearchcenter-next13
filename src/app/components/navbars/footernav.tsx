@@ -18,7 +18,6 @@ const FooterNav = () => {
         },[]);
         
    }
-    
     const fbPostURL = "http://www.facebook.com/share.php?u=" + currentURL;
     const twittURL = "https://twitter.com/intent/tweet?text=" + browserTitle + " " +  currentURL;
     const linkedInURL = "https://www.linkedin.com/shareArticle?url="+currentURL+"&title="+browserTitle+"";

@@ -5,7 +5,7 @@ import { FaHome, FaBlogger } from "react-icons/fa";
 import { SlSocialYoutube, SlSocialTwitter } from "react-icons/sl";
 import { GiHamburgerMenu } from "react-icons/gi";
 import React, { useState, useEffect } from 'react';
-
+import Link from 'next/link'
 
 const TopNav = () => {
     const [currentURL, setCurrentURL] = useState('');
@@ -50,9 +50,12 @@ const TopNav = () => {
                             <FaHome style={{ color: 'white', fontSize: '30px' }} />
                             </a>
                         </li>
-                        <li><a href='/blogs'>
+                        <li>
+                            <Link href="/blogs">
                             <FaBlogger style={{ color: 'white', fontSize: '20px' }} />
-                            Blogs</a></li>
+                                Blogs
+                            </Link>
+                           </li>
                         <li><a href='mailto:webncyber@gmail.com'>
                             <AiOutlineMail style={{ color: 'white', fontSize: '20px' }} />
                             Contact</a></li>

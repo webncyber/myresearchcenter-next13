@@ -1,23 +1,16 @@
 import React from 'react';
-import { BasicContent } from '../../../../types';
 import  './style.scss'
+import  {getCurrentPage} from '../../../../lib/page'
 
-const SingleColumnContent = (props: BasicContent) => {
-    let isJsx = React.isValidElement(props.content);
+export async function SingleColumnContent (id: string) {
+
+    const pageData = getCurrentPage(id)
+    const page = await pageData
 
     return(
-        <div className="single-column-content">
-            <h2>
-                {props.heading}</h2>
-            
-            {isJsx && (
-                 <div className='content' >{props.content}</div>
-            )
-            }
-            {!isJsx && (
-                 <div className='content' dangerouslySetInnerHTML={{ __html: props.content }} />
-            )
-            }   
+       <div className="single-column-content">
+            <h2>{page?.presentation?.heading}</h2>
+            <div className='content' dangerouslySetInnerHTML={{ __html: page?.presentation?.content }} />
         </div>
     );
    };
