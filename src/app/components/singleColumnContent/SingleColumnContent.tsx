@@ -9,8 +9,8 @@ export async function SingleColumnContent (id: string) {
 
     return(
        <div className="single-column-content">
-            <h2>{page?.presentation?.heading}</h2>
-            <div className='content' dangerouslySetInnerHTML={{ __html: page?.presentation?.content }} />
+            <h2>{page?.subtitle}</h2>
+            <div className='content' dangerouslySetInnerHTML={{ __html: page?.content }} />
         </div>
     );
    };

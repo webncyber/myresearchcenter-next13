@@ -2,9 +2,10 @@
 type Page = {
     id: string,
     title?: string,
+    subtitle?: string,
     url?: string,
     imageUrl?: string,
-    presentation?: BasicContent,
+    content:  ReactElement<any, string | JSXElementConstructor<any>>,
     metadata?: metadata,
 }
 
@@ -13,10 +14,7 @@ type metadata = {
     keywords?: string,
     browsertitle?: string,
 }
-type BasicContent = {
-    content:  ReactElement<any, string | JSXElementConstructor<any>>,
-    heading: string,
-}
+
 type Hero = {
     url: string,
     headingOne: string;

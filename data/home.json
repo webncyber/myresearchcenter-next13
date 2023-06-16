@@ -1,12 +1,9 @@
 {
     "id": "/",
     "title": "My Research Center",
-    "subtitle": "",
+    "subtitle": "Welcome to research center",
     "blurb": "My Research Center is where you can find all the blog post topics that are helpful and informative.",
-    "presentation":{
-        "content": "Json: A place where you can find many topics on certain products, compare products, and more!.",
-        "heading": "Welcome to research center"
-    },
+    "content": "Json: A place where you can find many topics on certain products, compare products, and more!.",
     "heroimageurl": "/Images/bkgHome.jpg",
     "metadata":{
         "browsertitle": "My Research Center",

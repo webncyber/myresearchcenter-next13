@@ -10,11 +10,12 @@ export async function getCurrentPage(currentUrl: string)  : Promise<Page | undef
     switch(currentUrl)
     {
         case "/":
-            const url = "https://api.coincap.io/v2/assets";
-            const pageContent =  await fetch(url, { cache: 'no-store' })
-            const pageJson = await pageContent?.json();
+            //use for demo
+            // const url = "https://api.coincap.io/v2/assets";
+            // const pageContent =  await fetch(url, { cache: 'no-store' })
+            // const pageJson = await pageContent?.json();
 
-            console.log("pageJson: " + pageJson.data[0].id)
+            // console.log("pageJson: " + pageJson.data[0].id)
             
             const fileContent = await fs.readFile(jsonDirectory + '/home.json', 'utf8');
             const pageData = JSON.parse(fileContent);
@@ -22,10 +23,8 @@ export async function getCurrentPage(currentUrl: string)  : Promise<Page | undef
                 id: pageData.id,
                 title: pageData.title,
                 imageUrl: pageData.heroimageurl,
-                presentation: {
-                    content: pageData.presentation.content,
-                    heading: pageData.presentation.heading
-                },
+                content: pageData.content,
+                subtitle: pageData.subtitle,
                 metadata: {
                     browsertitle: pageData.metadata.browsertitle,
                     keywords: pageData.metadata.keywords,
