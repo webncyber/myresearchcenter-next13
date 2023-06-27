@@ -12,13 +12,14 @@ const TopNav = () => {
     const [browserTitle, setBrowserTitle] = useState('');
     const [scrollY, setScrollY] = useState(0);
 
-    if(typeof window !== undefined) {
         useEffect(() => {
+        if(typeof window !== undefined) {
             setCurrentURL(window.location.href);
             setBrowserTitle(document.title);
             setScrollY(window.scrollY);
+         }
         },[]);
-   }
+   
 
     const [toggle, showMobileMenu] = useState(false);
     const [setNavBG, setNavbarBgColor] = useState(false);

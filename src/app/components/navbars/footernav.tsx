@@ -11,13 +11,15 @@ const FooterNav = () => {
     const [currentURL, setCurrentURL] = useState('')
     const [browserTitle, setBrowserTitle] = useState('')
 
-    if(typeof window !== undefined) {
         useEffect(() => {
+        if(typeof window !== undefined) {
+
             setCurrentURL(window.location.href);
             setBrowserTitle(document.title);
+        }
         },[]);
         
-   }
+   
     const fbPostURL = "http://www.facebook.com/share.php?u=" + currentURL;
     const twittURL = "https://twitter.com/intent/tweet?text=" + browserTitle + " " +  currentURL;
     const linkedInURL = "https://www.linkedin.com/shareArticle?url="+currentURL+"&title="+browserTitle+"";

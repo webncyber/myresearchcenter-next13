@@ -11,10 +11,10 @@ export async function GET(request: Request) {
 
     const url = "/data/home.json";
     //const pageData = (await fetch(url)).json();
-    const page: Page = {
-        title: "hello"
+    //const page: Page = {
+        //title: "hello"
         //set properites   
-      }
+     // }
 
       
       const obj = Object.fromEntries(searchParams.entries())
