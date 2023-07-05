@@ -1,9 +1,12 @@
 import React from 'react'
+import SingleColumnContent from '../components/singleColumnContent/SingleColumnContent'
 
 export default function Blogs() {
   return (
     <div className='content-section'>
-     blogs...
+      {
+         SingleColumnContent("/home.json")
+      }
   </div>
   )
 }
