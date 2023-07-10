@@ -6,9 +6,9 @@ export async function getCurrentPage(currentUrl: string)  : Promise<Page>
     
     const fetchAPIUrl = process.env.Host_Name +  "/api/" + currentUrl
     console.log(fetchAPIUrl)
-    //const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: 'no-store'});
+    //const apiContent = await fetch(fetchAPIUrl, {cache: 'no-store'});
     const pageData = await apiContent.json();
 
     //console.log(pageData)
