@@ -1,11 +1,11 @@
 
 type Page = {
-    id: string,
+    id?: string,
     title?: string,
     subtitle?: string,
     url?: string,
     imageUrl?: string,
-    content:  ReactElement<any, string | JSXElementConstructor<any>>,
+    content?:  ReactElement<any, string | JSXElementConstructor<any>>,
     metadata?: metadata,
 }
 

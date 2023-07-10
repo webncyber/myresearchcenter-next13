@@ -1,16 +1,14 @@
 import React from 'react';
 import  './style.scss'
-import  {getCurrentPage} from '../../../../lib/page'
 
-export async function SingleColumnContent (id: string) {
+export async function SingleColumnContent (page: Page) {
 
-    const pageData = getCurrentPage(id)
-    const page = await pageData
+   let content = page != undefined && page.content != undefined ? page?.content : "";
 
     return(
        <div className="single-column-content">
             <h2>{page?.subtitle}</h2>
-            <div className='content' dangerouslySetInnerHTML={{ __html: page?.content }} />
+            <div className='content' dangerouslySetInnerHTML={{ __html: content }} />
         </div>
     );
    };

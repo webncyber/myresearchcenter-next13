@@ -6,16 +6,16 @@ import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
 import SingleColumnContent from './components/singleColumnContent/SingleColumnContent'
 import  {getCurrentPage} from '../../lib/page'
-var page = undefined;
+let page = {} as Page;
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  const pageData = getCurrentPage("/")
-  page = await pageData
- 
-  console.log("home: " + page?.title)
 
-  const siteUrl = process.env.Site_URL;
+  const pageData = getCurrentPage("home");
+  page = await pageData
+
+  const siteUrl = process.env.Host_Name
+  console.log("siteUrl: " + siteUrl)
   const canonicalUrl = siteUrl;
   let heroImagePath =  page?.imageUrl;
   const canonical = { canonical: canonicalUrl }
@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div className='content-section'>
       {
-         SingleColumnContent("/")
+        SingleColumnContent(page)
       }
     </div>
 

@@ -5,7 +5,7 @@ export default function Blogs() {
   return (
     <div className='content-section'>
       {
-         SingleColumnContent("/home.json")
+         /* SingleColumnContent("/blogs/blogs.json") */
       }
   </div>
   )
