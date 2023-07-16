@@ -1,23 +1,30 @@
 
 type Page = {
-    id?: string,
     title?: string,
-    subtitle?: string,
+    subTitle?: string,
     url?: string,
-    imageUrl?: string,
-    content?:  ReactElement<any, string | JSXElementConstructor<any>>,
-    metadata?: metadata,
+    heroImage?: string,
+    content?: Array [
+        {
+            type: string,
+            data?:{
+                text?: ReactElement<any, string | JSXElementConstructor<any>>
+            }
+        }
+    ],
+    metaData?: metaData,
 }
 
-type metadata = {
-    description?: string,
+type metaData = {
+    browserTitle?: string,
     keywords?: string,
-    browsertitle?: string,
+    description?: string,
+
 }
 
 type Hero = {
-    url: string,
-    headingOne: string;
-    headingTwo: string;
+    url?: string,
+    headingOne?: string;
+    headingTwo?: string;
 }
 
