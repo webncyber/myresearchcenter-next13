@@ -36,7 +36,7 @@ export async function getCurrentPage(currentUrl: string)  : Promise<Page>
     const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listPages.data[0];
-    console.log("pageData: " + pageData.content[0].data.text)
+
     //const temp: Page = {}
     
     //return temp;

@@ -7,6 +7,7 @@ type Page = {
     content?: Array [
         {
             type: string,
+            textAlign?: string,
             data?:{
                 text?: ReactElement<any, string | JSXElementConstructor<any>>
             }
