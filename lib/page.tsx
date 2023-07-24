@@ -1,35 +1,12 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 import { json } from 'stream/consumers';
-
-
-
-const gql = (url: string) => `
-  query {
-    listPages (where: { url: "${url}" }) {
-        data{
-            url,
-            title,
-            subTitle,
-            blurb,
-            content,
-            heroImage,
-            metaData
-            {
-              browserTitle,
-              keywords,
-              description
-            }
-          }
-    }
-  }
-`;
+import { Page } from '../types';
 
 
 export async function getCurrentPage(currentUrl: string)  : Promise<Page>
 {
-    
-    const fetchAPIUrl = process.env.Host_Name +  "/api/getcontent?url=" + currentUrl;
+    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getpagebyurl?url=" + currentUrl;
     console.log("URL: >> "+ fetchAPIUrl)
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });

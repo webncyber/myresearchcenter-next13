@@ -1,27 +1,6 @@
 import { NextResponse } from "next/server";
-import path from 'path';
-import { readFileSync } from 'fs';
+import {gqlGetPageByURL} from '../gql/pageQueries'
 
-const gql = (url: string | null) => `
-  query {
-    listPages (where: { url: "${url}" }) {
-        data{
-            url,
-            title,
-            subTitle,
-            blurb,
-            content,
-            heroImage,
-            metaData
-            {
-              browserTitle,
-              keywords,
-              description
-            }
-          }
-    }
-  }
-`;
 export async function GET(request: Request) 
 {
     const { searchParams } = new URL(request.url)
@@ -35,7 +14,7 @@ export async function GET(request: Request)
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
         },
         body: JSON.stringify({
-          query: gql(requestedPage),
+          query: gqlGetPageByURL(requestedPage),
         })
     })
 

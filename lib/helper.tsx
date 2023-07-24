@@ -1,5 +1,6 @@
 import { Brawler } from "next/font/google";
 import { isNamedExports } from "typescript";
+import { Page } from "../types";
 
 const IS_SERVER = typeof window === "undefined";
 export default function getHostName() {
@@ -14,7 +15,7 @@ export function buildRichTextContent(page: Page)
     let htmlContent = "";
 
     return(
-      page.content.map((c: any) => {
+      page.content?.map((c: any) => {
 
         switch(c.type)
         {

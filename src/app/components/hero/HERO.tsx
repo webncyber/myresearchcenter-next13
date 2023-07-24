@@ -1,5 +1,5 @@
 import './style.scss' 
-
+import { Hero } from '../../../../types';
 const Hero = (props: Hero) => {
 
     var divImage = {

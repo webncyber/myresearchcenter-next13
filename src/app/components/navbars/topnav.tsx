@@ -28,7 +28,7 @@ const TopNav = () => {
     const linkedInURL = "https://www.linkedin.com/shareArticle?url="+currentURL+"&title="+browserTitle+"";
 
     const changeBackground = () => {
-        if (scrollY >= 66) {
+        if (scrollY >= 36) {
             setNavbarBgColor(true)
         } else {
             setNavbarBgColor(false)
@@ -47,9 +47,9 @@ const TopNav = () => {
                 <div>
                     <ul>
                         <li>
-                            <a href='/'>
+                            <Link href='/'>
                             <FaHome style={{ color: 'white', fontSize: '30px' }} />
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <Link href="/blogs">

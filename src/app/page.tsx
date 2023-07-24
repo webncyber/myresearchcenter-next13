@@ -43,11 +43,20 @@ export default async function Home() {
   let page = await pageData;
 
   return (
-    <div className='content-section'>
-      {
-        SingleColumnContent(page)
-      }
+    <div>
+       <div className='hero-section'>
+       <Hero url={page.heroImage} headingOne={page?.title} headingTwo={page?.subTitle} />
+      </div>
+
+      <div className="content-centered">
+        <div className='content-section'>
+        {
+          SingleColumnContent(page)
+        }
+        </div>
     </div>
+    </div>
+   
   )
 }
 

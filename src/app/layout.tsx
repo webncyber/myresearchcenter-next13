@@ -19,19 +19,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <div className='container'>
-      <div className='heading-section'>
-        <TopNav />
-        <Hero url={heroImagePath} headingOne="Ideas........." headingTwo="are where your research begins!" />
+        <div className='heading-section'>
+          <TopNav />
+        </div>
+          {children}
+          <div className='content-centered'>
+          <div className='footer-section'>
+              <FooterNav/>
+        </div> 
+          </div>
+          
       </div>
-
-      {children}
-    
-      </div>
-      
-      <div className='footer-section'>
-            <FooterNav/>
-      </div> 
-        
+     
       </body>
     </html>
   )

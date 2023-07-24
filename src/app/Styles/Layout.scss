@@ -11,8 +11,8 @@ body {
   }
 .container{
    position: relative;
-   display: flex;
-   justify-content: center;
+  /*  display: flex; 
+   justify-content: center;*/
 }
 
 .row{
@@ -36,29 +36,44 @@ body {
     width: 100%;
 }
 
+.content-centered{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .content-section{
     background-color: rgb(255, 255, 255);
     border-radius: 6px;
-    width: 90%;
+    width: 80%;
     position: absolute;
-
+    margin-left: 15px;
+    padding: 20px;
+    
     @media screen and (max-width: 660px) {
-        top: 300px;
+        top: 310px;
       }
 
       @media screen and (min-width: 660px) {
-        top: 400px;
-      }
-
-      .footer-section{
-        vertical-align: top;
+        top: 380px;
       }
 }
+
+.footer-section{
+    position: relative;
+    width: 80%;
+  }
 
 .content{
     padding-bottom: 1rem;
     width: 85%;
    
+    h3{
+        margin-bottom: 0px;
+        margin-top: 20px;;
+    }
     h4{
         padding: 0px;
         margin: 0px;
