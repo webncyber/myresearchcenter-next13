@@ -3,9 +3,9 @@ import  './style.scss'
 import {buildRichTextContent} from '../../../../lib/helper'
 import { Page } from '../../../../types';
 
-export async function SingleColumnContent (page: Page) {
+export  function SingleColumnContent (page: Page) {
 
-   let content = buildRichTextContent(page);
+   let content =  buildRichTextContent(page);
 
     return(
        <div className="single-column-content">

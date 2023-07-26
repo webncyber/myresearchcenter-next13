@@ -23,14 +23,13 @@ export default function RootLayout({
           <TopNav />
         </div>
           {children}
-          <div className='content-centered'>
-          <div className='footer-section'>
-              <FooterNav/>
-        </div> 
-          </div>
-          
+       
       </div>
-     
+      <div className='content-centered'>
+            <div className='footer-section'>
+                <FooterNav/>
+          </div> 
+          </div>
       </body>
     </html>
   )

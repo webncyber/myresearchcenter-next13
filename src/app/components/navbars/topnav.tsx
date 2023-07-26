@@ -43,7 +43,7 @@ const TopNav = () => {
       
     return (
         <div className='fit'>
-            <div id="nav-desktop" className={setNavBG ? "navbar nav-bg-color" : "navbar"}>
+            <div id="nav-desktop" className={setNavBG ? "navbar nav-bg-color" : "navbar nav-bg-color"}>
                 <div>
                     <ul>
                         <li>

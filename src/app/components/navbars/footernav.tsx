@@ -25,7 +25,6 @@ const FooterNav = () => {
     const linkedInURL = "https://www.linkedin.com/shareArticle?url="+currentURL+"&title="+browserTitle+"";
       
     return (
-        <div>
             <div id="nav-desktop-footer" className="navbar-footer">
                 <div>
                     <ul>
@@ -77,7 +76,6 @@ const FooterNav = () => {
                         <br/><br/><br/><br/>
                 </div>
             </div>
-        </div>
     );
 }
 

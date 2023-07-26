@@ -6,6 +6,7 @@ import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
 import SingleColumnContent from './components/singleColumnContent/SingleColumnContent'
 import  {getCurrentPage} from '../../lib/page'
+import BlogListing from './components/blogListing/BlogListing'; 
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = getCurrentPage("home");
@@ -53,6 +54,7 @@ export default async function Home() {
         {
           SingleColumnContent(page)
         }
+        <BlogListing/>
         </div>
     </div>
     </div>
