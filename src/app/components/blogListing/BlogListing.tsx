@@ -4,7 +4,6 @@ import { Blog } from '../../../../types';
 
 export async function BlogListing() {
     
-    
   const blogsData = getBlogsListing();
   let blogsListing = await blogsData;
   
@@ -16,7 +15,7 @@ export async function BlogListing() {
               <li key={blog.url}>
                 <div className='row'>
                   <div className='fit'>
-                  <a href={blog.url}> <img src={blog.heroImage}/></a>
+                  <a href={blog.url}> <img src={blog.hero?.heroImage}/></a>
                   </div>
                   <div>
                     <div><a href={blog.url}><h4>{blog.title}</h4></a></div>

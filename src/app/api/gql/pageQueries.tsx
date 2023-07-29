@@ -11,7 +11,11 @@ export function gqlGetPageByURL(url:string | null){
             subTitle,
             blurb,
             content,
-            heroImage,
+            hero{
+              title,
+              subTitle 
+              heroImage
+            }
             metaData
             {
               browserTitle,

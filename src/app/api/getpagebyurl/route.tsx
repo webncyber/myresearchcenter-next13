@@ -4,8 +4,8 @@ import {gqlGetPageByURL} from '../gql/pageQueries'
 export async function GET(request: Request) 
 {
     const { searchParams } = new URL(request.url)
-    let requestedPage = searchParams.get("url") != null ? searchParams.get("url") : "home";
-
+    let requestedPage = searchParams.get("url") != null ? searchParams.get("url") : "/home";
+   
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
       cache: "no-store",  
       method: "POST",

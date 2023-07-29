@@ -5,7 +5,7 @@ type Page = {
     subTitle?: string,
     blurb?: string,
     url?: string,
-    heroImage?: string,
+    hero?: Hero,
     content?: Array [
         {
             type: string,
@@ -20,7 +20,7 @@ type Page = {
 
 type Blog = Page & {
     author?: string,
-    publishedDate: string
+    publishedDate?: string
 }
 
 
@@ -33,7 +33,8 @@ type metaData = {
 
 type Hero = {
     url?: string,
-    headingOne?: string;
-    headingTwo?: string;
+    title?: string,
+    subTitle?: string,
+    heroImage?: string
 }
 

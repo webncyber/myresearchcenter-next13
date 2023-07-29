@@ -2,9 +2,9 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import type { Metadata } from 'next';
-import Hero from '../../../components/hero/HERO'
 import SingleColumnContent from '../../../components/singleColumnContent/SingleColumnContent'
 import  {getBlogByUrl} from '../../../../../lib/blogs'
+
 
 export default async function BlogDetails() 
 {
@@ -13,20 +13,16 @@ export default async function BlogDetails()
   let url = path.toString().replace(hostName, "")
   const pageData = getBlogByUrl(url)
   let page = await pageData
-
+  let pubDate = page.publishedDate != undefined ? page.publishedDate : "";
+  let options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+  let date  = new Date(pubDate);
   return (
-    <div>
-        <div className='hero-section'>
-        <Hero url={page.heroImage} headingOne={page?.title} headingTwo={page?.subTitle} />
-      </div>
-
-      <div className="content-centered">
-        <div className='content-section'>
-        {
+    <div className="single-column-content">
+      <h2>{page?.title}</h2>
+      <div className='author'>{page.author} | {date.toLocaleDateString("en-US")}</div>
+      {
           SingleColumnContent(page)
-        }
-        </div>
-    </div>
+      }
  </div>
   )
 }

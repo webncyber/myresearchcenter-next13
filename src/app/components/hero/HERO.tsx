@@ -1,23 +1,39 @@
+"use client"
 import './style.scss' 
-import { Hero } from '../../../../types';
-const Hero = (props: Hero) => {
+import  {getHeroDataByUrl} from '../../../../lib/hero'
+import { usePathname } from 'next/navigation'
+const Hero = async ()  => {
+    let path = usePathname();
+    let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : "";
+    let requestedURl = path.toString().replace(hostName, "")
+    /* console.log("path: " + path)
+    console.log("hostName: " + hostName)
+    console.log("requestedURl v1: " + requestedURl) */
 
+    if(requestedURl == "/"){
+        requestedURl = "/home"
+    }
+    
+   
+    const content = await getHeroDataByUrl(requestedURl);
+
+  
     var divImage = {
-        backgroundImage: "url(" + props.url + ")"
+        backgroundImage: "url(" + content.url + ")"
     }
     return (
         <div className="hero" style={divImage}>
-            {props.headingOne && props.headingTwo && (
+            {content.title && content.subTitle && (
                 <div>
-                    <div className="title">{props.headingOne}</div>
-                    <div className="sub-title">{props.headingTwo}</div>
+                   <h1 className='title'>{content.title}</h1>
+                    <div className="sub-title">{content.subTitle}</div>
                 </div>
             )
             }
 
-            {props.headingOne && !props.headingTwo && (
+            {content.title && !content.subTitle && (
                 <div>
-                    <h1>{props.headingOne}</h1>
+                    <h1>{content.title}</h1>
                 </div>
             )
             }

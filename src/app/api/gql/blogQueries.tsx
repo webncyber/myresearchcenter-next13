@@ -9,7 +9,11 @@ export function gqlGetBlogsListing(){
               title
               subTitle
               blurb
-              heroImage
+              hero{
+                title,
+                subTitle 
+                heroImage
+              }
               publishedDate
               author
               category{
@@ -34,7 +38,11 @@ export function gqlGetBlogByURL(url:string | null){
             subTitle,
             blurb,
             content,
-            heroImage,
+            hero{
+              title,
+              subTitle 
+              heroImage
+            },
             author,
             publishedDate,
             metaData

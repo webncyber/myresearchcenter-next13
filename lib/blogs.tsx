@@ -28,7 +28,11 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
 
     const blogDetail: Blog = {
         title: pageData.title,
-        heroImage: pageData.heroImage,
+        hero: {
+            title: pageData.hero.title,
+            subTitle: pageData.hero.subTitle,
+            heroImage: pageData.hero.heroImage
+        },
         content: pageData.content,
         subTitle: pageData.subTitle,
         author: pageData.author, 
