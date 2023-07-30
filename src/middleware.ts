@@ -5,7 +5,16 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
     console.log('middleware.ts, request.url:', request.url)
 
-   
+    const headers = new Headers(request.headers);
+    headers.set('Request.URL', request.url);
+
+    const resp = NextResponse.next({
+      request: {
+        headers
+      }
+    });
+
+    return resp;
 }
 export const config = {
   matcher: ['/', '/blogs/:path*'], 
