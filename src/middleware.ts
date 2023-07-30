@@ -6,8 +6,9 @@ export function middleware(request: NextRequest) {
     console.log('middleware.ts, request.url:', request.url)
 
     const headers = new Headers(request.headers);
+    headers.set("Access-Control-Allow-Origin", "*");
     headers.set('Request.URL', request.url);
-
+    
     const resp = NextResponse.next({
       request: {
         headers
