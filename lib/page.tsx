@@ -6,6 +6,11 @@ import { Hero, Page } from '../types';
 
 export async function getPageByUrl(url: string)  : Promise<Page>
 {
+    const temp: Page = {}
+    
+    return temp;
+    
+    
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getpagebyurl?url=" + url;
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
@@ -13,9 +18,6 @@ export async function getPageByUrl(url: string)  : Promise<Page>
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listPages.data[0];
 
-    //const temp: Page = {}
-    
-    //return temp;
     
     if(pageData == undefined)
     {

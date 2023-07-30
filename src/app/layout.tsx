@@ -80,7 +80,7 @@ export default function RootLayout({
         <div className='heading-section'>
           <TopNav />
           <div className='hero-section'>
-      
+       <Hero />
       </div>
         </div>
         <div className="content-centered">
