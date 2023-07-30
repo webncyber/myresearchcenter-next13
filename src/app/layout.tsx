@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import Hero from './components/hero/HERO'
 import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
-import GoogleAnalytics from './components/googleAnalytics/ga';
 import { headers } from 'next/headers'
 import {getPageByUrl} from '../../lib/page'
 import  {getBlogByUrl} from '../../lib/blogs'
@@ -74,7 +73,6 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      {/* <GoogleAnalytics/> */}
       <body className={inter.className}>
       <div className='container'>
         <div className='heading-section'>
