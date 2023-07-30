@@ -7,11 +7,16 @@ import BlogListing from './components/blogListing/BlogListing';
 
 
 export default async function Home() {
- 
+  const pageData = getPageByUrl("/home");
+  let page = await pageData;
 
   return (
     <div className="single-column-content">
-      hello
+      <h2>{page?.title}</h2>
+      {
+            SingleColumnContent(page)
+       }
+           <BlogListing/>
     </div>
   )
 }
