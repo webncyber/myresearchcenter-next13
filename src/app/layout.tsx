@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> 
 {
   
-
+let requestURL = "";
   try{
     const headersList = await headers();
     const testURL = headersList.get('x-url') 
@@ -24,8 +24,8 @@ export async function generateMetadata(): Promise<Metadata>
   {
    console.log("Header:Error: " + e)
   }
-
-  let url  = "/home"
+  const headersList = await headers();
+  let url  = headersList.get('x-url');
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
 
