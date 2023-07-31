@@ -3,10 +3,11 @@ const nextConfig = {
     async headers() {
         return [
           {
+            source: '/',
             headers: [
               {
                 key: 'x-url',
-                value: '/',
+                value: '/'
               }
             ],
           },
