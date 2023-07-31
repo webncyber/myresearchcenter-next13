@@ -10,7 +10,6 @@ import {getPageByUrl} from '../../lib/page'
 import  {getBlogByUrl} from '../../lib/blogs'
 
 const inter = Inter({ subsets: ['latin'] })
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> 
 {
