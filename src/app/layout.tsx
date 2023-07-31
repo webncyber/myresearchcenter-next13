@@ -24,8 +24,7 @@ let requestURL = "";
   {
    console.log("Header:Error: " + e)
   }
-  const headersList = await headers();
-  let url  = headersList.get('x-url');
+  let url  = "/home";
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
 
