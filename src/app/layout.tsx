@@ -14,7 +14,6 @@ const inter = Inter({ subsets: ['latin'] })
 export async function generateMetadata(): Promise<Metadata> 
 {
   const headersList = await headers()
-  console.log("Head:: " + headersList.get('x-hello'))
   let url  = headersList.get('x-url') 
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
