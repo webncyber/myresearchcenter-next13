@@ -5,16 +5,16 @@ import Hero from './components/hero/HERO'
 import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
 import GoogleAnalytics from './components/googleAnalytics/ga';
-import { headers } from 'next/headers'
 import {getPageByUrl} from '../../lib/page'
 import  {getBlogByUrl} from '../../lib/blogs'
 
+const headers = import('next/headers')
 const inter = Inter({ subsets: ['latin'] })
 
 export async function generateMetadata(): Promise<Metadata> 
 {
-  const headersList = headers()
-  let url  = headersList.get('x-url') 
+  const headersList = await headers
+  let url  = headersList.headers().get("x-url")
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
 
