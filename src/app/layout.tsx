@@ -6,69 +6,9 @@ import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
 import GoogleAnalytics from './components/googleAnalytics/ga';
 import { headers } from 'next/headers'
-import {getPageByUrl} from '../../lib/page'
-import  {getBlogByUrl} from '../../lib/blogs'
+
 
 const inter = Inter({ subsets: ['latin'] })
-export async function generateMetadata(): Promise<Metadata> 
-{
-
-  const headersList = await headers();
-  const domain = headersList.get('host') || "";
-  const fullUrl = headersList.get('referer') || "";
-
-  let url  = "/home" 
-  console.log("domain: " + domain)
-  console.log("fullUrl: " + fullUrl)
-  let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
-  let requestUrl = url?.replace(hostName, "")
-  let blogDetailtype = true;
-  console.log("requestUrl: " + requestUrl)
-
-  if(requestUrl == "/")
-  {
-    requestUrl = "/home"
-  }
-
-  if(requestUrl == "/home")
-  {
-      blogDetailtype = false;
-  }else if(requestUrl == "/blogs")
-  {
-      blogDetailtype = false;
-  }else{
-      blogDetailtype = true;
-  }
-
-  const pageData = (requestUrl != null) && blogDetailtype ? getBlogByUrl(requestUrl) :
-  (requestUrl != null) && !blogDetailtype ? getPageByUrl(requestUrl) : getPageByUrl("/home");
-
-  let page = await pageData
-  const siteUrl = process.env.NEXT_PUBLIC_Host_Name
-  const canonicalUrl = siteUrl;
-  let heroImagePath =  page?.hero?.heroImage;
-  const canonical = { canonical: canonicalUrl }
-  const twitter = { card: "summary_large_image", site: siteUrl, creator: "Nazareth", "images": heroImagePath }
-  const metaDesc = "Research Center is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
-  return {
-    title: page.metaData?.browserTitle,
-    description: page.metaData?.description,
-    keywords: page.metaData?.keywords,
-    robots: "index, follow",
-    alternates: canonical,
-    twitter: twitter,
-    openGraph: {
-      type: "website",
-      url: canonicalUrl,
-      title:  page?.title,
-      description: page.metaData?.description,
-      siteName: "myresearchcenter.com",
-      images: [{
-        url: heroImagePath !=  undefined ? heroImagePath : "/Images/bkgHome.jpg",
-      }],
-    }
-   }
-}
 
 
 export default function RootLayout({
