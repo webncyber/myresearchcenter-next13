@@ -10,14 +10,16 @@ import {getPageByUrl} from '../../lib/page'
 import  {getBlogByUrl} from '../../lib/blogs'
 
 const inter = Inter({ subsets: ['latin'] })
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
 export async function generateMetadata(): Promise<Metadata> 
 {
 
   const headersList = await headers();
-  let url  = headersList.get('x-url') 
-  console.log("x-url" + url)
+  const domain = headersList.get('host') || "";
+  const fullUrl = headersList.get('referer') || "";
+
+  let url  = "/home" 
+  console.log("domain: " + domain)
+  console.log("fullUrl: " + fullUrl)
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
   let blogDetailtype = true;
