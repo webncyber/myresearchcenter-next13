@@ -19,7 +19,7 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      {/* <GoogleAnalytics/> */}
+      <GoogleAnalytics/>
       <body className={inter.className}>
       <div className='container'>
         <div className='heading-section'>
