@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ['latin'] })
 export const revalidate = 0
 export async function generateMetadata(): Promise<Metadata> 
 {
-  
-let requestURL = "";
+  const headersList = await headers();
+  const requestURL = headersList.get('x-url') 
   try{
     const headersList = await headers();
     const testURL = headersList.get('x-url') 
@@ -23,7 +23,7 @@ let requestURL = "";
   {
    console.log("Header:Error: " + e)
   }
-  let url  = "/home";
+  let url  = requestURL;
   let hostName = process.env.NEXT_PUBLIC_Host_Name != undefined ? process.env.NEXT_PUBLIC_Host_Name : ""
   let requestUrl = url?.replace(hostName, "")
 
