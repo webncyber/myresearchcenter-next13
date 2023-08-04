@@ -2,7 +2,7 @@ import './style.scss'
 import  {getCategories} from '../../../../lib/categories'
 import { Blog, Category } from '../../../../types';
 
-export async function BlogListing() {
+export async function Categories() {
     
   const categoriesData = getCategories();
   let categories = await categoriesData;
@@ -30,4 +30,4 @@ export async function BlogListing() {
     )
 }
 
-export default BlogListing;
+export default Categories;
