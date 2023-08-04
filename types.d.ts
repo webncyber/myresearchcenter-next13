@@ -38,3 +38,9 @@ type Hero = {
     heroImage?: string
 }
 
+type Category = {
+    title?: string,
+    image?: string,
+    value?: string,
+    blurb?: string
+}

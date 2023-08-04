@@ -47,7 +47,7 @@ const FooterNav = () => {
                             </a>
                             <span className='separator'>*</span>
                         </li>
-
+{/* 
                         <li className='social-link'>
                             <a title='Share on Linkedin' target={'_blank'} href={linkedInURL}>
                                 <AiOutlineLinkedin style={{ color: 'black', fontSize: '14px' }} />
@@ -67,7 +67,7 @@ const FooterNav = () => {
                                 <SlSocialTwitter style={{ color: 'black', fontSize: '13px' }} />
                            </a>
                            <span className='separator'>*</span>
-                        </li>
+                        </li> */}
                         <li>
                             © 2023
                         </li>

@@ -66,7 +66,7 @@ const TopNav = () => {
                             </a>
                         </li>
 
-                        <li className='social-link'>
+                       {/*  <li className='social-link'>
                             <a title='Share on Linkedin' target={'_blank'} href={linkedInURL}>
                                 <AiOutlineLinkedin style={{ color: 'white', fontSize: '20px' }} />
                             </a>
@@ -83,7 +83,7 @@ const TopNav = () => {
                                 <SlSocialTwitter style={{ color: 'white', fontSize: '20px' }} />
                            </a>
                         </li>
-
+ */}
                         </ul>
                 </div>
             </div>
