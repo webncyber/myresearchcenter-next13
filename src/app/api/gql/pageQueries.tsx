@@ -11,6 +11,7 @@ export function gqlGetPageByURL(url:string | null){
             subTitle,
             blurb,
             content,
+            contentBottom,
             hero{
               title,
               subTitle 

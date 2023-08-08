@@ -38,6 +38,7 @@ export function gqlGetBlogByURL(url:string | null){
             subTitle,
             blurb,
             content,
+            contentBottom,
             hero{
               title,
               subTitle 

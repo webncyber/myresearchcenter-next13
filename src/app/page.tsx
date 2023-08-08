@@ -1,19 +1,25 @@
-import Image from 'next/image'
-import type { Metadata } from 'next';
-import SingleColumnContent from './components/singleColumnContent/SingleColumnContent'
-import  {getPageByUrl} from '../../lib/page'
-import Categories from './components/categories/CategoryListing'; 
+import Image from "next/image";
+import type { Metadata } from "next";
+import SingleColumnContent from "./components/singleColumnContent/SingleColumnContent";
+import TwoColumnContent from "./components/twoColumnContent/twoColumnContent";
+import { getPageByUrl } from "../../lib/page";
+import Categories from "./components/categories/CategoryListing";
 
-export async function generateMetadata(): Promise<Metadata> 
-{
+export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getPageByUrl("/home");
-  let page = await pageData
-  const siteUrl = process.env.NEXT_PUBLIC_Host_Name
+  let page = await pageData;
+  const siteUrl = process.env.NEXT_PUBLIC_Host_Name;
   const canonicalUrl = siteUrl;
-  let heroImagePath =  page?.hero?.heroImage;
-  const canonical = { canonical: canonicalUrl }
-  const twitter = { card: "summary_large_image", site: siteUrl, creator: "Nazareth", "images": heroImagePath }
-  const metaDesc = "Research Center is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
+  let heroImagePath = page?.hero?.heroImage;
+  const canonical = { canonical: canonicalUrl };
+  const twitter = {
+    card: "summary_large_image",
+    site: siteUrl,
+    creator: "Nazareth",
+    images: heroImagePath,
+  };
+  const metaDesc =
+    "Research Center is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
   return {
     title: page.metaData?.browserTitle,
     description: page.metaData?.description,
@@ -24,29 +30,33 @@ export async function generateMetadata(): Promise<Metadata>
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title:  page?.title,
+      title: page?.title,
       description: page.metaData?.description,
       siteName: "myresearchcenter.com",
-      images: [{
-        url: heroImagePath !=  undefined ? heroImagePath : "/Images/bkgHome.jpg",
-      }],
-    }
-   }
+      images: [
+        {
+          url:
+            heroImagePath != undefined ? heroImagePath : "/Images/bkgHome.jpg",
+        },
+      ],
+    },
+  };
 }
-
 
 export default async function Home() {
   const pageData = getPageByUrl("/home");
   let page = await pageData;
 
   return (
+   <>
     <div className="single-column-content">
       <h2>{page?.title}</h2>
-      {
-            SingleColumnContent(page)
-       }
     </div>
-  )
+    
+      {SingleColumnContent(page, "c")}
+      {TwoColumnContent(page)}
+      {SingleColumnContent(page, "cb")}
+   
+   </>
+  );
 }
-
-

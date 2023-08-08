@@ -58,7 +58,10 @@ export default async function BlogDetails({
       <h2>{page?.title}</h2>
       <div className='author'>{page.author} | {date.toLocaleDateString("en-US")}</div>
       {
-          SingleColumnContent(page)
+          SingleColumnContent(page, "c")
+      }
+       {
+          SingleColumnContent(page, "cb")
       }
  </div>
   )

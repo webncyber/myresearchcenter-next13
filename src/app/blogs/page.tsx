@@ -42,7 +42,10 @@ export default async function Blogs() {
    <div className="single-column-content">
       <h2>{page?.title}</h2>
       {
-            SingleColumnContent(page)
+            SingleColumnContent(page, "c")
+       }
+        {
+            SingleColumnContent(page, "cb")
        }
            <BlogListing/>
     </div>
