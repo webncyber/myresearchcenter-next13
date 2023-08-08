@@ -1,5 +1,10 @@
 import Image from 'next/image'
+import type { Metadata } from 'next';
 
+
+export const metadata = {
+  other: { "ir-site-verification-token": "192478989" },
+};
 
 export default async function verify() {
  
