@@ -14,8 +14,9 @@ export function TwoColumnContent(page: Page)
           
            <div className="single-column-content">
             <div className="content">
-            <div>
             <h3>heading 1</h3>
+            <div>
+           
                 intro content</div>
             </div>
           </div>
