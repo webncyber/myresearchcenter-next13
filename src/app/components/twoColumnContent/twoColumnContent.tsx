@@ -17,17 +17,29 @@ export function TwoColumnContent(page: Page)
                         let rightColWidth = 100 - leftColWidth;
                         return(
                           <>
-                            <div key={item.title} className="single-column-content">
-                            <div className="content">
-                                
-                            <h3>{item?.title}</h3>
-                            <div>
-                            {item.content?.map((c: any) => {
-                                return <>{buildRichTextContent(c)}</>;
-                            })}
-                           </div>
-                            </div>
-                          </div>
+                            {(item && item.title || item.content) &&
+                                (
+                                    <div key={item.title} className="single-column-content">
+                                    <div className="intor-content">
+                                    {item.title &&
+                                        (
+                                            <h3>{item?.title}</h3>
+                                        )
+                                    }
+                                       {item.content && 
+                                            (
+                                                <div>
+                                                {item.content?.map((c: any) => {
+                                                    return <>{buildRichTextContent(c)}</>;
+                                                })}
+                                            </div>
+                                            )
+                                       }
+                                    </div>
+                                  </div>
+                                )
+                            }
+                           
                           
                            <div className="twoColumnContent">
                            <div className="content" style={ showBoarder ? boarder : {}}>
