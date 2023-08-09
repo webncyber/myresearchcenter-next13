@@ -23,6 +23,7 @@ export function gqlGetPageByURL(url:string | null){
               leftColumnWidth
               showBoarder
               boarderSettings
+              cardDivider
             }
           }
             contentBottom,

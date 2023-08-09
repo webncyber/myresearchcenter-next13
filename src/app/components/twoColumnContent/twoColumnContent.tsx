@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import { buildRichTextContent } from "../../../../lib/helper";
 import { Card, Page } from "../../../../types";
+import Link from "next/link";
 export function TwoColumnContent(page: Page) 
 {
    
@@ -44,7 +45,18 @@ export function TwoColumnContent(page: Page)
                            <div className="twoColumnContent">
                            <div className="content" style={ showBoarder ? boarder : {}}>
                                <div style={{width: leftColWidth + '%'}}>
-                                   <img src={item?.image}></img>
+                                    {item.cardUrl ?
+                                        (
+                                        <Link href={item.cardUrl} target="_blank">
+                                            <img src={item?.image}></img>
+                                        </Link>
+                                        ) : (
+                                            <img src={item?.image}></img>
+                                        )
+                                    }
+                                       
+                                    
+                                  
                                </div>
                                <div style={{width: rightColWidth + '%'}}>
                                    <h4>{item?.subTitle}</h4>
@@ -56,6 +68,11 @@ export function TwoColumnContent(page: Page)
                                </div>
                            </div>
                            </div>
+                           {item.cardSettings?.cardDivider && (
+                            <hr/>
+                           )
+
+                           }
                           </>
                         )
                     })

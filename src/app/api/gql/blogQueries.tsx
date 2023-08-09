@@ -51,6 +51,7 @@ export function gqlGetBlogByURL(url:string | null){
               leftColumnWidth
               showBoarder
               boarderSettings
+              cardDivider
             }
           }
             contentBottom,

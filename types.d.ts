@@ -42,7 +42,8 @@ type Page = {
               cardSettings?:{
                 leftColumnWidth?: number,
                 showBoarder?: boolean,
-                boarderSettings?: string
+                boarderSettings?: string,
+                cardDivider?: boolean
               }
         }
     ],
@@ -111,6 +112,7 @@ type Card = {
       cardSettings?:{
         leftColumnWidth: number,
         showBoarder?: boolean,
-        boarderSettings?: string
+        boarderSettings?: string,
+        cardDivider?: boolean
       }
 }
