@@ -29,6 +29,7 @@ export async function getPageByUrl(url: string)  : Promise<Page>
                 heroImage: pageData.hero.heroImage
             },
             content: pageData.content,
+            contentListing: pageData.contentListing,
             contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             metaData: {

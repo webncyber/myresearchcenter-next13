@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next';
 import SingleColumnContent from '../../../components/singleColumnContent/SingleColumnContent'
+import TwoColumnContent from "../../../components/twoColumnContent/twoColumnContent";
 import  {getBlogByUrl} from '../../../../../lib/blogs'
 
 export  async function generateMetadata({
@@ -54,15 +55,15 @@ export default async function BlogDetails({
   let date  = new Date(pubDate);
 
   return (
+    <>
     <div className="single-column-content">
       <h2>{page?.title}</h2>
-      <div className='author'>{page.author} | {date.toLocaleDateString("en-US")}</div>
-      {
-          SingleColumnContent(page, "c")
-      }
-       {
-          SingleColumnContent(page, "cb")
-      }
- </div>
+    </div>
+    
+      {SingleColumnContent(page, "c")}
+      {TwoColumnContent(page)}
+      {SingleColumnContent(page, "cb")}
+   
+   </>
   )
 }

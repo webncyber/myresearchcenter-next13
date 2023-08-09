@@ -4,6 +4,7 @@ import SingleColumnContent from "./components/singleColumnContent/SingleColumnCo
 import TwoColumnContent from "./components/twoColumnContent/twoColumnContent";
 import { getPageByUrl } from "../../lib/page";
 import Categories from "./components/categories/CategoryListing";
+import BlogListing from './components/blogListing/BlogListing';
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getPageByUrl("/home");
@@ -55,8 +56,8 @@ export default async function Home() {
     
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
+      <BlogListing/>
       {SingleColumnContent(page, "cb")}
-   
    </>
   );
 }

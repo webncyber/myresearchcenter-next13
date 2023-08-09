@@ -15,6 +15,37 @@ type Page = {
             }
         }
     ],
+    contentListing?: Array [
+        {
+            title?: string,
+              subTitle?: string,
+              content?: Array [
+                {
+                    type: string,
+                    textAlign?: string,
+                    data?:{
+                        text?: ReactElement<any, string | JSXElementConstructor<any>>
+                    }
+                }
+            ],
+              subContent?:  Array [
+                {
+                    type: string,
+                    textAlign?: string,
+                    data?:{
+                        text?: ReactElement<any, string | JSXElementConstructor<any>>
+                    }
+                }
+            ],
+              cardUrl?: string,
+              image?: string,
+              cardSettings?:{
+                leftColumnWidth?: number,
+                showBoarder?: boolean,
+                boarderSettings?: string
+              }
+        }
+    ],
     contentBottom?: Array [
         {
             type: string,
@@ -52,4 +83,34 @@ type Category = {
     image?: string,
     value?: string,
     blurb?: string
+}
+
+type Card = {
+    title?: string,
+      subTitle?: string,
+      content?: Array [
+        {
+            type: string,
+            textAlign?: string,
+            data?:{
+                text?: ReactElement<any, string | JSXElementConstructor<any>>
+            }
+        }
+    ],
+      subContent?:  Array [
+        {
+            type: string,
+            textAlign?: string,
+            data?:{
+                text?: ReactElement<any, string | JSXElementConstructor<any>>
+            }
+        }
+    ],
+      cardUrl?: string,
+      image?: string,
+      cardSettings?:{
+        leftColumnWidth: number,
+        showBoarder?: boolean,
+        boarderSettings?: string
+      }
 }

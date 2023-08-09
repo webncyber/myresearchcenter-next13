@@ -11,6 +11,20 @@ export function gqlGetPageByURL(url:string | null){
             subTitle,
             blurb,
             content,
+            contentListing
+          {
+            title
+            subTitle
+            content
+            subContent
+            cardUrl
+            image
+            cardSettings{
+              leftColumnWidth
+              showBoarder
+              boarderSettings
+            }
+          }
             contentBottom,
             hero{
               title,
