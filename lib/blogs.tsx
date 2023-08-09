@@ -1,11 +1,11 @@
 import { Blog } from "../types";
-
+import *  as Constants from './constants'
 export async function  getBlogsListing()
 {
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting";
      //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+    //const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const blogsArray = jsonData.data.data.listBlogs.data;
 
@@ -16,7 +16,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
 {
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogbyurl?url=" + url;
     //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
+    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listBlogs.data[0];

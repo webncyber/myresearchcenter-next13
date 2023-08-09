@@ -1,7 +1,5 @@
-import path from 'path';
-import { promises as fs } from 'fs';
-import { json } from 'stream/consumers';
 import { Hero, Page } from '../types';
+import *  as Constants from './constants'
 
 
 export async function getHeroDataByUrl(url:string) : Promise<Hero>
@@ -25,8 +23,8 @@ export async function getHeroDataByUrl(url:string) : Promise<Hero>
   
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/"+apiMethod+"?url=" + url;
     //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+    //const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = blogDetailtype ? jsonData.data.data.listBlogs.data[0]: jsonData.data.data.listPages.data[0];
 
