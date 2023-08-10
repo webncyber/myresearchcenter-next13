@@ -43,6 +43,7 @@ export async function getHeroDataByUrl(url:string) : Promise<Hero>
             title: pageData.hero.title,
             subTitle: pageData.hero.subTitle,
             url: pageData.hero.heroImage,
+            titleColor: pageData.hero.titleColor
            
         }
         return hero; 

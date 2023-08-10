@@ -31,7 +31,8 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
         hero: {
             title: pageData.hero.title,
             subTitle: pageData.hero.subTitle,
-            heroImage: pageData.hero.heroImage
+            heroImage: pageData.hero.heroImage,
+            titleColor: pageData.hero.titleColor
         },
         content: pageData.content,
         contentListing: pageData.contentListing,

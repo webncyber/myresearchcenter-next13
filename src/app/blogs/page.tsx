@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import SingleColumnContent from '../components/singleColumnContent/SingleColumnContent'
 import  {getPageByUrl} from '../../../lib/page'
 import BlogListing from '../components/blogListing/BlogListing';
+import TwoColumnContent from "../components/twoColumnContent/twoColumnContent";
 
 export async function generateMetadata(): Promise<Metadata> 
 {
@@ -39,16 +40,18 @@ export default async function Blogs() {
   let page = await pageData;
  
   return (
-   <div className="single-column-content">
+
+    <>
+     <div className="single-column-content">
       <h2>{page?.title}</h2>
-      {
-            SingleColumnContent(page, "c")
-       }
-        {
-            SingleColumnContent(page, "cb")
-       }
-           <BlogListing/>
     </div>
+    
+      {SingleColumnContent(page, "c")}
+      {TwoColumnContent(page)}
+      {SingleColumnContent(page, "cb")}
+
+      <BlogListing/>
+    </>
    
   )
 }

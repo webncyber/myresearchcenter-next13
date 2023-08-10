@@ -76,7 +76,10 @@ type Hero = {
     url?: string,
     title?: string,
     subTitle?: string,
-    heroImage?: string
+    heroImage?: string,
+    titleColor?:{
+        code?: string
+      }
 }
 
 type Category = {

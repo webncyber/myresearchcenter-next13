@@ -31,6 +31,9 @@ export function gqlGetPageByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              titleColor{
+                code
+              }
             }
             metaData
             {

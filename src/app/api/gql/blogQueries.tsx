@@ -59,6 +59,9 @@ export function gqlGetBlogByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              titleColor{
+                code
+              }
             },
             author,
             publishedDate,

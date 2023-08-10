@@ -26,7 +26,8 @@ export async function getPageByUrl(url: string)  : Promise<Page>
             hero: {
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
-                heroImage: pageData.hero.heroImage
+                heroImage: pageData.hero.heroImage,
+                titleColor: pageData.hero.titleColor
             },
             content: pageData.content,
             contentListing: pageData.contentListing,
