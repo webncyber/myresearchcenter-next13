@@ -1,20 +1,7 @@
+import { GenerateSitemap } from "../../lib/helper";
 export default async function sitemap() {
     //const res = await fetch('https://.../posts');
-    const allPosts =[
-        {
-          url: 'https://acme.com',
-          lastModified: new Date(),
-        },
-        {
-          url: 'https://acme.com/about',
-          lastModified: new Date(),
-        },
-        {
-          url: 'https://acme.com/blog',
-          lastModified: new Date(),
-        },
-      ]
-   
+    const allPosts = await GenerateSitemap()
    
    
     const routes = allPosts.map((route) => ({

@@ -65,6 +65,7 @@ export function buildRichTextContent(c: any)
 
 }
 
+
 export function buildRichTextContentOld(page: Page)
 {
 
@@ -122,4 +123,24 @@ export function buildRichTextContentOld(page: Page)
 
     })
     )
+}
+
+export async function GenerateSitemap(){
+
+  const allPosts =[
+    {
+      url: 'https://myresearchcenter.com',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://myresearchcenter.com/blogs',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://myresearchcenter.com/about',
+      lastModified: new Date(),
+    },
+  ]
+  
+  return allPosts;
 }
