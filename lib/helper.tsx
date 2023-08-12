@@ -130,8 +130,8 @@ export async function GenerateSitemap()
 {
   const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitemap";
   //const apiContent = await fetch(fetchAPIUrl);
-  const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-  //const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+  //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+  const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
   const jsonData = await apiContent.json();
   const pageData = jsonData.pages.data;
   const blogsData = jsonData.blogs.data;
