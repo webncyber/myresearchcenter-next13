@@ -56,7 +56,7 @@ export default async function Home() {
     
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
-      <BlogListing/>
+      <Categories/>
       {SingleColumnContent(page, "cb")}
    </>
   );

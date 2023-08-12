@@ -1,4 +1,10 @@
 .category-listing
 {
-    
+   ul li{
+    display: inline;
+    max-width: 200px;
+    img{
+        max-width: 150px;
+    }
+   }
 }

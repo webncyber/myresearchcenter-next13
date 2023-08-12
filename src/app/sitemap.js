@@ -5,9 +5,21 @@ export default async function sitemap() {
    
    
     const routes = allPosts.map((route) => ({
-      url: route.url,
-      lastModified: route.lastModified,
+      url: process.env.NEXT_PUBLIC_Host_Name + cleanURL(route.url),
+      lastModified:  route.lastmod.toString().split('T')[0],
     }));
    
     return [...routes];
+  }
+
+  function cleanURL(url)
+  {
+    switch(url)
+    {
+      case "/home":
+        return ""
+
+      default:
+        return url
+    }
   }

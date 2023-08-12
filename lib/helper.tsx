@@ -1,6 +1,7 @@
 import { Brawler } from "next/font/google";
 import { isNamedExports } from "typescript";
 import { Page } from "../types";
+import *  as Constants from './constants'
 
 const IS_SERVER = typeof window === "undefined";
 export default function getHostName() {
@@ -125,22 +126,19 @@ export function buildRichTextContentOld(page: Page)
     )
 }
 
-export async function GenerateSitemap(){
+export async function GenerateSitemap()
+{
+  const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitemap";
+  //const apiContent = await fetch(fetchAPIUrl);
+  const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+  //const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+  const jsonData = await apiContent.json();
+  const pageData = jsonData.pages.data;
+  const blogsData = jsonData.blogs.data;
 
-  const allPosts =[
-    {
-      url: 'https://myresearchcenter.com',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://myresearchcenter.com/blogs',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://myresearchcenter.com/about',
-      lastModified: new Date(),
-    },
-  ]
-  
-  return allPosts;
+  const sitemap = {
+    data: [...pageData, ...blogsData]
+  }
+
+  return sitemap.data;
 }

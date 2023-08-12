@@ -15,12 +15,12 @@ export async function Categories() {
               <li key={category.value}>
                 <a href={"/blogs/" + category.value}> 
                     <div className='row'>
-                    <div className='fit'>
-                    <img src={category.image}/>
-                    </div>
-                    <div>
-                        <div className='blurb'>{category.blurb}</div>
-                    </div>
+                      <div className='fit'>
+                      <img src={category.image}/>
+                      </div>
+                      <div>
+                          <div className='blurb'>{category.blurb}</div>
+                      </div>
                     </div>
                 </a>
               </li>
