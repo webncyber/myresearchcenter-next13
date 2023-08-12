@@ -1,1 +1,1 @@
-export const  API_Revalidate: number = 5;
+export const  API_Revalidate: number = 3600;
