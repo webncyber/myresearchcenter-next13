@@ -4,8 +4,8 @@ export async function  getBlogsListing()
 {
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting";
      //const apiContent = await fetch(fetchAPIUrl);
-    const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    //const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const blogsArray = jsonData.data.data.listBlogs.data;
 
