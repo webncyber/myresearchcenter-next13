@@ -18,7 +18,6 @@ export default async function sitemap() {
     {
       case "/home":
         return ""
-
       default:
         return url
     }
