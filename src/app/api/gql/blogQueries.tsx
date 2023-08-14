@@ -1,6 +1,9 @@
 
-export function gqlGetBlogsListing(){
-    const gql =  `
+export function gqlGetBlogsListing(limit: string | null){
+
+  if(limit == "0"){
+    return(
+      `
     {
         listBlogs{
             data
@@ -22,8 +25,34 @@ export function gqlGetBlogsListing(){
             }
           }
     }`
-  
-  return gql;
+    )
+  }else{
+    return(
+      `
+    {
+        listBlogs(limit:${limit}){
+            data
+            {
+              url
+              title
+              subTitle
+              blurb
+              hero{
+                title,
+                subTitle 
+                heroImage
+              }
+              publishedDate
+              author
+              category{
+                 title
+              }
+            }
+          }
+    }`
+    )
+  }
+   
   
   }
   

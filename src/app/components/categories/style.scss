@@ -1,10 +1,35 @@
 .category-listing
 {
-   ul li{
-    display: inline;
-    max-width: 200px;
-    img{
-        max-width: 150px;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    padding-left: 30px;
+    .list-heading{
+        color: rgb(5, 5, 160);
+        font-size: 1.4rem;
+        font-weight: bold;
+        
+        text-transform: capitalize;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
     }
+    
+   .flex-box{
+    display: flex;
+    justify-content:space-between;
+    justify-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+   
+  
+    h4{
+        margin-bottom: 8px;
+    }
+    img{
+        max-width: 170px;
+    }
+   }
+
+   .blurb{
+    padding-bottom: 20px;
    }
 }

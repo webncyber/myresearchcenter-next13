@@ -1,7 +1,7 @@
 
-export async function  getCategories()
+export async function  getCategories(limit: string | null)
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories";
+    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
      //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
     const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});

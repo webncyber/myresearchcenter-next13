@@ -56,7 +56,11 @@ export default async function Home() {
     
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
-      <BlogListing/>
+      <div>
+      <div>{Categories("3")}</div>
+
+        <div>{BlogListing("3")}</div>
+      </div>
       {SingleColumnContent(page, "cb")}
    </>
   );

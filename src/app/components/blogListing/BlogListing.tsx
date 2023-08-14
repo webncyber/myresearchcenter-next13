@@ -2,13 +2,18 @@ import './style.scss'
 import  {getBlogsListing} from '../../../../lib/blogs'
 import { Blog } from '../../../../types';
 
-export async function BlogListing() {
+export async function BlogListing(limit: string) {
     
-  const blogsData = getBlogsListing();
+  const blogsData = getBlogsListing(limit);
   let blogsListing = await blogsData;
   
     return(
         <div className='blogs-listing'>
+           {limit != "0" &&
+         (
+          <div className='list-heading'>Latest Blogs</div>
+         )
+         } 
           {
              <ul>
               {blogsListing.map((blog: Blog) =>

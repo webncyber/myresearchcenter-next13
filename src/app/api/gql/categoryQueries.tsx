@@ -1,5 +1,8 @@
-export function gqlGetCategoryListing(){
-    const gql =  `
+export function gqlGetCategoryListing(limit: string | null){
+
+  if(limit ==  "0"){
+    return(
+      `
     {
         listCategories{
             data{
@@ -10,6 +13,21 @@ export function gqlGetCategoryListing(){
             }
           }
     }`
-  return gql;
+    )
+  }else{
+    return(
+      `
+    {
+        listCategories(limit:${limit}){
+            data{
+              title
+              image
+              value
+              blurb
+            }
+          }
+    }`
+    )
+  }
   }
   

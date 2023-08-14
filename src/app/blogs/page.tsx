@@ -49,8 +49,8 @@ export default async function Blogs() {
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
       {SingleColumnContent(page, "cb")}
-
-      <BlogListing/>
+      {BlogListing("0")}
+    
     </>
    
   )

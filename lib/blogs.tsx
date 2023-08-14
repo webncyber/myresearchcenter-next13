@@ -1,8 +1,8 @@
 import { Blog } from "../types";
 import *  as Constants from './constants'
-export async function  getBlogsListing()
+export async function  getBlogsListing(limit: string)
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting";
+    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting?limit=" + limit;
      //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});

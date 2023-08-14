@@ -1,6 +1,15 @@
 .blogs-listing{
     width: 85%;
     padding-left: 30px;
+    .list-heading{
+        color: rgb(5, 5, 160);
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 40px;
+        text-transform: capitalize;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
     ul{
         
         padding: 0px;
