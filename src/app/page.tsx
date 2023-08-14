@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import SingleColumnContent from "./components/singleColumnContent/SingleColumnContent";
 import TwoColumnContent from "./components/twoColumnContent/twoColumnContent";
 import { getPageByUrl } from "../../lib/page";
-import Categories from "./components/categories/CategoryListing";
 import BlogListing from './components/blogListing/BlogListing';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -57,9 +56,7 @@ export default async function Home() {
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
       <div>
-      <div>{Categories("3")}</div>
-
-        <div>{BlogListing("3")}</div>
+        <div>{BlogListing("4")}</div>
       </div>
       {SingleColumnContent(page, "cb")}
    </>
