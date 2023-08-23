@@ -40,10 +40,10 @@ export async function getHeroDataByUrl(url:string) : Promise<Hero>
 
     }else{
         const hero: Hero = {
-            title: pageData.hero.title,
-            subTitle: pageData.hero.subTitle,
-            url: pageData.hero.heroImage,
-            titleColor: pageData.hero.titleColor
+            title: pageData.hero?.title,
+            subTitle: pageData.hero?.subTitle,
+            url: pageData.hero?.heroImage,
+            titleColor: pageData.hero?.titleColor
            
         }
         return hero; 

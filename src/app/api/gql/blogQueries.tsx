@@ -1,4 +1,29 @@
 
+export function gqlGetBlogsByCategoryId(entryId: any)
+{
+      return(
+      `
+    {
+      listBlogs(where:{category:{entryId:"${entryId}"}}){
+        data{
+          url
+          title
+          subTitle
+          blurb
+          hero{
+            title,
+            subTitle 
+            heroImage
+          }
+          publishedDate
+          author
+        }
+      }
+    }`
+      )
+}
+
+
 export function gqlGetBlogsListing(limit: string | null){
 
   if(limit == "0"){
@@ -19,9 +44,6 @@ export function gqlGetBlogsListing(limit: string | null){
               }
               publishedDate
               author
-              category{
-                 title
-              }
             }
           }
     }`

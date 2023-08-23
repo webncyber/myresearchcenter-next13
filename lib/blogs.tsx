@@ -12,6 +12,25 @@ export async function  getBlogsListing(limit: string)
   return blogsArray;
 }
 
+export async function  getBlogsByCategory(categoryValue: string)
+{
+    console.log("categoryValue: " + categoryValue)
+    const fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryvalue=" + categoryValue 
+    const categoryAPIContent = await fetch(fetchCategoryAPI, {cache: "no-store"});
+    const categoryJsonData = await categoryAPIContent.json();
+    const entryId = categoryJsonData.category.entryId;
+    
+    console.log("entryId-2: " + entryId)
+    const fetchBlogsAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogsbycategory?entryId=" + entryId;
+     //const apiContent = await fetch(fetchAPIUrl);
+    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+    const blogsAPIContent = await fetch(fetchBlogsAPIUrl, {cache: "no-store"});
+    const blogsJsonData = await blogsAPIContent.json();
+    const blogsArray = blogsJsonData.data.data.listBlogs.data;
+
+  return blogsArray;
+}
+
 export async function getBlogByUrl(url: string) : Promise<Blog>
 {
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogbyurl?url=" + url;

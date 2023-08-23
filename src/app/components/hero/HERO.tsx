@@ -52,7 +52,6 @@ const Hero = async () => {
           {content.titleColor && content.titleColor.code ? (
             <div>
               <h1 style={{ color: content.titleColor.code }}>
-                {" "}
                 {content.title}
               </h1>
             </div>
