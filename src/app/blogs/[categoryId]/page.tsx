@@ -1,15 +1,20 @@
 import React from 'react'
 import type { Metadata } from 'next';
 import SingleColumnContent from '../../components/singleColumnContent/SingleColumnContent'
-import  {getPageByUrl} from '../../../../lib/page'
+import  {getCategoryPageByUrl} from '../../../../lib/categories'
 import {BlogListingByCategory} from '../../components/blogListing/BlogsByCategory';
 
 import TwoColumnContent from "../../components/twoColumnContent/twoColumnContent";
 import { log } from 'console';
+const blogsPahtName = "/blogs/";
 
-export async function generateMetadata(): Promise<Metadata> 
+export async function generateMetadata({
+  params,
+}: {
+  params: {categoryId: string };
+}): Promise<Metadata> 
 {
-  const pageData = await getPageByUrl("/blogs");
+  const pageData = await getCategoryPageByUrl(blogsPahtName + params.categoryId);
   let page = await pageData
   const siteUrl = process.env.NEXT_PUBLIC_Host_Name
   const canonicalUrl = siteUrl;
@@ -42,7 +47,8 @@ export default async function Blogs({
 }: {
   params: {categoryId: string };
 }) {
-  const pageData = getPageByUrl("/blogs");
+
+  const pageData = getCategoryPageByUrl(blogsPahtName + params.categoryId);
   let page = await pageData;
  
   return (
@@ -55,7 +61,7 @@ export default async function Blogs({
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
       {SingleColumnContent(page, "cb")}
-      <div>{BlogListingByCategory(params.categoryId)}</div>
+      <div>{BlogListingByCategory((blogsPahtName + params.categoryId))}</div>
     
     </>
    

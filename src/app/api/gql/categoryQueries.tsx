@@ -1,7 +1,7 @@
-export function gqlCategoryByValue(urlValue:any){
+export function gqlCategoryByURL(urlValue:any){
   const gql =  `
   {
-    listCategories(where:{value:"${urlValue}"}){
+    listCategories(where:{url:"${urlValue}"}){
      data{
        id
        entryId
@@ -24,9 +24,9 @@ export function gqlGetCategoryListing(limit: string | null){
     {
         listCategories{
             data{
+              url
               title
-              image
-              value
+              thumbnailImage
               blurb
             }
           }
@@ -38,9 +38,9 @@ export function gqlGetCategoryListing(limit: string | null){
     {
         listCategories(limit:${limit}){
             data{
+              url
               title
-              image
-              value
+              thumbnailImage
               blurb
             }
           }
@@ -49,3 +49,73 @@ export function gqlGetCategoryListing(limit: string | null){
   }
   }
   
+export function gqlGetCategoryHeroByURL(url:string | null){
+  const gql =  `
+  query {
+    listCategories (where: { url: "${url}" }) {
+        data{
+            url,
+            hero{
+              title,
+              subTitle 
+              heroImage
+              titleColor{
+                code
+              }
+            }
+          }
+    }
+  }`
+
+return gql;
+
+}
+export function gqlGetCategoryByURL(url:string | null){
+  const gql =  `
+  query {
+    listCategories (where: { url: "${url}" }) {
+        data{
+            url,
+            title,
+            subTitle,
+            blurb,
+            content,
+            contentListing
+          {
+            title
+            subTitle
+            content
+            subContent
+            cardUrl
+            image
+            cardSettings
+            {
+              leftColumnWidth
+              showBoarder
+              boarderSettings
+              cardDivider
+            }
+          }
+            contentBottom,
+            hero{
+              title,
+              subTitle 
+              heroImage
+              titleColor{
+                code
+              }
+            }
+            metaData
+            {
+              browserTitle,
+              keywords,
+              description
+            }
+            thumbnailImage
+          }
+    }
+  }`
+
+return gql;
+
+}

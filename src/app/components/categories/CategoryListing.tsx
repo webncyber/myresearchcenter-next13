@@ -18,10 +18,10 @@ export async function Categories(limit: string, showBlurb: boolean = false) {
         <div className="flex-box">
           {categories.map((category: Category) => (
           
-             <div key={category.value}>
+             <div key={category.url}>
                 <h4>{category.title}</h4>
-                <a href={"/blogs/" + category.value}>
-                    <img src={category.image} />
+                <a href={category.url}>
+                    <img src={category?.thumbnailImage} />
                 </a>
                 {showBlurb && 
                 (

@@ -5,7 +5,6 @@ import Hero from './components/hero/HERO'
 import TopNav from './components/navbars/topnav'
 import FooterNav from './components/navbars/footernav';
 import GoogleAnalytics from './components/googleAnalytics/ga';
-import { headers } from 'next/headers'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +15,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  
   return (
     <html lang="en">
       <GoogleAnalytics/>

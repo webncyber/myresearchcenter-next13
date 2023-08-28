@@ -15,7 +15,7 @@ export async function  getBlogsListing(limit: string)
 export async function  getBlogsByCategory(categoryValue: string)
 {
     console.log("categoryValue: " + categoryValue)
-    const fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryvalue=" + categoryValue 
+    const fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryurl=" + categoryValue 
     const categoryAPIContent = await fetch(fetchCategoryAPI, {cache: "no-store"});
     const categoryJsonData = await categoryAPIContent.json();
     const entryId = categoryJsonData.category.entryId;

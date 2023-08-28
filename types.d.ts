@@ -82,11 +82,9 @@ type Hero = {
       }
 }
 
-type Category = {
-    title?: string,
-    image?: string,
-    value?: string,
-    blurb?: string
+type Category = Page & {
+   
+    thumbnailImage?: string
 }
 
 type Card = {

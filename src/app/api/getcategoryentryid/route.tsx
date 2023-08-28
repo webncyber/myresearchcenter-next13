@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import {gqlGetBlogsByCategoryId} from '../gql/blogQueries'
-import {gqlCategoryByValue} from '../gql/categoryQueries'
+import {gqlCategoryByURL} from '../gql/categoryQueries'
 
 
 export async function GET (request:Request) 
 {
   const { searchParams } = new URL(request.url)
-  let categoryValue = searchParams.get("categoryvalue") != null ? searchParams.get("categoryvalue") : "";
+  let categoryValue = searchParams.get("categoryurl") != null ? searchParams.get("categoryurl") : "";
   console.log("categoryValue-2: " + categoryValue)
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
     cache: "no-store",  
@@ -16,7 +16,7 @@ export async function GET (request:Request)
         "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
       },
       body: JSON.stringify({
-        query: gqlCategoryByValue(categoryValue),
+        query: gqlCategoryByURL(categoryValue),
       })
   })  
 

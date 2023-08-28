@@ -1,9 +1,11 @@
 "use client";
 import "./style.scss";
 import { getHeroDataByUrl } from "../../../../lib/hero";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 const Hero = async () => {
+  const params = useParams();
   let path = usePathname();
+  let categoryId = params.categoryId;
   let hostName =
     process.env.NEXT_PUBLIC_Host_Name != undefined
       ? process.env.NEXT_PUBLIC_Host_Name
@@ -12,12 +14,12 @@ const Hero = async () => {
   /* console.log("path: " + path)
     console.log("hostName: " + hostName)
     console.log("requestedURl v1: " + requestedURl) */
-
+   // console.log("requestedURl v3: " + )
   if (requestedURl == "/") {
     requestedURl = "/home";
   }
 
-  const content = await getHeroDataByUrl(requestedURl);
+  const content = await getHeroDataByUrl(requestedURl, categoryId) ;
 
   var divImage = {
     backgroundImage: "url(" + content.url + ")",

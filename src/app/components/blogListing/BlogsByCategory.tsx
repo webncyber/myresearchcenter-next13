@@ -2,18 +2,12 @@ import './style.scss'
 import  {getBlogsByCategory} from '../../../../lib/blogs'
 import { Blog } from '../../../../types';
 
-export async function BlogListingByCategory(categoryValue: any) 
+export async function BlogListingByCategory(categoryUrl: any) 
 {
-  const blogsData = getBlogsByCategory(categoryValue);
+  const blogsData = getBlogsByCategory(categoryUrl);
   let blogsListing = await blogsData;
-  
     return(
         <div className='blogs-listing'>
-           {categoryValue != "" &&
-         (
-          <div className='list-heading'>{categoryValue}</div>
-         )
-         } 
           {
              <ul>
               {blogsListing.map((blog: Blog) =>
