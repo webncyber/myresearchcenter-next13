@@ -135,9 +135,10 @@ export async function GenerateSitemap()
   const jsonData = await apiContent.json();
   const pageData = jsonData.pages.data;
   const blogsData = jsonData.blogs.data;
+  const categoriesData = jsonData.categories.data;
 
   const sitemap = {
-    data: [...pageData, ...blogsData]
+    data: [...pageData, ...blogsData, ...categoriesData]
   }
 
   return sitemap.data;

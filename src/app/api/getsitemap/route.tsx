@@ -18,5 +18,6 @@ export async function GET()
     const data = await response.json();
     const pages = await data.data.listPages;
     const blogs = await data.data.listBlogs;
-    return NextResponse.json({pages,blogs});
+    const categories = await data.data.listCategories;
+    return NextResponse.json({pages,blogs,categories});
 }
