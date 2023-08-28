@@ -22,7 +22,7 @@ export function gqlGetCategoryListing(limit: string | null){
     return(
       `
     {
-        listCategories{
+        listCategories(sort:title_ASC){
             data{
               url
               title
@@ -36,7 +36,7 @@ export function gqlGetCategoryListing(limit: string | null){
     return(
       `
     {
-        listCategories(limit:${limit}){
+        listCategories(limit:${limit}, sort:title_ASC){
             data{
               url
               title

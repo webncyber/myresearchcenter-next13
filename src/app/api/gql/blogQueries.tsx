@@ -4,7 +4,7 @@ export function gqlGetBlogsByCategoryId(entryId: any)
       return(
       `
     {
-      listBlogs(where:{category:{entryId:"${entryId}"}}){
+      listBlogs(where:{category:{entryId:"${entryId}"}}, sort:title_ASC){
         data{
           url
           title
@@ -30,7 +30,7 @@ export function gqlGetBlogsListing(limit: string | null){
     return(
       `
     {
-        listBlogs{
+        listBlogs(sort:publishedDate_DESC){
             data
             {
               url
@@ -52,7 +52,7 @@ export function gqlGetBlogsListing(limit: string | null){
     return(
       `
     {
-        listBlogs(limit:${limit}){
+        listBlogs(limit:${limit}, sort:publishedDate_DESC){
             data
             {
               url
