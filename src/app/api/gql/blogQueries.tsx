@@ -129,3 +129,54 @@ export function gqlGetBlogByURL(url:string | null){
 return gql;
 
 }
+
+export function gqlGetBlogByURLAndCategory(cat:string | null, url:string | null){
+  const gql =  `
+  query {
+    listBlogs (where: { category:{entryId:"${cat}"} url: "${url}" }) {
+        data{
+            url,
+            title,
+            subTitle,
+            blurb,
+            content,
+            contentListing
+          {
+            title
+            subTitle
+            content
+            subContent
+            cardUrl
+            image
+            cardSettings
+            {
+              leftColumnWidth
+              showBoarder
+              boarderSettings
+              cardDivider
+            }
+          }
+            contentBottom,
+            hero{
+              title,
+              subTitle 
+              heroImage
+              titleColor{
+                code
+              }
+            },
+            author,
+            publishedDate,
+            metaData
+            {
+              browserTitle,
+              keywords,
+              description
+            }
+          }
+    }
+  }`
+
+return gql;
+
+}

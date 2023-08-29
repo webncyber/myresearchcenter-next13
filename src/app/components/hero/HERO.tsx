@@ -6,6 +6,7 @@ const Hero = async () => {
   const params = useParams();
   let path = usePathname();
   let categoryId = params.categoryId;
+  let dynamicDir1 = params.dir1;
   let hostName =
     process.env.NEXT_PUBLIC_Host_Name != undefined
       ? process.env.NEXT_PUBLIC_Host_Name
@@ -14,12 +15,12 @@ const Hero = async () => {
   /* console.log("path: " + path)
     console.log("hostName: " + hostName)
     console.log("requestedURl v1: " + requestedURl) */
-   // console.log("requestedURl v3: " + )
+    console.log("requestedURl v3: " + requestedURl)
   if (requestedURl == "/") {
     requestedURl = "/home";
   }
 
-  const content = await getHeroDataByUrl(requestedURl, categoryId) ;
+  const content = await getHeroDataByUrl(requestedURl, categoryId, dynamicDir1) ;
 
   var divImage = {
     backgroundImage: "url(" + content.url + ")",

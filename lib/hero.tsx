@@ -3,11 +3,11 @@ import *  as Constants from './constants'
 
 const blogsPathName = "/blogs";
 const homePathname = "/home"
-export async function getHeroDataByUrl(url:string, categoryId:string | undefined) : Promise<Hero>
+export async function getHeroDataByUrl(url:string, categoryId:string | undefined, dynamicDir1: string | undefined) : Promise<Hero>
 {
     let blogDetailtype = true;
     let apiMethod = "getblogbyurl"
-    console.log("CAT2: " + url)
+    console.log("dynamicDir1: " + dynamicDir1)
         if(url == homePathname)
         {
             blogDetailtype = false;
@@ -21,6 +21,10 @@ export async function getHeroDataByUrl(url:string, categoryId:string | undefined
             blogDetailtype = false;
             apiMethod = "getcategorybyurl";
             url = blogsPathName + "/" + categoryId;
+        }else if(dynamicDir1)
+        {
+            blogDetailtype = false;
+            apiMethod = "getpagebyurl";
         }
         else{
             blogDetailtype = true;
