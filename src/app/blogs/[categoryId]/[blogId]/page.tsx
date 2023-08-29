@@ -58,6 +58,7 @@ export default async function BlogDetails({
     <>
     <div className="single-column-content">
       <h2>{page?.title}</h2>
+      <div className='author'> {page.author} | {date.toLocaleDateString("en-US")}</div>
     </div>
     
       {SingleColumnContent(page, "c")}
