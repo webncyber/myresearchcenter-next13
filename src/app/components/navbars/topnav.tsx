@@ -1,9 +1,9 @@
 "use client"
 import './style.scss'
-import { AiOutlineMail, AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
-import { FaHome, FaBlogger } from "react-icons/fa";
-import { SlSocialYoutube, SlSocialTwitter } from "react-icons/sl";
-import { GiHamburgerMenu } from "react-icons/gi";
+import * as IconsAi from "react-icons/ai";
+import * as IconsFa from "react-icons/fa";
+import * as IconsSl from "react-icons/sl";
+import * as IconsGi from "react-icons/gi";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 
@@ -48,21 +48,21 @@ const TopNav = () => {
                     <ul>
                         <li>
                             <Link href='/'>
-                            <FaHome style={{ color: 'white', fontSize: '30px' }} />
+                            <IconsFa.FaHome style={{ color: 'white', fontSize: '30px' }} />
                             </Link>
                         </li>
                         <li>
                             <Link href="/blogs">
-                            <FaBlogger style={{ color: 'white', fontSize: '20px' }} />
+                            <IconsFa.FaBlogger style={{ color: 'white', fontSize: '20px' }} />
                                 Blogs
                             </Link>
                            </li>
                         <li><a href='mailto:webncyber@gmail.com'>
-                            <AiOutlineMail style={{ color: 'white', fontSize: '20px' }} />
+                            <IconsAi.AiOutlineMail style={{ color: 'white', fontSize: '20px' }} />
                             Contact</a></li>
                         <li className='social-link'>
                             <a title='Youtube' href='https://www.youtube.com/@webncyber' target={'_blank'}>
-                            <SlSocialYoutube style={{ color: 'white', fontSize: '20px' }} />
+                            <IconsSl.SlSocialYoutube style={{ color: 'white', fontSize: '20px' }} />
                             </a>
                         </li>
 
@@ -90,7 +90,7 @@ const TopNav = () => {
 
             <div id="nav-mobile">
                 <div onClick={() => showMobileMenu(!toggle)} className='hamburgerMenu'>
-                    <GiHamburgerMenu style={{ color: 'white', fontSize: '30px' }} />
+                    <IconsGi.GiHamburgerMenu style={{ color: 'white', fontSize: '30px' }} />
                 </div>
 
                 {toggle && (
@@ -103,16 +103,16 @@ const TopNav = () => {
                         <li>
                            
                             <a title='Youtube' href='https://www.youtube.com/@webncyber' target={'_blank'}>
-                            <SlSocialYoutube style={{ color: 'black', fontSize: '20px' }} />
+                            <IconsSl.SlSocialYoutube style={{ color: 'black', fontSize: '20px' }} />
                             </a>     
                             <a title='Share on Linkedin' target={'_blank'} href={linkedInURL}>
-                                <AiOutlineLinkedin style={{ color: 'black', fontSize: '20px' }} />
+                                <IconsAi.AiOutlineLinkedin style={{ color: 'black', fontSize: '20px' }} />
                             </a>   
                             <a title='Share on Facebook' target={'_blank'} href={fbPostURL}>
-                                <AiOutlineFacebook style={{ color: 'black', fontSize: '20px' }} />
+                                <IconsAi.AiOutlineFacebook style={{ color: 'black', fontSize: '20px' }} />
                             </a>   
                             <a  title='Share on Twitter' target={'_blank'} href={twittURL}>
-                                <SlSocialTwitter style={{ color: 'black', fontSize: '20px' }} />
+                                <IconsSl.SlSocialTwitter style={{ color: 'black', fontSize: '20px' }} />
                            </a>
                         </li>
                       

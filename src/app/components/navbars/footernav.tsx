@@ -1,9 +1,6 @@
 'use client'
 import './style.scss'
-import { AiOutlineMail, AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
-import { FaHome, FaBlogger } from "react-icons/fa";
-import { SlSocialYoutube, SlSocialTwitter } from "react-icons/sl";
-import { GiHamburgerMenu } from "react-icons/gi";
+import * as IconsSl from "react-icons/sl";
 import React, { useState, useEffect } from 'react';
 
 
@@ -43,7 +40,7 @@ const FooterNav = () => {
                             </li>
                         <li className='social-link'>
                             <a title='Youtube' href='https://www.youtube.com/@webncyber' target={'_blank'}>
-                                <SlSocialYoutube style={{ color: 'black', fontSize: '14px' }} />
+                                <IconsSl.SlSocialYoutube style={{ color: 'black', fontSize: '14px' }} />
                             </a>
                             <span className='separator'>*</span>
                         </li>
