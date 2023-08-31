@@ -4,7 +4,8 @@ import { Blog } from '../../../../types';
 
 export async function BlogListingByCategory(categoryUrl: any) 
 {
-  const blogsData = getBlogsByCategory(categoryUrl);
+  try{
+    const blogsData = getBlogsByCategory(categoryUrl);
   let blogsListing = await blogsData;
     return(
         <div className='blogs-listing'>
@@ -26,6 +27,7 @@ export async function BlogListingByCategory(categoryUrl: any)
            </ul>}
         </div>
     )
+  }catch{}
 }
 
 export default BlogListingByCategory;

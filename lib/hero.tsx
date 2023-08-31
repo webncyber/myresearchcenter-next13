@@ -49,7 +49,7 @@ export async function getHeroDataByUrl(url:string, categoryId:string | undefined
     if(heroData == undefined)
     {
         const blank: Hero = {
-            title: "404 Not Found",
+            title: "Page Not Found",
             url: "/Images/404.jpg",
         }
     
