@@ -16,7 +16,12 @@ export async function getPageByUrl(url: string)  : Promise<Page>
     
     if(pageData == undefined)
     {
-        const blankPage: Page = {}
+        const blankPage: Page = {
+            title: "Please try again later",
+            metaData: {
+                browserTitle: "My Research Center",
+            },
+        }
     
        return blankPage;
 
