@@ -2,71 +2,32 @@
 import './style.scss'
 import * as IconsSl from "react-icons/sl";
 import React, { useState, useEffect } from 'react';
+import { getFooterNavigation } from "../../../../lib/siteSettings";
+import Link from 'next/link';
+import { Navigation } from '../../../../types';
 
-
-const FooterNav = () => {
-    const [currentURL, setCurrentURL] = useState('')
-    const [browserTitle, setBrowserTitle] = useState('')
-
-        useEffect(() => {
-        if(typeof window !== undefined) {
-
-            setCurrentURL(window.location.href);
-            setBrowserTitle(document.title);
-        }
-        },[]);
-        
-   
-    const fbPostURL = "http://www.facebook.com/share.php?u=" + currentURL;
-    const twittURL = "https://twitter.com/intent/tweet?text=" + browserTitle + " " +  currentURL;
-    const linkedInURL = "https://www.linkedin.com/shareArticle?url="+currentURL+"&title="+browserTitle+"";
-      
+const FooterNav = async () => {
+    let settings = await getFooterNavigation();
     return (
             <div id="nav-desktop-footer" className="navbar-footer">
                 <div>
                     <ul>
+                    {
+                            settings?.footerNavigation?.map((nav:Navigation) => (
+                            <li key={nav.title}>
+                            <Link href={nav.linkUrl} target={nav.linkTarget}>
+                                {
+                                    nav.svgData && (
+                                        <span dangerouslySetInnerHTML={{__html: nav.svgData.icon ? nav.svgData.icon : ""}}></span>
+                                )}
+                                {nav?.linkTitle}
+                            </Link>
+                            <span className='separator'>*</span>
+                        </li>
+                            ))
+                        }
                         <li>
-                            <a href='/'>
-                            Home
-                            </a>
-                            <span className='separator'>*</span>
-                        </li>
-                        <li><a href='/blogs'>
-                            Blogs</a>
-                            <span className='separator'>*</span></li>
-                        <li><a href='mailto:webncyber@gmail.com'>
-                            Contact</a>
-                            <span className='separator'>*</span>
-                            </li>
-                        <li className='social-link'>
-                            <a title='Youtube' href='https://www.youtube.com/@webncyber' target={'_blank'}>
-                                <IconsSl.SlSocialYoutube style={{ color: 'black', fontSize: '14px' }} />
-                            </a>
-                            <span className='separator'>*</span>
-                        </li>
-{/* 
-                        <li className='social-link'>
-                            <a title='Share on Linkedin' target={'_blank'} href={linkedInURL}>
-                                <AiOutlineLinkedin style={{ color: 'black', fontSize: '14px' }} />
-                            </a>
-                            <span className='separator'>*</span>
-                        </li>
-
-                        <li className='social-link'>
-                            <a title='Share on Facebook' target={'_blank'} href={fbPostURL}>
-                                <AiOutlineFacebook style={{ color: 'black', fontSize: '14px' }} />
-                            </a>
-                            <span className='separator'>*</span>
-                        </li>
-
-                        <li className='social-link'>
-                           <a  title='Share on Twitter' target={'_blank'} href={twittURL}>
-                                <SlSocialTwitter style={{ color: 'black', fontSize: '13px' }} />
-                           </a>
-                           <span className='separator'>*</span>
-                        </li> */}
-                        <li>
-                            © 2023
+                            © {new Date().getFullYear()}
                         </li>
                         </ul>
 
