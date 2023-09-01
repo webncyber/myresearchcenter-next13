@@ -4,7 +4,7 @@ type Page = {
     title?: string,
     subTitle?: string,
     blurb?: string,
-    url?: string,
+    url: string,
     hero?: Hero,
     content?: Array [
         {
@@ -116,4 +116,23 @@ type Card = {
         boarderSettings?: string,
         cardDivider?: boolean
       }
+}
+
+type SiteSettings = {
+    topNavigation?: Navigation[],
+    footerNavigation?:Navigation[],
+    socialLinks?:Navigation[]
+}
+
+type Navigation = {
+    title?:string,
+    svgData?: SVGData,
+    linkUrl: string,
+    linkTarget?: string,
+    linkTitle?: string,
+    linkAltText?: string
+}
+
+type SVGData = {
+    icon?:string
 }

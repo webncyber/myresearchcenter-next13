@@ -1,6 +1,7 @@
 import "./style.scss";
 import { getCategories } from "../../../../lib/categories";
 import { Blog, Category } from "../../../../types";
+import Link from 'next/link'
 
 export async function Categories(limit: string, showBlurb: boolean = false) {
   const categoriesData = getCategories(limit);
@@ -17,12 +18,11 @@ export async function Categories(limit: string, showBlurb: boolean = false) {
       {
         <div className="flex-box">
           {categories.map((category: Category) => (
-          
              <div key={category.url}>
                 <h4>{category.title}</h4>
-                <a href={category.url}>
+                <Link href={category.url}>
                     <img src={category?.thumbnailImage} />
-                </a>
+                </Link>
                 {showBlurb && 
                 (
                   <div>

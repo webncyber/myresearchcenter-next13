@@ -41,6 +41,7 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
     const pageData = jsonData.data.data.listBlogs.data[0];
 
     const blogDetail: Blog = {
+        url: pageData.url,
         title: pageData.title,
         hero: {
             title: pageData.hero.title,
@@ -77,6 +78,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
     {
         const blankPage: Blog = {
             title: "Please try again later",
+            url: "/",
             metaData: {
                 browserTitle: "My Research Center",
             },
@@ -86,6 +88,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
 
     }else{
         const blogDetail: Blog = {
+            url: pageData.url,
             title: pageData.title,
             hero: {
                 title: pageData.hero.title,

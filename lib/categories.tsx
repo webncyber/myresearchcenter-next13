@@ -23,12 +23,19 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
 
     if(pageData == undefined)
     {
-        const blankPage: Category = {}
+        const blankPage: Category = {
+            url:"/",
+            title: "Please try again later",
+            metaData: {
+                browserTitle: "My Research Center",
+            },
+        }
     
        return blankPage;
 
     }else{
         const page: Category = {
+            url: pageData.url,
             title: pageData.title,
             hero: {
                 title: pageData.hero.title,

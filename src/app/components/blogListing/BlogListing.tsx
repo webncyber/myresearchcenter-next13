@@ -1,6 +1,7 @@
 import './style.scss'
 import  {getBlogsListing} from '../../../../lib/blogs'
 import { Blog } from '../../../../types';
+import Link from 'next/link'
 
 export async function BlogListing(limit: string) {
     
@@ -20,10 +21,10 @@ export async function BlogListing(limit: string) {
               <li key={blog.url}>
                 <div className='row'>
                   <div className='fit'>
-                  <a href={blog.url}> <img src={blog.hero?.heroImage}/></a>
+                  <Link href={blog.url}> <img src={blog.hero?.heroImage}/></Link>
                   </div>
                   <div>
-                    <div><a href={blog.url}><h4>{blog.title}</h4></a></div>
+                    <div><Link href={blog.url}><h4>{blog.title}</h4></Link></div>
                     <div className='blurb'>{blog.blurb}</div>
                   </div>
                 </div>
