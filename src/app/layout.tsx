@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics/>
-      <body className={inter.className}>
+      <body>
       <div className='container'>
         <div className='heading-section'>
           <TopNav />

@@ -58,9 +58,16 @@ export default async function Blogs({
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
-      {SingleColumnContent(page, "c")}
-      {TwoColumnContent(page)}
-      {SingleColumnContent(page, "cb")}
+      {page.content &&(
+        SingleColumnContent(page, "c")
+      )}
+      
+      {page.contentListing &&(
+        TwoColumnContent(page)
+      )}
+      {page.contentBottom && (
+        SingleColumnContent(page, "cb")
+      )}
       <div>{BlogListingByCategory((blogsPahtName + params.categoryId))}</div>
     
     </>

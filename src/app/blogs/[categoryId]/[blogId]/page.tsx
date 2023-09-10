@@ -64,10 +64,16 @@ export default async function BlogDetails({
       )}
       
     </div>
-      {SingleColumnContent(page, "c")}
-      {TwoColumnContent(page)}
-      {SingleColumnContent(page, "cb")}
-   
+    {page.content &&(
+        SingleColumnContent(page, "c")
+      )}
+      
+      {page.contentListing &&(
+        TwoColumnContent(page)
+      )}
+      {page.contentBottom && (
+        SingleColumnContent(page, "cb")
+      )}
    </>
   )
 }

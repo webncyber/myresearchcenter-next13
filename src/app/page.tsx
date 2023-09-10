@@ -53,12 +53,19 @@ export default async function Home() {
       <h2>{page?.title}</h2>
     </div>
     
-      {SingleColumnContent(page, "c")}
-      {TwoColumnContent(page)}
+      {page.content &&(
+        SingleColumnContent(page, "c")
+      )}
+      
+      {page.contentListing &&(
+        TwoColumnContent(page)
+      )}
       <div>
         <div>{BlogListing("4")}</div>
       </div>
-      {SingleColumnContent(page, "cb")}
+      {page.contentBottom && (
+        SingleColumnContent(page, "cb")
+      )}
    </>
   );
 }
