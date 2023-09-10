@@ -5,11 +5,14 @@ import React, { useState, useEffect } from 'react';
 import { getFooterNavigation } from "../../../../lib/siteSettings";
 import Link from 'next/link';
 import { Navigation } from '../../../../types';
-
+import SocialLinks from '../../components/socialLinks/socialLinks';
 const FooterNav = async () => {
     let settings = await getFooterNavigation();
     return (
-            <div id="nav-desktop-footer" className="navbar-footer">
+
+        <>
+        <SocialLinks/>
+        <div id="nav-desktop-footer" className="navbar-footer">
                 <div>
                     <ul>
                     {
@@ -34,6 +37,9 @@ const FooterNav = async () => {
                         <br/><br/><br/><br/>
                 </div>
             </div>
+        </>
+            
+            
     );
 }
 

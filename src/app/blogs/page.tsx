@@ -6,6 +6,7 @@ import BlogListing from '../components/blogListing/BlogListing';
 import Categories from "../components/categories/CategoryListing";
 
 import TwoColumnContent from "../components/twoColumnContent/twoColumnContent";
+import SocialLinks from '../components/socialLinks/socialLinks';
 
 export async function generateMetadata(): Promise<Metadata> 
 {
@@ -44,6 +45,7 @@ export default async function Blogs() {
   return (
 
     <>
+
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>

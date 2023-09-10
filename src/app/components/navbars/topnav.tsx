@@ -1,5 +1,4 @@
 import './style.scss'
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { getTopNavigation } from "../../../../lib/siteSettings"; 
 import { Navigation } from '../../../../types';

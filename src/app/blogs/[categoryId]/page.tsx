@@ -6,6 +6,7 @@ import {BlogListingByCategory} from '../../components/blogListing/BlogsByCategor
 
 import TwoColumnContent from "../../components/twoColumnContent/twoColumnContent";
 import { log } from 'console';
+import SocialLinks from '@/app/components/socialLinks/socialLinks';
 const blogsPahtName = "/blogs/";
 
 export async function generateMetadata({
@@ -57,7 +58,6 @@ export default async function Blogs({
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
-    
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
       {SingleColumnContent(page, "cb")}

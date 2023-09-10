@@ -33,7 +33,7 @@ export default function RootLayout({
                 <FooterNav/>
           </div> 
         </div>
-    </div>
+    </div>  
       </div>
       </body>
     </html>

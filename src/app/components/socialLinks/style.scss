@@ -1,0 +1,31 @@
+.socialLinks{
+    background-color: rgb(51, 51, 51);
+    opacity: 25%;
+    padding: 0px;
+    border-radius: 5px;
+    text-align: center;
+    ul{
+        width: 100%;
+        margin: 4px;
+        list-style-type: none;
+        display: inline-block;
+        padding: 0px;
+        padding-top: 3px;
+        li{
+            display: inline;
+        padding-left: 30px;
+        padding-right: 30px;
+
+            a {
+                
+                &:hover{
+                    opacity: 50%;
+                    cursor: pointer;
+                }
+            }
+        }
+        
+       
+    }
+   
+}

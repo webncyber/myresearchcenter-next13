@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import SingleColumnContent from '../../../components/singleColumnContent/SingleColumnContent'
 import TwoColumnContent from "../../../components/twoColumnContent/twoColumnContent";
 import  {getBlogByUrl} from '../../../../../lib/blogs'
+import SocialLinks from '@/app/components/socialLinks/socialLinks';
 
 export  async function generateMetadata({
   params,
@@ -63,7 +64,6 @@ export default async function BlogDetails({
       )}
       
     </div>
-    
       {SingleColumnContent(page, "c")}
       {TwoColumnContent(page)}
       {SingleColumnContent(page, "cb")}
