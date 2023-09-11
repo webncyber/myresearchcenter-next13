@@ -15,13 +15,13 @@ const TopNav = async () => {
                         {
                             settings?.topNavigation?.map((nav:Navigation) => (
                             <li key={nav.title}>
-                            <Link href={nav.linkUrl} target={nav.linkTarget}>
+                            <a href={nav.linkUrl} target={nav.linkTarget}>
                                 {
                                     nav.svgData && (
                                         <span dangerouslySetInnerHTML={{__html: nav.svgData.icon ? nav.svgData.icon : ""}}></span>
                                 )}
                                 {nav?.linkTitle}
-                            </Link>
+                            </a>
                         </li>
                             ))
                         }
@@ -36,12 +36,12 @@ const TopNav = async () => {
                     {
                             settings?.topNavigation?.map((nav:Navigation) => (
                             <li key={nav.title}>
-                            <Link href={nav.linkUrl} target={nav.linkTarget}>
+                            <a href={nav.linkUrl} target={nav.linkTarget}>
                                 {
                                     nav.svgData && (
                                         <span dangerouslySetInnerHTML={{__html: nav.svgData.icon ? nav.svgData.icon : ""}}></span>
                                 )}
-                            </Link>
+                            </a>
                         </li>
                             ))
                         }

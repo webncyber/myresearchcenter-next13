@@ -16,10 +16,10 @@ export async function BlogListingByCategory(categoryUrl: any)
               <li key={blog.url}>
                 <div className='row'>
                   <div className='fit'>
-                  <Link href={blog.url}> <img src={blog.hero?.heroImage}/></Link>
+                  <a href={blog.url}> <img src={blog.hero?.heroImage}/></a>
                   </div>
                   <div>
-                    <div><Link href={blog.url}><h4>{blog.title}</h4></Link></div>
+                    <div><a href={blog.url}><h4>{blog.title}</h4></a></div>
                     <div className='blurb'>{blog.blurb}</div>
                   </div>
                 </div>

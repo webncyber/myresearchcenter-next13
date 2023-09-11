@@ -20,9 +20,9 @@ export async function Categories(limit: string, showBlurb: boolean = false) {
           {categories.map((category: Category) => (
              <div key={category.url}>
                 <h4>{category.title}</h4>
-                <Link href={category.url}>
+                <a href={category.url}>
                     <img src={category?.thumbnailImage} />
-                </Link>
+                </a>
                 {showBlurb && 
                 (
                   <div>
