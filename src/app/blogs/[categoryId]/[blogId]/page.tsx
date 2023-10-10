@@ -1,9 +1,11 @@
 import React from 'react'
 import type { Metadata } from 'next';
 import SingleColumnContent from '../../../components/singleColumnContent/SingleColumnContent'
-import TwoColumnContent from "../../../components/twoColumnContent/twoColumnContent";
+import ImageCardContent from "../../../components/imageCard/imageCardContent";
 import  {getBlogByUrl} from '../../../../../lib/blogs'
 import SocialLinks from '@/app/components/socialLinks/socialLinks';
+import { DefaultCard } from '../../../../../types';
+import RichTextCardContent from '@/app/components/richTextCard/richTextCardContent';
 
 export  async function generateMetadata({
   params,
@@ -68,9 +70,21 @@ export default async function BlogDetails({
         SingleColumnContent(page, "c")
       )}
       
-      {page.contentListing &&(
-        TwoColumnContent(page)
-      )}
+      {page.contentList?.map((card:DefaultCard) => {
+        switch (card.__typename) {
+          case "Card":
+           return(
+            ImageCardContent(card)
+           )
+            break;
+          case "RichTextCard":
+             return(
+              RichTextCardContent(card)
+             )
+            break;
+        }
+      })}
+      
       {page.contentBottom && (
         SingleColumnContent(page, "cb")
       )}

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import SingleColumnContent from "../../../components/singleColumnContent/SingleColumnContent";
-import TwoColumnContent from "../../../components/twoColumnContent/twoColumnContent";
+import ImageCardContent from "../../../components/imageCard/imageCardContent";
 import { getPageByUrl } from "../../../../../lib/page";
+import { DefaultCard } from "../../../../../types";
+import RichTextCardContent from "@/app/components/richTextCard/richTextCardContent";
 
 
 export async function generateMetadata({
@@ -66,9 +68,19 @@ export default async function PathOne({
         SingleColumnContent(page, "c")
       )}
       
-      {page.contentListing &&(
-        TwoColumnContent(page)
-      )}
+      {page.contentList?.map((card:DefaultCard) => {
+        switch (card.__typename) {
+          case "Card":
+           return(
+            ImageCardContent(card)
+           )
+          case "RichTextCard":
+             return(
+              RichTextCardContent(card)
+             )
+        }
+      })}
+
       {page.contentBottom && (
         SingleColumnContent(page, "cb")
       )}

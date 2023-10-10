@@ -14,13 +14,11 @@ export async function  getBlogsListing(limit: string)
 
 export async function  getBlogsByCategory(categoryValue: string)
 {
-    console.log("categoryValue: " + categoryValue)
     const fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryurl=" + categoryValue 
     const categoryAPIContent = await fetch(fetchCategoryAPI, {cache: "no-store"});
     const categoryJsonData = await categoryAPIContent.json();
     const entryId = categoryJsonData.category.entryId;
     
-    console.log("entryId-2: " + entryId)
     const fetchBlogsAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogsbycategory?entryId=" + entryId;
      //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
@@ -50,7 +48,7 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
             titleColor: pageData.hero.titleColor
         },
         content: pageData.content,
-        contentListing: pageData.contentListing,
+        contentList: pageData.contentList,
         contentBottom: pageData.contentBottom,
         subTitle: pageData.subTitle,
         author: pageData.author, 
@@ -97,7 +95,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
                 titleColor: pageData.hero.titleColor
             },
             content: pageData.content,
-            contentListing: pageData.contentListing,
+            contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             author: pageData.author, 

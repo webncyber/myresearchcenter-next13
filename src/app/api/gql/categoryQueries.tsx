@@ -80,22 +80,47 @@ export function gqlGetCategoryByURL(url:string | null){
             subTitle,
             blurb,
             content,
-            contentListing
-          {
-            title
-            subTitle
-            content
-            subContent
-            cardUrl
-            image
-            cardSettings
+            
+            contentList
             {
-              leftColumnWidth
-              showBoarder
-              boarderSettings
-              cardDivider
+              __typename
+             ... on Card
+              {
+                    title
+                    subTitle
+                    content
+                    subContent
+                    cardUrl
+                    image
+                    cardSettings{
+                      leftColumnWidth
+                      showBoarder
+                      boarderSettings
+                      borderRadius
+                      backgroundColor
+                      cardDivider
+                    }
+              }
+              ... on RichTextCard
+              {
+                title
+                richTextContent
+                cardSettings{
+                  showBoarder
+                  boarderSettings
+                  boarderSettings
+                  borderRadius
+                  backgroundColor
+                  cardDivider
+                }
+                
+              }
+              ... on ColumnsContent{
+                entryId
+              }
+              
+            
             }
-          }
             contentBottom,
             hero{
               title,

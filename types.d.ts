@@ -15,36 +15,10 @@ type Page = {
             }
         }
     ],
-    contentListing?: Array [
+    contentList?: Array [
         {
-            title?: string,
-              subTitle?: string,
-              content?: Array [
-                {
-                    type: string,
-                    textAlign?: string,
-                    data?:{
-                        text?: ReactElement<any, string | JSXElementConstructor<any>>
-                    }
-                }
-            ],
-              subContent?:  Array [
-                {
-                    type: string,
-                    textAlign?: string,
-                    data?:{
-                        text?: ReactElement<any, string | JSXElementConstructor<any>>
-                    }
-                }
-            ],
-              cardUrl?: string,
-              image?: string,
-              cardSettings?:{
-                leftColumnWidth?: number,
-                showBoarder?: boolean,
-                boarderSettings?: string,
-                cardDivider?: boolean
-              }
+           card?: Card,
+           richTextCard?: RichTextCard
         }
     ],
     contentBottom?: Array [
@@ -87,7 +61,22 @@ type Category = Page & {
     thumbnailImage?: string
 }
 
-type Card = {
+type DefaultCard = {
+    __typename:? string
+}
+type RichTextCard = DefaultCard &{
+    title?: string,
+    richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>
+    cardSettings?:{
+        showBoarder?: boolean,
+        boarderSettings?: string,
+        borderRadius?:number,
+        backgroundColor?:string,
+        cardDivider?: boolean
+      }
+}
+
+type Card = DefaultCard & {
     title?: string,
       subTitle?: string,
       content?: Array [
@@ -114,6 +103,8 @@ type Card = {
         leftColumnWidth: number,
         showBoarder?: boolean,
         boarderSettings?: string,
+        borderRadius?:number,
+        backgroundColor?:string,
         cardDivider?: boolean
       }
 }

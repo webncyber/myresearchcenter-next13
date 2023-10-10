@@ -1,19 +1,44 @@
 
 
+export function gqlRichTextCard(entryId:string | null)
+{
+  const gql =  `
+  {
+    getRichTextCard(where:{entryId:"${entryId}"}){
+      data{
+        title
+        content
+      }
+    }
+  }
+      `
+  
+  return gql;
+}
 
 export function gqlGetPageByURL(url:string | null){
   const gql =  `
   query {
-    listPages (where: { url: "${url}" }) {
+    listPages (where: { url: "${url}"}) {
         data{
             url,
             title,
             subTitle,
             blurb,
+          hero{
+              title,
+              subTitle 
+              heroImage
+              titleColor{
+                code
+              }
+            }
             content,
-            contentListing
+            contentList
           {
-            title
+          __typename
+     ... on Card{
+                 title
             subTitle
             content
             subContent
@@ -23,18 +48,27 @@ export function gqlGetPageByURL(url:string | null){
               leftColumnWidth
               showBoarder
               boarderSettings
+              borderRadius
+              backgroundColor
               cardDivider
             }
+    }
+      ... on RichTextCard{
+        richTextContent
+        cardSettings{
+          showBoarder
+          boarderSettings
+          borderRadius
+          backgroundColor
+          cardDivider
+        }
+      }
+      ... on ColumnsContent{
+        entryId
+      }
+            
           }
             contentBottom,
-            hero{
-              title,
-              subTitle 
-              heroImage
-              titleColor{
-                code
-              }
-            }
             metaData
             {
               browserTitle,

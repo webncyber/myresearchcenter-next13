@@ -5,8 +5,10 @@ import  {getPageByUrl} from '../../../lib/page'
 import BlogListing from '../components/blogListing/BlogListing';
 import Categories from "../components/categories/CategoryListing";
 
-import TwoColumnContent from "../components/twoColumnContent/twoColumnContent";
+import ImageCardContent from "../components/imageCard/imageCardContent";
 import SocialLinks from '../components/socialLinks/socialLinks';
+import { DefaultCard } from '../../../types';
+import RichTextCardContent from '../components/richTextCard/richTextCardContent';
 
 export async function generateMetadata(): Promise<Metadata> 
 {
@@ -54,14 +56,27 @@ export default async function Blogs() {
         SingleColumnContent(page, "c")
       )}
       
-      {page.contentListing &&(
-        TwoColumnContent(page)
-      )}
+      <div>{Categories("0")}</div>
+
+      {page.contentList?.map((card:DefaultCard) => {
+        switch (card.__typename) {
+          case "Card":
+           return(
+            ImageCardContent(card)
+           )
+            break;
+          case "RichTextCard":
+             return(
+              RichTextCardContent(card)
+             )
+            break;
+        }
+      })}
+
+      
       {page.contentBottom && (
         SingleColumnContent(page, "cb")
       )}
-      <div>{Categories("0")}</div>
-
     
     </>
    

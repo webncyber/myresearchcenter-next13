@@ -1,9 +1,11 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import SingleColumnContent from "./components/singleColumnContent/SingleColumnContent";
-import TwoColumnContent from "./components/twoColumnContent/twoColumnContent";
+import ImageCardContent from "./components/imageCard/imageCardContent";
 import { getPageByUrl } from "../../lib/page";
 import BlogListing from './components/blogListing/BlogListing';
+import { DefaultCard } from "../../types";
+import RichTextCardContent from "./components/richTextCard/richTextCardContent";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getPageByUrl("/home");
@@ -57,9 +59,21 @@ export default async function Home() {
         SingleColumnContent(page, "c")
       )}
       
-      {page.contentListing &&(
-        TwoColumnContent(page)
-      )}
+      {page.contentList?.map((card:DefaultCard) => {
+        switch (card.__typename) {
+          case "Card":
+           return(
+            ImageCardContent(card)
+           )
+            break;
+          case "RichTextCard":
+             return(
+              RichTextCardContent(card)
+             )
+            break;
+        }
+      })}
+      
       <div>
         <div>{BlogListing("4")}</div>
       </div>

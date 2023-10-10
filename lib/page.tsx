@@ -1,8 +1,9 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 import { json } from 'stream/consumers';
-import { Hero, Page } from '../types';
+import { RichTextCard, Page } from '../types';
 import *  as Constants from './constants'
+
 
 export async function getPageByUrl(url: string)  : Promise<Page>
 {
@@ -30,14 +31,14 @@ export async function getPageByUrl(url: string)  : Promise<Page>
         const page: Page = {
             url: pageData.url,
             title: pageData.title,
-            hero: {
-                title: pageData.hero.title,
-                subTitle: pageData.hero.subTitle,
-                heroImage: pageData.hero.heroImage,
-                titleColor: pageData.hero.titleColor
-            },
+           hero: {
+                title: pageData.hero?.title,
+                subTitle: pageData.hero?.subTitle,
+                heroImage: pageData.hero?.heroImage,
+                titleColor: pageData.hero?.titleColor
+            }, 
             content: pageData.content,
-            contentListing: pageData.contentListing,
+            contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             metaData: {

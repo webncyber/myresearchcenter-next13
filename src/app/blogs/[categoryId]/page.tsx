@@ -3,10 +3,9 @@ import type { Metadata } from 'next';
 import SingleColumnContent from '../../components/singleColumnContent/SingleColumnContent'
 import  {getCategoryPageByUrl} from '../../../../lib/categories'
 import {BlogListingByCategory} from '../../components/blogListing/BlogsByCategory';
-
-import TwoColumnContent from "../../components/twoColumnContent/twoColumnContent";
-import { log } from 'console';
-import SocialLinks from '@/app/components/socialLinks/socialLinks';
+import ImageCardContent from "../../components/imageCard/imageCardContent";
+import { DefaultCard } from '../../../../types';
+import RichTextCardContent from '@/app/components/richTextCard/richTextCardContent';
 const blogsPahtName = "/blogs/";
 
 export async function generateMetadata({
@@ -62,13 +61,26 @@ export default async function Blogs({
         SingleColumnContent(page, "c")
       )}
       
-      {page.contentListing &&(
-        TwoColumnContent(page)
-      )}
+      <div>{BlogListingByCategory((blogsPahtName + params.categoryId))}</div>
+
+      {page.contentList?.map((card:DefaultCard) => {
+        switch (card.__typename) {
+          case "Card":
+           return(
+            ImageCardContent(card)
+           )
+            break;
+          case "RichTextCard":
+             return(
+              RichTextCardContent(card)
+             )
+            break;
+        }
+      })}
+      
       {page.contentBottom && (
         SingleColumnContent(page, "cb")
       )}
-      <div>{BlogListingByCategory((blogsPahtName + params.categoryId))}</div>
     
     </>
    
