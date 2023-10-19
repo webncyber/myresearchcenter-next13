@@ -6,6 +6,7 @@ import  {getBlogByUrl} from '../../../../../lib/blogs'
 import SocialLinks from '@/app/components/socialLinks/socialLinks';
 import { DefaultCard } from '../../../../../types';
 import RichTextCardContent from '@/app/components/richTextCard/richTextCardContent';
+import Hero from '@/app/components/hero/HERO';
 
 export  async function generateMetadata({
   params,
@@ -59,6 +60,7 @@ export default async function BlogDetails({
 
   return (
     <>
+   
     <div className="single-column-content">
       <h2>{page?.title}</h2>
       {page.author && (

@@ -5,6 +5,7 @@ import ImageCardContent from "../../../components/imageCard/imageCardContent";
 import { getPageByUrl } from "../../../../../lib/page";
 import { DefaultCard } from "../../../../../types";
 import RichTextCardContent from "@/app/components/richTextCard/richTextCardContent";
+import Hero from "@/app/components/hero/HERO";
 
 
 export async function generateMetadata({
@@ -61,6 +62,7 @@ export default async function PathOne({
 
   return (
    <>
+   
     <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>

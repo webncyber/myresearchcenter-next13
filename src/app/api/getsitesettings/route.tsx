@@ -25,7 +25,6 @@ export async function GET(request: Request)
           return NextResponse.json({header});
     case "fn":
         const fnResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-            cache: "no-store",  
             method: "POST",
               headers: {
                 "Content-Type": "application/json",

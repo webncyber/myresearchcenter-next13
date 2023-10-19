@@ -22,18 +22,13 @@ export default function RootLayout({
       <div className='container'>
         <div className='heading-section'>
           <TopNav />
-          <div className='hero-section'>
-       <Hero />
-      </div>
         </div>
         <div className="content-centered">
-        <div className='content-section'>
+     
         {children}
-        <div className='footer-section'>
-                <FooterNav/>
-          </div> 
+
+       
         </div>
-    </div>  
       </div>
       </body>
     </html>

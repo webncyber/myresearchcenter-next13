@@ -6,6 +6,7 @@ import {BlogListingByCategory} from '../../components/blogListing/BlogsByCategor
 import ImageCardContent from "../../components/imageCard/imageCardContent";
 import { DefaultCard } from '../../../../types';
 import RichTextCardContent from '@/app/components/richTextCard/richTextCardContent';
+import Hero from '@/app/components/hero/HERO';
 const blogsPahtName = "/blogs/";
 
 export async function generateMetadata({
@@ -54,6 +55,7 @@ export default async function Blogs({
   return (
 
     <>
+  
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>

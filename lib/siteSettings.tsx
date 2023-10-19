@@ -27,7 +27,7 @@ export async function getFooterNavigation()  : Promise<SiteSettings>
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const navData = jsonData.footer.navigations;
 
