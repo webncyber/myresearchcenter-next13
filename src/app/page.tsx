@@ -91,7 +91,7 @@ export default async function Home() {
         SingleColumnContent(page, "cb")
       )}
 
-<div className='footer-section'>
+        <div className='footer-section'>
               <FooterNav/>
           </div>
         </div>

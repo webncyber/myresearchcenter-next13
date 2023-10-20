@@ -7,6 +7,7 @@ import ImageCardContent from "../../components/imageCard/imageCardContent";
 import { DefaultCard } from '../../../../types';
 import RichTextCardContent from '@/app/components/richTextCard/richTextCardContent';
 import Hero from '@/app/components/hero/HERO';
+import FooterNav from '@/app/components/navbars/footernav';
 const blogsPahtName = "/blogs/";
 
 export async function generateMetadata({
@@ -55,7 +56,15 @@ export default async function Blogs({
   return (
 
     <>
-  
+   <div className='hero-section'>
+       <Hero 
+            title={page.hero?.title} 
+            subTitle={page.hero?.subTitle}  
+            heroImage={page.hero?.heroImage}
+            titleColor={page.hero?.titleColor}
+            />
+      </div>
+      <div className='content-section'>
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
@@ -83,7 +92,10 @@ export default async function Blogs({
       {page.contentBottom && (
         SingleColumnContent(page, "cb")
       )}
-    
+     <div className='footer-section'>
+              <FooterNav/>
+          </div>
+          </div>
     </>
    
   )

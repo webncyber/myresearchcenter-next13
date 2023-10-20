@@ -9,7 +9,6 @@ export async function GET(request: Request)
   {
     case "tn":
         const tnResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-            cache: "no-store",  
             method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -40,7 +39,6 @@ export async function GET(request: Request)
           return NextResponse.json({footer});
     case "sm":
         const smResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-            cache: "no-store",  
             method: "POST",
               headers: {
                 "Content-Type": "application/json",
