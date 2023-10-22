@@ -63,8 +63,15 @@ img{
 }
 
 .footer-section{
-  padding-top: 30px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-top: 40px;
     position: relative;
+
+    div:first-child{
+      width: 92%;
+    }
   }
 
 .img-box{
