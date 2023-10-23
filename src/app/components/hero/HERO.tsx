@@ -2,9 +2,16 @@ import { Hero as HeroType} from "../../../../types";
 import "./style.scss";
 
 const Hero = ({title, subTitle, heroImage, titleColor} : HeroType) => {
+  if(title == undefined && heroImage == undefined)
+  {
+    title = "Page Not Found"
+    heroImage = "/Images/404.jpg"
+  }
+
   var divImage = {
     backgroundImage: "url(" + heroImage + ")",
   };
+  
   
   return (
   <>
