@@ -65,8 +65,8 @@ img{
 .footer-section{
   display: -webkit-flex;
   display: flex;
-  justify-content: end;
-  -webkit-justify-content: end;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
   align-items: center;
   padding-top: 40px;
     position: relative;
