@@ -88,6 +88,8 @@ export function gqlGetBlogByURL(url:string | null){
             title,
             subTitle,
             blurb,
+            contentTopSpacing,
+            hideFooterNavigation,
             content,
            
             contentList

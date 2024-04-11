@@ -8,7 +8,7 @@ import { DefaultCard } from '../../../types';
 import RichTextCardContent from '../components/richTextCard/richTextCardContent';
 import Hero from '../components/hero/HERO';
 import FooterNav from '../components/navbars/footernav';
-
+import SocialLinks from '../components/socialLinks/socialLinks';
 export async function generateMetadata(): Promise<Metadata> 
 {
   const pageData = await getPageByUrl("/blogs");
@@ -42,7 +42,11 @@ export async function generateMetadata(): Promise<Metadata>
 export default async function Blogs() {
   const pageData = getPageByUrl("/blogs");
   let page = await pageData;
- 
+  var contentTopSpacing = {
+    top: page?.contentTopSpacing && page.contentTopSpacing != "0" ? page.contentTopSpacing  + "px" : ""
+  };
+
+
   return (
 
     <>
@@ -55,7 +59,7 @@ export default async function Blogs() {
             />
       </div>
 
-      <div className='content-section'>
+      <div style={contentTopSpacing} className='content-section'>
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
@@ -87,7 +91,12 @@ export default async function Blogs() {
       )}
     
      <div className='footer-section'>
-              <FooterNav/>
+        <div>
+            <SocialLinks/>
+            {!page.hideFooterNavigation && (
+                <FooterNav />
+            )}
+          </div>
           </div>
           </div>
     </>

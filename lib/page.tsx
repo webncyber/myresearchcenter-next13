@@ -37,6 +37,7 @@ export async function getPageByUrl(url: string)  : Promise<Page>
                 heroImage: pageData.hero?.heroImage,
                 titleColor: pageData.hero?.titleColor
             }, 
+            contentTopSpacing: pageData?.contentTopSpacing,
             content: pageData.content,
             contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,
@@ -46,6 +47,7 @@ export async function getPageByUrl(url: string)  : Promise<Page>
                 keywords: pageData.metaData.keywords,
                 description: pageData.metaData.description
             },
+            hideFooterNavigation: pageData?.hideFooterNavigation
         }
         return page; 
     }

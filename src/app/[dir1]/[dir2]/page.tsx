@@ -7,7 +7,7 @@ import { getPageByUrl } from "../../../../lib/page";
 import { DefaultCard } from "../../../../types";
 import Hero from "../../components/hero/HERO";
 import FooterNav from "../../components/navbars/footernav";
-
+import SocialLinks from '../../components/socialLinks/socialLinks';
 
 export async function generateMetadata({
   params,
@@ -61,6 +61,10 @@ export default async function PathOne({
   const pageData = getPageByUrl(fullPath);
   let page = await pageData;
 
+  var contentTopSpacing = {
+    top: page?.contentTopSpacing && page.contentTopSpacing != "0" ? page.contentTopSpacing  + "px" : ""
+  };
+
   return (
    <>
      <div className='hero-section'>
@@ -71,7 +75,7 @@ export default async function PathOne({
             titleColor={page.hero?.titleColor}
             />
       </div>
-      <div className='content-section'>
+      <div style={contentTopSpacing} className='content-section'>
     <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
@@ -96,7 +100,12 @@ export default async function PathOne({
         SingleColumnContent(page, "cb")
       )}
          <div className='footer-section'>
-              <FooterNav/>
+         <div>
+            <SocialLinks/>
+            {!page.hideFooterNavigation && (
+                <FooterNav />
+            )}
+          </div>
           </div>
         </div>
    </>

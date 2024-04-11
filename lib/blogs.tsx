@@ -47,6 +47,7 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
             heroImage: pageData.hero.heroImage,
             titleColor: pageData.hero.titleColor
         },
+        contentTopSpacing: pageData?.contentTopSpacing,
         content: pageData.content,
         contentList: pageData.contentList,
         contentBottom: pageData.contentBottom,
@@ -94,6 +95,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
             },
+            contentTopSpacing: pageData?.contentTopSpacing,
             content: pageData.content,
             contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,
@@ -105,6 +107,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
                 keywords: pageData.metaData.keywords,
                 description: pageData.metaData.description
             },
+            hideFooterNavigation: pageData?.hideFooterNavigation
         }
     
         return blogDetail; 
