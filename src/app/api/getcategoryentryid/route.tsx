@@ -9,7 +9,6 @@ export async function GET (request:Request)
   let categoryValue = searchParams.get("categoryurl") != null ? searchParams.get("categoryurl") : "";
   console.log("categoryValue-2: " + categoryValue)
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-    cache: "no-store",  
     method: "POST",
       headers: {
         "Content-Type": "application/json",
