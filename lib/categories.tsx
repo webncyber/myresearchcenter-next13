@@ -43,6 +43,7 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
             },
+            contentTopSpacing: pageData?.contentTopSpacing,
             content: pageData.content,
             contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,
@@ -52,6 +53,7 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
                 keywords: pageData.metaData.keywords,
                 description: pageData.metaData.description
             },
+            hideFooterNavigation: pageData?.hideFooterNavigation,
             thumbnailImage: pageData.thumbnailImage
         }
         return page; 

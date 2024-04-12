@@ -6,6 +6,7 @@ type Page = {
     blurb?: string,
     url: string,
     hero?: Hero,
+    contentTopSpacing?: string, 
     content?: Array [
         {
             type: string,
@@ -31,6 +32,7 @@ type Page = {
         }
     ],
     metaData?: metaData,
+    hideFooterNavigation?: string
 }
 
 type Blog = Page & {

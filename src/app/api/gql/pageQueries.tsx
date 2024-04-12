@@ -33,6 +33,8 @@ export function gqlGetPageByURL(url:string | null){
                 code
               }
             }
+            contentTopSpacing
+            hideFooterNavigation
             content,
             contentList
           {

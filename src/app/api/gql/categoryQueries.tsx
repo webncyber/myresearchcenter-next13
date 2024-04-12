@@ -80,7 +80,8 @@ export function gqlGetCategoryByURL(url:string | null){
             subTitle,
             blurb,
             content,
-            
+            contentTopSpacing,
+            hideFooterNavigation,
             contentList
             {
               __typename
