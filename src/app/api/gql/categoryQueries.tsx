@@ -80,7 +80,15 @@ export function gqlGetCategoryByURL(url:string | null){
             subTitle,
             blurb,
             content,
+            contentBackgroundColor{
+              title
+              code
+            }
             contentTopSpacing,
+            contentTopBackgroundColor{
+              title
+              code
+            }
             hideFooterNavigation,
             contentList
             {
@@ -98,7 +106,10 @@ export function gqlGetCategoryByURL(url:string | null){
                       showBoarder
                       boarderSettings
                       borderRadius
-                      backgroundColor
+                      backgroundColorV2{
+                        title
+                        code
+                      }
                       cardDivider
                     }
               }
@@ -111,7 +122,10 @@ export function gqlGetCategoryByURL(url:string | null){
                   boarderSettings
                   boarderSettings
                   borderRadius
-                  backgroundColor
+                  backgroundColorV2{
+                    title
+                    code
+                  }
                   cardDivider
                 }
                 
@@ -123,6 +137,10 @@ export function gqlGetCategoryByURL(url:string | null){
             
             }
             contentBottom,
+            contentBottomBackgroundColor{
+              title
+              code
+            }
             hero{
               title,
               subTitle 

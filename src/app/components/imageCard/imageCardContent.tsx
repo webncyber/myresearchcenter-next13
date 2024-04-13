@@ -9,7 +9,7 @@ export function ImageCardContent(card: Card)
     let leftColWidth = leftColWidthData != undefined ? leftColWidthData : 20;
     let showBoarder = card?.cardSettings?.showBoarder;
     let boarder = {border: card?.cardSettings?.boarderSettings, borderRadius: card?.cardSettings?.borderRadius +"px" };
-    let showBGColor = card?.cardSettings?.backgroundColor;
+    let showBGColor = card?.cardSettings?.backgroundColorV2?.code;
     let bgColor = {backgroundColor:  showBGColor}
     let cardStyle = {};
 

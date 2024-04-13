@@ -50,13 +50,26 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const pageData = getPageByUrl("/home");
   let page = await pageData;
-
   var contentTopSpacing = {
     top:
       page?.contentTopSpacing && page.contentTopSpacing != "0"
         ? page.contentTopSpacing + "px"
         : "",
   };
+  var contentBGColor = { backgroundColor: page?.contentBackgroundColor?.code };
+  var styleData = {};
+
+  if (contentTopSpacing && contentBGColor) {
+    styleData = { ...contentTopSpacing, ...contentBGColor };
+  } else {
+    if (contentBGColor) {
+      styleData = { contentBGColor };
+    }
+
+    if (contentTopSpacing) {
+      styleData = { contentTopSpacing };
+    }
+  }
 
   return (
     <>
@@ -69,11 +82,12 @@ export default async function Home() {
         />
       </div>
 
-      <div style={contentTopSpacing} className="content-section">
+      <div style={styleData} className="content-section">
         <div className="single-column-content">
           <h2>{page?.title}</h2>
         </div>
-        {page.content && SingleColumnContent(page, "c")}
+        {page.content &&
+          SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
         {page.contentList?.map((card: DefaultCard) => {
           switch (card.__typename) {
@@ -88,7 +102,12 @@ export default async function Home() {
         <div>
           <div>{BlogListing("4")}</div>
         </div>
-        {page.contentBottom && SingleColumnContent(page, "cb")}
+        {page.contentBottom &&
+          SingleColumnContent(
+            page,
+            "cb",
+            page?.contentBottomBackgroundColor?.code
+          )}
 
         <div className="footer-section">
           <div>

@@ -61,6 +61,21 @@ export default async function BlogDetails({
     top: page?.contentTopSpacing && page.contentTopSpacing != "0" ? page.contentTopSpacing  + "px" : ""
   };
 
+  var contentBGColor = { backgroundColor: page?.contentBackgroundColor?.code };
+  var styleData = {};
+
+  if (contentTopSpacing && contentBGColor) {
+    styleData = { ...contentTopSpacing, ...contentBGColor };
+  } else {
+    if (contentBGColor) {
+      styleData = { contentBGColor };
+    }
+
+    if (contentTopSpacing) {
+      styleData = { contentTopSpacing };
+    }
+  }
+
   return (
     <>
     <div className='hero-section'>
@@ -71,7 +86,7 @@ export default async function BlogDetails({
             titleColor={page.hero?.titleColor}
             />
       </div>
-      <div style={contentTopSpacing} className='content-section'>
+      <div style={styleData} className='content-section'>
     <div className="single-column-content">
       <h2>{page?.title}</h2>
       {page.author && (
@@ -80,7 +95,7 @@ export default async function BlogDetails({
       
     </div>
     {page.content &&(
-        SingleColumnContent(page, "c")
+        SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)
       )}
       
       {page.contentList?.map((card:DefaultCard) => {
@@ -99,7 +114,7 @@ export default async function BlogDetails({
       })}
       
       {page.contentBottom && (
-        SingleColumnContent(page, "cb")
+        SingleColumnContent(page, "cb", page?.contentBottomBackgroundColor?.code)
       )}
 
 
