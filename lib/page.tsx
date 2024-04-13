@@ -37,6 +37,9 @@ export async function getPageByUrl(url: string)  : Promise<Page>
                 heroImage: pageData.hero?.heroImage,
                 titleColor: pageData.hero?.titleColor
             }, 
+            contentBackgroundColor: pageData?.contentBackgroundColor,
+            contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
+            contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
             contentTopSpacing: pageData?.contentTopSpacing,
             content: pageData.content,
             contentList: pageData.contentList,

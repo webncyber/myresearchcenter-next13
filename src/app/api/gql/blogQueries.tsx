@@ -90,8 +90,15 @@ export function gqlGetBlogByURL(url:string | null){
             blurb,
             contentTopSpacing,
             hideFooterNavigation,
+            contentBackgroundColor{
+              title
+              code
+            }
             content,
-           
+            contentTopBackgroundColor{
+              title
+              code
+            }
             contentList
             {
               __typename
@@ -107,7 +114,12 @@ export function gqlGetBlogByURL(url:string | null){
                       leftColumnWidth
                       showBoarder
                       boarderSettings
+                      borderRadius
                       cardDivider
+                      backgroundColorV2{
+                        title
+                        code
+                      }
                     }
               }
               ... on RichTextCard
@@ -118,7 +130,10 @@ export function gqlGetBlogByURL(url:string | null){
                   showBoarder
                   boarderSettings
                   borderRadius
-                  backgroundColor
+                  backgroundColorV2{
+                    title
+                    code
+                  }
                   cardDivider
                 }
                 
@@ -130,6 +145,10 @@ export function gqlGetBlogByURL(url:string | null){
             
             }
             contentBottom,
+            contentBottomBackgroundColor{
+              title
+              code
+            }
             hero{
               title,
               subTitle 

@@ -44,6 +44,9 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
                 titleColor: pageData.hero.titleColor
             },
             contentTopSpacing: pageData?.contentTopSpacing,
+            contentBackgroundColor: pageData?.contentBackgroundColor,
+            contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
+            contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
             content: pageData.content,
             contentList: pageData.contentList,
             contentBottom: pageData.contentBottom,

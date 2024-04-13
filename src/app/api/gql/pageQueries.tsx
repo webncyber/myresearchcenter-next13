@@ -33,7 +33,15 @@ export function gqlGetPageByURL(url:string | null){
                 code
               }
             }
+            contentBackgroundColor{
+              title
+              code
+            }
             contentTopSpacing
+            contentTopBackgroundColor{
+              title
+              code
+            }
             hideFooterNavigation
             content,
             contentList
@@ -51,7 +59,10 @@ export function gqlGetPageByURL(url:string | null){
               showBoarder
               boarderSettings
               borderRadius
-              backgroundColor
+              backgroundColorV2{
+                title
+                code
+              }
               cardDivider
             }
     }
@@ -61,7 +72,10 @@ export function gqlGetPageByURL(url:string | null){
           showBoarder
           boarderSettings
           borderRadius
-          backgroundColor
+          backgroundColorV2{
+            title
+            code
+          }
           cardDivider
         }
       }
@@ -71,6 +85,10 @@ export function gqlGetPageByURL(url:string | null){
             
           }
             contentBottom,
+            contentBottomBackgroundColor{
+              title
+              code
+            }
             metaData
             {
               browserTitle,

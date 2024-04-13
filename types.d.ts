@@ -7,6 +7,8 @@ type Page = {
     url: string,
     hero?: Hero,
     contentTopSpacing?: string, 
+    contentBackgroundColor?:ContentBackgroundColor,
+    contentTopBackgroundColor?: ContentTopBackgroundColor,
     content?: Array [
         {
             type: string,
@@ -22,6 +24,7 @@ type Page = {
            richTextCard?: RichTextCard
         }
     ],
+    contentBottomBackgroundColor?: ContentBottomBackgroundColor,
     contentBottom?: Array [
         {
             type: string,
@@ -73,7 +76,7 @@ type RichTextCard = DefaultCard &{
         showBoarder?: boolean,
         boarderSettings?: string,
         borderRadius?:number,
-        backgroundColor?:string,
+        backgroundColorV2?:ColorPalette,
         cardDivider?: boolean
       }
 }
@@ -106,7 +109,7 @@ type Card = DefaultCard & {
         showBoarder?: boolean,
         boarderSettings?: string,
         borderRadius?:number,
-        backgroundColor?:string,
+        backgroundColorV2?:ColorPalette,
         cardDivider?: boolean
       }
 }
@@ -128,4 +131,13 @@ type Navigation = {
 
 type SVGData = {
     icon?:string
+}
+
+type ContentTopBackgroundColor = ColorPalette;
+type ContentBottomBackgroundColor = ColorPalette;
+type ContentBackgroundColor = ColorPalette;
+
+type ColorPalette = {
+    title?: string,
+    code?: string
 }

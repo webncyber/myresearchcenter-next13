@@ -95,6 +95,9 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
             },
+            contentBackgroundColor: pageData?.contentBackgroundColor,
+            contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
+            contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
             contentTopSpacing: pageData?.contentTopSpacing,
             content: pageData.content,
             contentList: pageData.contentList,

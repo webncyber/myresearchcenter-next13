@@ -45,7 +45,20 @@ export default async function Blogs() {
   var contentTopSpacing = {
     top: page?.contentTopSpacing && page.contentTopSpacing != "0" ? page.contentTopSpacing  + "px" : ""
   };
+  var contentBGColor = { backgroundColor: page?.contentBackgroundColor?.code };
+  var styleData = {};
 
+  if (contentTopSpacing && contentBGColor) {
+    styleData = { ...contentTopSpacing, ...contentBGColor };
+  } else {
+    if (contentBGColor) {
+      styleData = { contentBGColor };
+    }
+
+    if (contentTopSpacing) {
+      styleData = { contentTopSpacing };
+    }
+  }
 
   return (
 
@@ -59,13 +72,13 @@ export default async function Blogs() {
             />
       </div>
 
-      <div style={contentTopSpacing} className='content-section'>
+      <div style={styleData} className='content-section'>
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
     
       {page.content &&(
-        SingleColumnContent(page, "c")
+        SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)
       )}
       
       <div>{Categories("0")}</div>
@@ -87,7 +100,7 @@ export default async function Blogs() {
 
       
       {page.contentBottom && (
-        SingleColumnContent(page, "cb")
+        SingleColumnContent(page, "cb", page?.contentBottomBackgroundColor?.code)
       )}
     
      <div className='footer-section'>
