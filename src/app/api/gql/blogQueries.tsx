@@ -114,6 +114,7 @@ export function gqlGetBlogByURL(url:string | null){
                       leftColumnWidth
                       showBoarder
                       boarderSettings
+                      borderRadius
                       cardDivider
                       backgroundColorV2{
                         title
