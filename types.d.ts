@@ -117,7 +117,8 @@ type Card = DefaultCard & {
 type SiteSettings = {
     topNavigation?: Navigation[],
     footerNavigation?:Navigation[],
-    socialLinks?:Navigation[]
+    socialLinks?:Navigation[],
+    siteBackgroundColor?:ColorPalette
 }
 
 type Navigation = {

@@ -85,5 +85,25 @@ export function gqlGetTopNav(){
       `
   return gql;
   
+  
   }
   
+
+  export function gqlSiteBackgroundColor(){
+    const gql =  `
+    {
+      listSiteSettings(where:{defaultSettings_not:false}){
+        data{
+         siteBackgroundColor{
+          title
+          code
+        }
+        }
+      }
+    }
+
+      `
+  return gql;
+  
+  
+  }
