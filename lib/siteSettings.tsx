@@ -51,3 +51,18 @@ export async function getSocialLinks()  : Promise<SiteSettings>
         }
         return socialNav; 
 }
+
+export async function getSiteBackgroundColor() : Promise<SiteSettings>
+ {
+    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sbc";
+    //const apiContent = await fetch(fetchAPIUrl);
+    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    const jsonData = await apiContent.json();
+    const data = jsonData.settings;
+
+        const settings: SiteSettings = {
+           siteBackgroundColor: data?.siteBackgroundColor
+        }
+        return settings; 
+}

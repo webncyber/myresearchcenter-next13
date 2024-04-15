@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import {gqlGetTopNav, gqlGetFooterNav, gqlGetSocialLinks} from '../gql/settingQueries'
+import {gqlGetTopNav, gqlGetFooterNav, gqlGetSocialLinks, gqlSiteBackgroundColor} from '../gql/settingQueries'
 
 export async function GET(request: Request) 
 {
@@ -52,6 +52,22 @@ export async function GET(request: Request)
           const smData = await smResponse.json();
           const social =  smData.data.listSiteSettings.data[0];
           return NextResponse.json({social});
+        case "sbc":
+          const sbcResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+            method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+              },
+              body: JSON.stringify({
+                query: gqlSiteBackgroundColor(),
+              })
+          })
+      
+          const sbcData = await sbcResponse.json();
+          const settings =  sbcData.data.listSiteSettings.data[0];
+          return NextResponse.json({settings});
+        
   }
 
 }
