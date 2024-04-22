@@ -41,9 +41,9 @@ export async function getPageByUrl(url: string)  : Promise<Page>
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
             contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
             contentTopSpacing: pageData?.contentTopSpacing,
-            content: pageData.content,
+            contentTop: pageData.contentTop != "<p><br></p>" ? pageData.contentTop : undefined,
+            contentBottom: pageData.contentBottom != "<p><br></p>" ? pageData.contentBottom : undefined,
             contentList: pageData.contentList,
-            contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             metaData: {
                 browserTitle: pageData.metaData.browserTitle,

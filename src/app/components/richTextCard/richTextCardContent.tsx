@@ -6,7 +6,7 @@ export function RichTextCardContent(card: RichTextCard)
 {
     let showBoarder = card?.cardSettings?.showBoarder;
     let boarder = {border: card?.cardSettings?.boarderSettings, borderRadius: card?.cardSettings?.borderRadius +"px" };
-    let showBGColor = card?.cardSettings?.backgroundColorV2?.code;
+    let showBGColor = card?.cardSettings?.backgroundColor?.code;
     let bgColor = {backgroundColor:  showBGColor}
     let cardStyle = {};
 

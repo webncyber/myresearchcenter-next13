@@ -10,8 +10,20 @@ export default function getHostName() {
     : window.location.origin;
   return new URL(baseURL).toString();
 }
+export function buildRichTextContent(c: any){
 
-export function buildRichTextContent(c: any)
+  if(c == "<p><br></p>")
+    {
+      return "";
+    }else{ 
+      return(
+        <div dangerouslySetInnerHTML={{__html: c}}></div>
+      )
+    }
+}
+
+
+export function buildRichTextContent_Old2(c: any)
 {
 
   switch(c.type)
@@ -71,7 +83,7 @@ export function buildRichTextContentOld(page: Page)
 {
 
     return(
-      page.content?.map((c: any) => {
+      page.contentTop?.map((c: any) => {
 
         switch(c.type)
         {

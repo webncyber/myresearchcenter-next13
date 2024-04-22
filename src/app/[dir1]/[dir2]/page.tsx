@@ -95,11 +95,11 @@ export default async function PathOne({
         <div className="single-column-content">
           <h2>{page?.title}</h2>
         </div>
-        {page.content && SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
+        {page.contentTop && SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
         {page.contentList?.map((card: DefaultCard) => {
           switch (card.__typename) {
-            case "Card":
+            case "ImageCard":
               return ImageCardContent(card);
             case "RichTextCard":
               return RichTextCardContent(card);

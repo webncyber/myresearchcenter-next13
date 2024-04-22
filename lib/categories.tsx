@@ -47,9 +47,9 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
             contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
-            content: pageData.content,
+            contentTop: pageData.contentTop != "<p><br></p>" ? pageData.contentTop : undefined,
+            contentBottom: pageData.contentBottom != "<p><br></p>" ? pageData.contentBottom : undefined,
             contentList: pageData.contentList,
-            contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             metaData: {
                 browserTitle: pageData.metaData.browserTitle,

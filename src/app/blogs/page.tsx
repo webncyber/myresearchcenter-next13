@@ -77,7 +77,7 @@ export default async function Blogs() {
       <h2>{page?.title}</h2>
     </div>
     
-      {page.content &&(
+      {page.contentTop &&(
         SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)
       )}
       
@@ -85,7 +85,7 @@ export default async function Blogs() {
 
       {page.contentList?.map((card:DefaultCard) => {
         switch (card.__typename) {
-          case "Card":
+          case "ImageCard":
            return(
             ImageCardContent(card)
            )

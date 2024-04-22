@@ -86,12 +86,12 @@ export default async function Home() {
         <div className="single-column-content">
           <h2>{page?.title}</h2>
         </div>
-        {page.content &&
+        {page.contentTop &&
           SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
         {page.contentList?.map((card: DefaultCard) => {
           switch (card.__typename) {
-            case "Card":
+            case "ImageCard":
               return ImageCardContent(card);
               break;
             case "RichTextCard":
