@@ -41,12 +41,12 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
     const blogDetail: Blog = {
         url: pageData.url,
         title: pageData.title,
-        hero: {
+        hero: pageData.hero ? {
             title: pageData.hero.title,
             subTitle: pageData.hero.subTitle,
             heroImage: pageData.hero.heroImage,
             titleColor: pageData.hero.titleColor
-        },
+        } : undefined,
         contentTopSpacing: pageData?.contentTopSpacing,
         contentTop: pageData.contentTop != "<p><br></p>" ? pageData.contentTop : undefined,
         contentBottom: pageData.contentBottom != "<p><br></p>" ? pageData.contentBottom : undefined,
@@ -89,12 +89,12 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
         const blogDetail: Blog = {
             url: pageData.url,
             title: pageData.title,
-            hero: {
+            hero: pageData.hero ? {
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
-            },
+            } : undefined,
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
             contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,

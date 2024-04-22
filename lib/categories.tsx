@@ -37,12 +37,12 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
         const page: Category = {
             url: pageData.url,
             title: pageData.title,
-            hero: {
+            hero: pageData.hero ? {
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
-            },
+            } : undefined,
             contentTopSpacing: pageData?.contentTopSpacing,
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,

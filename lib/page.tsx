@@ -31,12 +31,12 @@ export async function getPageByUrl(url: string)  : Promise<Page>
         const page: Page = {
             url: pageData.url,
             title: pageData.title,
-           hero: {
+           hero: pageData.hero ? {
                 title: pageData.hero?.title,
                 subTitle: pageData.hero?.subTitle,
                 heroImage: pageData.hero?.heroImage,
                 titleColor: pageData.hero?.titleColor
-            }, 
+            } : undefined, 
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
             contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
