@@ -1,5 +1,5 @@
 import { Hero, Page } from '../types';
-import *  as Constants from './constants'
+import { revalidateAPITag } from './constants';
 
 const blogsPathName = "/blogs";
 const homePathname = "/home"
@@ -36,7 +36,7 @@ export async function getHeroDataByUrl(url:string, categoryId:string | undefined
     const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/"+apiMethod+"?url=" + url;
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
+    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
     const jsonData = await apiContent.json();
     const heroData = blogDetailtype ? jsonData.data.data.listBlogs.data[0]: 
             categoryId ?  jsonData.data.data.listCategories.data[0]:
