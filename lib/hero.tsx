@@ -1,5 +1,4 @@
 import { Hero, Page } from '../types';
-import { revalidateAPITag } from './constants';
 
 const blogsPathName = "/blogs";
 const homePathname = "/home"

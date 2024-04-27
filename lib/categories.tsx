@@ -1,5 +1,4 @@
 import { Category } from "../types";
-import { revalidateAPITag } from "./constants";
 
 export async function  getCategories(limit: string | null)
 {

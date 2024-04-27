@@ -1,7 +1,4 @@
-import { Brawler } from "next/font/google";
-import { isNamedExports } from "typescript";
 import { Page } from "../types";
-import *  as Constants from './constants'
 
 const IS_SERVER = typeof window === "undefined";
 export default function getHostName() {

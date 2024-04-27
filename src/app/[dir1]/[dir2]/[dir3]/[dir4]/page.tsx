@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import SingleColumnContent from "../../../../components/singleColumnContent/SingleColumnContent";
 import ImageCardContent from "../../../../components/imageCard/imageCardContent";

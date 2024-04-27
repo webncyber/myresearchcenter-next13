@@ -1,5 +1,5 @@
 import { Blog } from "../types";
-import { revalidateAPITag } from "./constants";
+
 export async function  getBlogsListing(limit: string)
 {
     let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting?limit=" + limit;

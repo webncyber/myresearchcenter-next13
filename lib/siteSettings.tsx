@@ -1,5 +1,4 @@
 import { SiteSettings} from '../types';
-import { revalidateAPITag } from './constants';
 
 export async function getTopNavigation()  : Promise<SiteSettings>
 {
@@ -24,7 +23,7 @@ export async function getFooterNavigation()  : Promise<SiteSettings>
     let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const navData = jsonData.footer.navigations;
@@ -41,7 +40,7 @@ export async function getSocialLinks()  : Promise<SiteSettings>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const navData = jsonData.social.socialMedia;
 
@@ -57,7 +56,7 @@ export async function getSiteBackgroundColor() : Promise<SiteSettings>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const data = jsonData.settings;
 
