@@ -6,7 +6,7 @@ export async function  getBlogsListing(limit: string)
      //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     fetchAPIUrl += "&tm=" + Date.now();
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const blogsArray = jsonData.data.data.listBlogs.data;
 
@@ -17,7 +17,7 @@ export async function  getBlogsByCategory(categoryValue: string)
 {
     let fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryurl=" + categoryValue 
     fetchCategoryAPI += "&tm=" + Date.now();
-    const categoryAPIContent = await fetch(fetchCategoryAPI);
+    const categoryAPIContent = await fetch(fetchCategoryAPI, {cache: "no-store"});
     const categoryJsonData = await categoryAPIContent.json();
     const entryId = categoryJsonData.category.entryId;
     
@@ -25,7 +25,7 @@ export async function  getBlogsByCategory(categoryValue: string)
     fetchBlogsAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const blogsAPIContent = await fetch(fetchBlogsAPIUrl);
+    const blogsAPIContent = await fetch(fetchBlogsAPIUrl, {cache: "no-store"});
     const blogsJsonData = await blogsAPIContent.json();
     const blogsArray = blogsJsonData.data.data.listBlogs.data;
 
@@ -38,7 +38,7 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listBlogs.data[0];
 
@@ -75,7 +75,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     fetchAPIUrl += "&tm=" + Date.now();
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listBlogs.data[0];
     if(pageData == undefined)

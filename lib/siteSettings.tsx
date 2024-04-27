@@ -6,7 +6,7 @@ export async function getTopNavigation()  : Promise<SiteSettings>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const navData = jsonData.header.navigations;
 
@@ -23,7 +23,7 @@ export async function getFooterNavigation()  : Promise<SiteSettings>
     let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     //const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const navData = jsonData.footer.navigations;
@@ -40,7 +40,7 @@ export async function getSocialLinks()  : Promise<SiteSettings>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const navData = jsonData.social.socialMedia;
 
@@ -56,7 +56,7 @@ export async function getSiteBackgroundColor() : Promise<SiteSettings>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const data = jsonData.settings;
 

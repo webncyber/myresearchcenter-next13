@@ -6,7 +6,7 @@ export async function  getCategories(limit: string | null)
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const categories = jsonData.data.data.listCategories.data;
 
@@ -19,7 +19,7 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
     fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
+    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listCategories.data[0];
 
