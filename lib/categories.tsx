@@ -4,7 +4,7 @@ import { revalidateAPITag } from "./constants";
 export async function  getCategories(limit: string | null)
 {
     let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
-    fetchAPIUrl += + "&tm=" + Date.now();
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
     const apiContent = await fetch(fetchAPIUrl);
