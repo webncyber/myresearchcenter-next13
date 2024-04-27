@@ -33,10 +33,11 @@ export async function getHeroDataByUrl(url:string, categoryId:string | undefined
     
 
   
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/"+apiMethod+"?url=" + url;
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/"+apiMethod+"?url=" + url;
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const heroData = blogDetailtype ? jsonData.data.data.listBlogs.data[0]: 
             categoryId ?  jsonData.data.data.listCategories.data[0]:

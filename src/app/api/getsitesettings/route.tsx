@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {gqlGetTopNav, gqlGetFooterNav, gqlGetSocialLinks, gqlSiteBackgroundColor} from '../gql/settingQueries'
+import { revalidateAPITag } from "../../../../lib/constants";
 
 export async function GET(request: Request) 
 {
@@ -9,6 +10,7 @@ export async function GET(request: Request)
   {
     case "tn":
         const tnResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+          next: { tags: [revalidateAPITag] },
             method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -24,6 +26,7 @@ export async function GET(request: Request)
           return NextResponse.json({header});
     case "fn":
         const fnResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+          next: { tags: [revalidateAPITag] },
             method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -39,6 +42,7 @@ export async function GET(request: Request)
           return NextResponse.json({footer});
     case "sm":
         const smResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+          next: { tags: [revalidateAPITag] },
             method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -54,6 +58,7 @@ export async function GET(request: Request)
           return NextResponse.json({social});
         case "sbc":
           const sbcResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+            next: { tags: [revalidateAPITag] },
             method: "POST",
               headers: {
                 "Content-Type": "application/json",

@@ -3,10 +3,11 @@ import { revalidateAPITag } from "./constants";
 
 export async function  getCategories(limit: string | null)
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
-     //const apiContent = await fetch(fetchAPIUrl);
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
+    fetchAPIUrl += + "&tm=" + Date.now();
+    //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const categories = jsonData.data.data.listCategories.data;
 
@@ -15,10 +16,11 @@ export async function  getCategories(limit: string | null)
 
 export async function getCategoryPageByUrl(url: string)  : Promise<Category>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategorybyurl?url=" + url;
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategorybyurl?url=" + url;
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listCategories.data[0];
 

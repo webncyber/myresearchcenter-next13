@@ -3,10 +3,11 @@ import { revalidateAPITag } from './constants';
 
 export async function getTopNavigation()  : Promise<SiteSettings>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=tn";
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=tn";
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const navData = jsonData.header.navigations;
 
@@ -20,7 +21,8 @@ export async function getTopNavigation()  : Promise<SiteSettings>
 
 export async function getFooterNavigation()  : Promise<SiteSettings>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
     //const apiContent = await fetch(fetchAPIUrl);
@@ -35,7 +37,8 @@ export async function getFooterNavigation()  : Promise<SiteSettings>
 
 export async function getSocialLinks()  : Promise<SiteSettings>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sm";
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sm";
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
@@ -50,7 +53,8 @@ export async function getSocialLinks()  : Promise<SiteSettings>
 
 export async function getSiteBackgroundColor() : Promise<SiteSettings>
  {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sbc";
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sbc";
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
     const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });

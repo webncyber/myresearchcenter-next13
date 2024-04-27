@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import {gqlGetCategoryListing} from '../gql/categoryQueries'
+import { revalidateAPITag } from "../../../../lib/constants";
 
 export async function GET(request: Request) 
 {
   const { searchParams } = new URL(request.url)
   let limit = searchParams.get("limit") != null ? searchParams.get("limit") : "0";
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
       method: "POST",
         headers: {
           "Content-Type": "application/json",

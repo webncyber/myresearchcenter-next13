@@ -8,10 +8,11 @@ import { revalidateAPITag } from './constants';
 
 export async function getPageByUrl(url: string)  : Promise<Page>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getpagebyurl?url=" + url;
+    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getpagebyurl?url=" + url;
+    fetchAPIUrl += "&tm=" + Date.now();
     //const apiContent = await fetch(fetchAPIUrl);
     //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, { next: { tags: [revalidateAPITag] } });
+    const apiContent = await fetch(fetchAPIUrl);
     const jsonData = await apiContent.json();
     const pageData = jsonData.data.data.listPages.data[0];
 

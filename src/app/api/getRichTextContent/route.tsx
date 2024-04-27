@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {gqlRichTextCard} from '../gql/pageQueries'
+import { revalidateAPITag } from "../../../../lib/constants";
 
 export async function GET(request: Request) 
 {
@@ -7,6 +8,7 @@ export async function GET(request: Request)
     let entryId = searchParams.get("id") != null ? searchParams.get("id") : "/home";
    
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
       method: "POST",
         headers: {
           "Content-Type": "application/json",
