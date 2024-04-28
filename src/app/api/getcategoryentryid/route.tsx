@@ -8,9 +8,9 @@ export async function GET (request:Request)
 {
   const { searchParams } = new URL(request.url)
   let categoryValue = searchParams.get("categoryurl") != null ? searchParams.get("categoryurl") : "";
-  console.log("categoryValue-2: " + categoryValue)
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-    next: { tags: [revalidateAPITag] },
+    //next: { tags: [revalidateAPITag] },
+    cache: "no-store",
     method: "POST",
       headers: {
         "Content-Type": "application/json",
