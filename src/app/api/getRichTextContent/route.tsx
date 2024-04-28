@@ -8,8 +8,8 @@ export async function GET(request: Request)
     let entryId = searchParams.get("id") != null ? searchParams.get("id") : "/home";
    
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
-      //next: { tags: [revalidateAPITag] },
-      cache: "no-store",
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
       method: "POST",
         headers: {
           "Content-Type": "application/json",
