@@ -1,4 +1,4 @@
-import { gqlGetCategoryListing } from "./gql/categoryQueries";
+import { gqlGetCategoryByURL, gqlGetCategoryListing } from "./gql/categoryQueries";
 import { Category } from "../types";
 import { revalidateAPITag } from "./constants";
 
@@ -25,13 +25,23 @@ export async function  getCategories(limit: string | null)
 
 export async function getCategoryPageByUrl(url: string)  : Promise<Category>
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategorybyurl?url=" + url;
-    fetchAPIUrl += "&tm=" + Date.now();
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const pageData = jsonData.data.data.listCategories.data[0];
+   
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+        },
+        body: JSON.stringify({
+          query: gqlGetCategoryByURL(url),
+        })
+    })
+
+    const jsonData = await response.json();
+    
+    const pageData = jsonData.data.listCategories.data[0];
 
     if(pageData == undefined)
     {
