@@ -1,4 +1,6 @@
+import { gqlGetSitemap } from "./gql/sitemapQueries";
 import { Page } from "../types";
+import { revalidateAPITag } from "./constants";
 
 const IS_SERVER = typeof window === "undefined";
 export default function getHostName() {
@@ -137,17 +139,26 @@ export function buildRichTextContentOld(page: Page)
 
 export async function GenerateSitemap()
 {
-  const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitemap";
-  //const apiContent = await fetch(fetchAPIUrl);
-  //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-  const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-  const jsonData = await apiContent.json();
-  const pageData = jsonData.pages.data;
-  const blogsData = jsonData.blogs.data;
-  const categoriesData = jsonData.categories.data;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+    next: { tags: [revalidateAPITag] },
+    //cache: "no-store",  
+    method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+      },
+      body: JSON.stringify({
+        query: gqlGetSitemap(),
+      })
+  })
+
+  const data = await response.json();
+  const pages = await data.data.listPages;
+  const blogs = await data.data.listBlogs;
+  const categories = await data.data.listCategories;
 
   const sitemap = {
-    data: [...pageData, ...blogsData, ...categoriesData]
+    data: [...pages.data, ...blogs.data, ...categories.data]
   }
 
   return sitemap.data;

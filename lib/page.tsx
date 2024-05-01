@@ -1,16 +1,25 @@
+import { gqlGetPageByURL } from './gql/pageQueries';
 import { Page } from '../types';
+import { revalidateAPITag } from './constants';
 
 export async function getPageByUrl(url: string)  : Promise<Page>
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getpagebyurl?url=" + url;
-    fetchAPIUrl += "&tm=" + Date.now();
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const pageData = jsonData.data.data.listPages.data[0];
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+        },
+        body: JSON.stringify({
+          query: gqlGetPageByURL(url),
+        })
+    })
 
-    
+    const jsonData = await response.json();
+    const pageData = jsonData.data.listPages.data[0];
+
     if(pageData == undefined)
     {
         const blankPage: Page = {

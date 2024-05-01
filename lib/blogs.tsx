@@ -1,46 +1,90 @@
+import { gqlGetBlogByURL, gqlGetBlogByURLAndCategory, gqlGetBlogsByCategoryId, gqlGetBlogsListing } from "./gql/blogQueries";
 import { Blog } from "../types";
+import { revalidateAPITag } from "./constants";
+import { gqlCategoryByURL } from "./gql/categoryQueries";
 
 export async function  getBlogsListing(limit: string)
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogslisting?limit=" + limit;
-     //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    fetchAPIUrl += "&tm=" + Date.now();
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const blogsArray = jsonData.data.data.listBlogs.data;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        //cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlGetBlogsListing(limit),
+          })
+      })
+  
+    const jsonData = await response.json();
+    const blogsArray = jsonData.data.listBlogs.data;
 
-  return blogsArray;
+  return blogsArray;  
 }
 
 export async function  getBlogsByCategory(categoryValue: string)
 {
-    let fetchCategoryAPI = process.env.NEXT_PUBLIC_Host_Name + "/api/getcategoryentryid?categoryurl=" + categoryValue 
-    fetchCategoryAPI += "&tm=" + Date.now();
-    const categoryAPIContent = await fetch(fetchCategoryAPI, {cache: "no-store"});
-    const categoryJsonData = await categoryAPIContent.json();
-    const entryId = categoryJsonData.category.entryId;
-    
-    let fetchBlogsAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogsbycategory?entryId=" + entryId;
-    fetchBlogsAPIUrl += "&tm=" + Date.now();
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const blogsAPIContent = await fetch(fetchBlogsAPIUrl, {cache: "no-store"});
-    const blogsJsonData = await blogsAPIContent.json();
-    const blogsArray = blogsJsonData.data.data.listBlogs.data;
+    const categoryResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+        },
+        body: JSON.stringify({
+          query: gqlCategoryByURL(categoryValue),
+        })
+    })  
+  
+    const categoryJson = await categoryResponse.json();
+    const entryId = categoryJson.data.listCategories.data[0].entryId;
+
+    const blogsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        ///cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlGetBlogsByCategoryId(entryId),
+          })
+      })
+  
+      const blogsJsonData = await blogsResponse.json();
+      const blogsArray = blogsJsonData.data.listBlogs.data;
+  
 
   return blogsArray;
 }
 
+
+//This was not in use but currently not wokring - maybe delete it 
 export async function getBlogByCategoryAndUrl(category:string, url: string) : Promise<Blog>
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogbyurlandcategory?url=" + url + "&cat=" + category;
-    fetchAPIUrl += "&tm=" + Date.now();
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const pageData = jsonData.data.data.listBlogs.data[0];
+    let requestedBlogUrl = url;
+    let requestedBlogCatId = category;
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+        },
+        body: JSON.stringify({
+          query: gqlGetBlogByURLAndCategory(requestedBlogCatId, requestedBlogUrl),
+        })
+    })
+
+    const jsonData = await response.json();
+
+    const pageData = jsonData.data.listBlogs.data[0];
 
     const blogDetail: Blog = {
         url: pageData.url,
@@ -71,13 +115,21 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
 
 export async function getBlogByUrl(url: string) : Promise<Blog>
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getblogbyurl?url=" + url;
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    fetchAPIUrl += "&tm=" + Date.now();
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const pageData = jsonData.data.data.listBlogs.data[0];
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        //cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlGetBlogByURL(url),
+          })
+      })
+  
+    const jsonData = await response.json();
+    const pageData = jsonData.data.listBlogs.data[0];
     if(pageData == undefined)
     {
         const blankPage: Blog = {

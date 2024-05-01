@@ -1,14 +1,24 @@
+import { gqlGetCategoryListing } from "./gql/categoryQueries";
 import { Category } from "../types";
+import { revalidateAPITag } from "./constants";
 
 export async function  getCategories(limit: string | null)
 {
-    let fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
-    fetchAPIUrl += "&tm=" + Date.now();
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const categories = jsonData.data.data.listCategories.data;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        //cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlGetCategoryListing(limit),
+          })
+      })
+  
+    const jsonData = await response.json();
+    const categories = jsonData.data.listCategories.data;
 
   return categories;
 }
