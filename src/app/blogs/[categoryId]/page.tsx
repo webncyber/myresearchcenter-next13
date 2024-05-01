@@ -75,7 +75,8 @@ export default async function Blogs({
   return (
 
     <>
-   <div className='hero-section'>
+    {page.hero &&
+       <div className='hero-section'>
        <Hero 
             title={page.hero?.title} 
             subTitle={page.hero?.subTitle}  
@@ -83,11 +84,13 @@ export default async function Blogs({
             titleColor={page.hero?.titleColor}
             />
       </div>
+    }
+  
       <div style={styleData} className='content-section'>
      <div className="single-column-content">
       <h2>{page?.title}</h2>
     </div>
-      {page.content &&(
+      {page.contentTop &&(
         SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)
       )}
       
@@ -95,7 +98,7 @@ export default async function Blogs({
 
       {page.contentList?.map((card:DefaultCard) => {
         switch (card.__typename) {
-          case "Card":
+          case "ImageCard":
            return(
             ImageCardContent(card)
            )

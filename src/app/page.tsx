@@ -73,25 +73,27 @@ export default async function Home() {
 
   return (
     <>
-      <div className="hero-section">
-        <Hero
-          title={page.hero?.title}
-          subTitle={page.hero?.subTitle}
-          heroImage={page.hero?.heroImage}
-          titleColor={page.hero?.titleColor}
-        />
-      </div>
+      {page.hero && (
+        <div className="hero-section">
+          <Hero
+            title={page.hero?.title}
+            subTitle={page.hero?.subTitle}
+            heroImage={page.hero?.heroImage}
+            titleColor={page.hero?.titleColor}
+          />
+        </div>
+      )}
 
       <div style={styleData} className="content-section">
         <div className="single-column-content">
           <h2>{page?.title}</h2>
         </div>
-        {page.content &&
+        {page.contentTop &&
           SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
         {page.contentList?.map((card: DefaultCard) => {
           switch (card.__typename) {
-            case "Card":
+            case "ImageCard":
               return ImageCardContent(card);
               break;
             case "RichTextCard":

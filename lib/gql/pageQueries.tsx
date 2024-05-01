@@ -43,15 +43,15 @@ export function gqlGetPageByURL(url:string | null){
               code
             }
             hideFooterNavigation
-            content,
+            contentTop(format: "html"),
             contentList
           {
           __typename
-     ... on Card{
+     ... on ImageCard{
                  title
             subTitle
-            content
-            subContent
+            content(format: "html")
+            subContent(format: "html")
             cardUrl
             image
             cardSettings{
@@ -59,7 +59,7 @@ export function gqlGetPageByURL(url:string | null){
               showBoarder
               boarderSettings
               borderRadius
-              backgroundColorV2{
+              backgroundColor{
                 title
                 code
               }
@@ -67,24 +67,24 @@ export function gqlGetPageByURL(url:string | null){
             }
     }
       ... on RichTextCard{
-        richTextContent
+        richTextContent(format: "html")
         cardSettings{
           showBoarder
           boarderSettings
           borderRadius
-          backgroundColorV2{
+          backgroundColor{
             title
             code
           }
           cardDivider
         }
       }
-      ... on ColumnsContent{
+      ... on ColumnsCard{
         entryId
       }
             
           }
-            contentBottom,
+            contentBottom(format: "html"),
             contentBottomBackgroundColor{
               title
               code

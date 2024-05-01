@@ -1,25 +1,47 @@
+import { gqlGetCategoryByURL, gqlGetCategoryListing } from "./gql/categoryQueries";
 import { Category } from "../types";
+import { revalidateAPITag } from "./constants";
 
 export async function  getCategories(limit: string | null)
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategories?limit=" + limit;
-     //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: 10 } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const categories = jsonData.data.data.listCategories.data;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        //cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlGetCategoryListing(limit),
+          })
+      })
+  
+    const jsonData = await response.json();
+    const categories = jsonData.data.listCategories.data;
 
   return categories;
 }
 
 export async function getCategoryPageByUrl(url: string)  : Promise<Category>
 {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getcategorybyurl?url=" + url;
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const pageData = jsonData.data.data.listCategories.data[0];
+   
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+        },
+        body: JSON.stringify({
+          query: gqlGetCategoryByURL(url),
+        })
+    })
+
+    const jsonData = await response.json();
+    
+    const pageData = jsonData.data.listCategories.data[0];
 
     if(pageData == undefined)
     {
@@ -37,19 +59,19 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
         const page: Category = {
             url: pageData.url,
             title: pageData.title,
-            hero: {
+            hero: pageData.hero ? {
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
                 heroImage: pageData.hero.heroImage,
                 titleColor: pageData.hero.titleColor
-            },
+            } : undefined,
             contentTopSpacing: pageData?.contentTopSpacing,
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,
             contentBottomBackgroundColor: pageData?.contentBottomBackgroundColor,
-            content: pageData.content,
+            contentTop: pageData.contentTop != "<p><br></p>" ? pageData.contentTop : undefined,
+            contentBottom: pageData.contentBottom != "<p><br></p>" ? pageData.contentBottom : undefined,
             contentList: pageData.contentList,
-            contentBottom: pageData.contentBottom,
             subTitle: pageData.subTitle,
             metaData: {
                 browserTitle: pageData.metaData.browserTitle,

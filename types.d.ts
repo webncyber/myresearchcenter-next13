@@ -9,31 +9,15 @@ type Page = {
     contentTopSpacing?: string, 
     contentBackgroundColor?:ContentBackgroundColor,
     contentTopBackgroundColor?: ContentTopBackgroundColor,
-    content?: Array [
-        {
-            type: string,
-            textAlign?: string,
-            data?:{
-                text?: ReactElement<any, string | JSXElementConstructor<any>>
-            }
-        }
-    ],
+    contentTop?: ReactElement<any, string | JSXElementConstructor<any>>,
     contentList?: Array [
         {
-           card?: Card,
+           imageCard?: ImageCard,
            richTextCard?: RichTextCard
         }
     ],
     contentBottomBackgroundColor?: ContentBottomBackgroundColor,
-    contentBottom?: Array [
-        {
-            type: string,
-            textAlign?: string,
-            data?:{
-                text?: ReactElement<any, string | JSXElementConstructor<any>>
-            }
-        }
-    ],
+    contentBottom?: ReactElement<any, string | JSXElementConstructor<any>>,
     metaData?: metaData,
     hideFooterNavigation?: string
 }
@@ -76,32 +60,16 @@ type RichTextCard = DefaultCard &{
         showBoarder?: boolean,
         boarderSettings?: string,
         borderRadius?:number,
-        backgroundColorV2?:ColorPalette,
+        backgroundColor?:ColorPalette,
         cardDivider?: boolean
       }
 }
 
-type Card = DefaultCard & {
+type ImageCard = DefaultCard & {
     title?: string,
       subTitle?: string,
-      content?: Array [
-        {
-            type: string,
-            textAlign?: string,
-            data?:{
-                text?: ReactElement<any, string | JSXElementConstructor<any>>
-            }
-        }
-    ],
-      subContent?:  Array [
-        {
-            type: string,
-            textAlign?: string,
-            data?:{
-                text?: ReactElement<any, string | JSXElementConstructor<any>>
-            }
-        }
-    ],
+      content?: ReactElement<any, string | JSXElementConstructor<any>>,
+      subContent?:  ReactElement<any, string | JSXElementConstructor<any>>,
       cardUrl?: string,
       image?: string,
       cardSettings?:{
@@ -109,7 +77,7 @@ type Card = DefaultCard & {
         showBoarder?: boolean,
         boarderSettings?: string,
         borderRadius?:number,
-        backgroundColorV2?:ColorPalette,
+        backgroundColor?:ColorPalette,
         cardDivider?: boolean
       }
 }

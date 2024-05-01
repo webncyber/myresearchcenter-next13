@@ -1,68 +1,114 @@
-import path from 'path';
-import { promises as fs } from 'fs';
-import { json } from 'stream/consumers';
-import { SiteSettings} from '../types';
-import *  as Constants from './constants'
-import TopNav from '@/app/components/navbars/topnav';
+import {
+  gqlGetFooterNav,
+  gqlGetSocialLinks,
+  gqlGetTopNav,
+  gqlSiteBackgroundColor,
+} from "./gql/settingQueries";
+import { SiteSettings } from "../types";
+import { revalidateAPITag } from "./constants";
 
-export async function getTopNavigation()  : Promise<SiteSettings>
-{
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=tn";
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const navData = jsonData.header.navigations;
-
-
-        const topNav: SiteSettings = {
-           topNavigation: navData.topNavigation
-        }
-        return topNav; 
+export async function getTopNavigation(): Promise<SiteSettings> {
+  const tnResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`,
+    {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+      body: JSON.stringify({
+        query: gqlGetTopNav(),
+      }),
     }
+  );
 
+  const tnData = await tnResponse.json();
+  const header = tnData.data.listSiteSettings.data[0];
+  const navData = header.navigations;
 
-export async function getFooterNavigation()  : Promise<SiteSettings>
-{
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=fn";
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl);
-    const jsonData = await apiContent.json();
-    const navData = jsonData.footer.navigations;
-
-        const footerNav: SiteSettings = {
-           footerNavigation: navData.footerNavigation
-        }
-        return footerNav; 
+  const topNav: SiteSettings = {
+    topNavigation: navData.topNavigation,
+  };
+  return topNav;
 }
 
-export async function getSocialLinks()  : Promise<SiteSettings>
-{
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sm";
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const navData = jsonData.social.socialMedia;
+export async function getFooterNavigation(): Promise<SiteSettings> {
+  const fnResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`,
+    {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+      body: JSON.stringify({
+        query: gqlGetFooterNav(),
+      }),
+    }
+  );
 
-        const socialNav: SiteSettings = {
-           socialLinks: navData.socialLinks
-        }
-        return socialNav; 
+  const fnData = await fnResponse.json();
+  const footer = fnData.data.listSiteSettings.data[0];
+
+  const navData = footer.navigations;
+
+  const footerNav: SiteSettings = {
+    footerNavigation: navData.footerNavigation,
+  };
+  return footerNav;
 }
 
-export async function getSiteBackgroundColor() : Promise<SiteSettings>
- {
-    const fetchAPIUrl = process.env.NEXT_PUBLIC_Host_Name +  "/api/getsitesettings?o=sbc";
-    //const apiContent = await fetch(fetchAPIUrl);
-    //const apiContent = await fetch(fetchAPIUrl, { next: { revalidate: Constants.API_Revalidate } });
-    const apiContent = await fetch(fetchAPIUrl, {cache: "no-store"});
-    const jsonData = await apiContent.json();
-    const data = jsonData.settings;
+export async function getSocialLinks(): Promise<SiteSettings> {
+  const smResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`,
+    {
+      next: { tags: [revalidateAPITag] },
+      //cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+      body: JSON.stringify({
+        query: gqlGetSocialLinks(),
+      }),
+    }
+  );
 
-        const settings: SiteSettings = {
-           siteBackgroundColor: data?.siteBackgroundColor
-        }
-        return settings; 
+  const smData = await smResponse.json();
+  const social = smData.data.listSiteSettings.data[0];
+
+  const navData = social.socialMedia;
+
+  const socialNav: SiteSettings = {
+    socialLinks: navData.socialLinks,
+  };
+  return socialNav;
+}
+
+export async function getSiteBackgroundColor(): Promise<SiteSettings> {
+    const sbcResponse = await fetch(`${process.env.NEXT_PUBLIC_API_ReadOnly_URL}`, {
+        next: { tags: [revalidateAPITag] },
+        //cache: "no-store",
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+          },
+          body: JSON.stringify({
+            query: gqlSiteBackgroundColor(),
+          })
+      })
+  
+      const sbcData = await sbcResponse.json();
+      const settingsData =  sbcData.data.listSiteSettings.data[0];
+
+  const settings: SiteSettings = {
+    siteBackgroundColor: settingsData?.siteBackgroundColor,
+  };
+  return settings;
 }

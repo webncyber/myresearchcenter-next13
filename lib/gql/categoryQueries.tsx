@@ -79,7 +79,7 @@ export function gqlGetCategoryByURL(url:string | null){
             title,
             subTitle,
             blurb,
-            content,
+            contentTop(format: "html"),
             contentBackgroundColor{
               title
               code
@@ -93,12 +93,12 @@ export function gqlGetCategoryByURL(url:string | null){
             contentList
             {
               __typename
-             ... on Card
+             ... on ImageCard
               {
                     title
                     subTitle
-                    content
-                    subContent
+                    content(format: "html")
+                    subContent(format: "html")
                     cardUrl
                     image
                     cardSettings{
@@ -106,7 +106,7 @@ export function gqlGetCategoryByURL(url:string | null){
                       showBoarder
                       boarderSettings
                       borderRadius
-                      backgroundColorV2{
+                      backgroundColor{
                         title
                         code
                       }
@@ -116,13 +116,13 @@ export function gqlGetCategoryByURL(url:string | null){
               ... on RichTextCard
               {
                 title
-                richTextContent
+                richTextContent(format: "html")
                 cardSettings{
                   showBoarder
                   boarderSettings
                   boarderSettings
                   borderRadius
-                  backgroundColorV2{
+                  backgroundColor{
                     title
                     code
                   }
@@ -130,13 +130,13 @@ export function gqlGetCategoryByURL(url:string | null){
                 }
                 
               }
-              ... on ColumnsContent{
+              ... on ColumnsCard{
                 entryId
               }
               
             
             }
-            contentBottom,
+            contentBottom(format: "html"),
             contentBottomBackgroundColor{
               title
               code

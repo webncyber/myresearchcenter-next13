@@ -94,7 +94,7 @@ export function gqlGetBlogByURL(url:string | null){
               title
               code
             }
-            content,
+            contentTop(format: "html"),
             contentTopBackgroundColor{
               title
               code
@@ -102,12 +102,12 @@ export function gqlGetBlogByURL(url:string | null){
             contentList
             {
               __typename
-             ... on Card
+             ... on ImageCard
               {
                          title
                     subTitle
-                    content
-                    subContent
+                    content(format: "html")
+                    subContent(format: "html")
                     cardUrl
                     image
                     cardSettings{
@@ -116,7 +116,7 @@ export function gqlGetBlogByURL(url:string | null){
                       boarderSettings
                       borderRadius
                       cardDivider
-                      backgroundColorV2{
+                      backgroundColor{
                         title
                         code
                       }
@@ -125,12 +125,12 @@ export function gqlGetBlogByURL(url:string | null){
               ... on RichTextCard
               {
                 title
-                richTextContent
+                richTextContent(format: "html")
                 cardSettings{
                   showBoarder
                   boarderSettings
                   borderRadius
-                  backgroundColorV2{
+                  backgroundColor{
                     title
                     code
                   }
@@ -138,13 +138,13 @@ export function gqlGetBlogByURL(url:string | null){
                 }
                 
               }
-              ... on ColumnsContent{
+              ... on ColumnsCard{
                 entryId
               }
               
             
             }
-            contentBottom,
+            contentBottom(format: "html"),
             contentBottomBackgroundColor{
               title
               code
@@ -182,24 +182,53 @@ export function gqlGetBlogByURLAndCategory(cat:string | null, url:string | null)
             title,
             subTitle,
             blurb,
-            content,
-            contentListing
-          {
-            title
-            subTitle
-            content
-            subContent
-            cardUrl
-            image
-            cardSettings
+            contentTop(format: "html"),
+            contentList
             {
-              leftColumnWidth
-              showBoarder
-              boarderSettings
-              cardDivider
+              __typename
+             ... on ImageCard
+              {
+                         title
+                    subTitle
+                    content(format: "html")
+                    subContent(format: "html")
+                    cardUrl
+                    image
+                    cardSettings{
+                      leftColumnWidth
+                      showBoarder
+                      boarderSettings
+                      borderRadius
+                      cardDivider
+                      backgroundColor{
+                        title
+                        code
+                      }
+                    }
+              }
+              ... on RichTextCard
+              {
+                title
+                richTextContent(format: "html")
+                cardSettings{
+                  showBoarder
+                  boarderSettings
+                  borderRadius
+                  backgroundColor{
+                    title
+                    code
+                  }
+                  cardDivider
+                }
+                
+              }
+              ... on ColumnsCard{
+                entryId
+              }
+              
+            
             }
-          }
-            contentBottom,
+            contentBottom(format: "html"),
             hero{
               title,
               subTitle 

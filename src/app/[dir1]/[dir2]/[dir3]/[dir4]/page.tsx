@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import SingleColumnContent from "../../../../components/singleColumnContent/SingleColumnContent";
 import ImageCardContent from "../../../../components/imageCard/imageCardContent";
@@ -101,31 +100,39 @@ export default async function PathOne({
 
   return (
     <>
-      <div className="hero-section">
-        <Hero
-          title={page.hero?.title}
-          subTitle={page.hero?.subTitle}
-          heroImage={page.hero?.heroImage}
-          titleColor={page.hero?.titleColor}
-        />
-      </div>
+      {page.hero && (
+        <div className="hero-section">
+          <Hero
+            title={page.hero?.title}
+            subTitle={page.hero?.subTitle}
+            heroImage={page.hero?.heroImage}
+            titleColor={page.hero?.titleColor}
+          />
+        </div>
+      )}
 
       <div style={styleData} className="content-section">
         <div className="single-column-content">
           <h2>{page?.title}</h2>
         </div>
-        {page.content && SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
+        {page.contentTop &&
+          SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
         {page.contentList?.map((card: DefaultCard) => {
           switch (card.__typename) {
-            case "Card":
+            case "ImageCard":
               return ImageCardContent(card);
             case "RichTextCard":
               return RichTextCardContent(card);
           }
         })}
 
-        {page.contentBottom && SingleColumnContent(page, "cb", page?.contentBottomBackgroundColor?.code)}
+        {page.contentBottom &&
+          SingleColumnContent(
+            page,
+            "cb",
+            page?.contentBottomBackgroundColor?.code
+          )}
         <div className="footer-section">
           <div>
             <SocialLinks />
