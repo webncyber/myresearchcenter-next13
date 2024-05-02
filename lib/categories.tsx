@@ -48,6 +48,7 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
         const blankPage: Category = {
             url:"/",
             title: "Please try again later",
+            hero:{},
             metaData: {
                 browserTitle: "My Research Center",
             },
