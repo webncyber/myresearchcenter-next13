@@ -25,6 +25,7 @@ export async function getPageByUrl(url: string)  : Promise<Page>
         const blankPage: Page = {
             url:"/",
             title: "Please try again later",
+            hero:{},
             metaData: {
                 browserTitle: "My Research Center",
             },

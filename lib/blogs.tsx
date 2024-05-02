@@ -135,6 +135,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
         const blankPage: Blog = {
             title: "Please try again later",
             url: "/",
+            hero:{},
             metaData: {
                 browserTitle: "My Research Center",
             },
