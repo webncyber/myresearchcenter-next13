@@ -101,7 +101,7 @@ export default async function PathOne({
         </HeroSection>
       )}
 
-      <ContentSection>
+      <ContentSection contentBGColor={contentBGCode} contentTopSpacing={contentTopSpacing}>
         {page?.title && PageTitle(page.title)}
         {page.contentTop &&
           SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
