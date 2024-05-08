@@ -1,7 +1,7 @@
 import "./Styles/Layout.scss";
 import {Container, ContentCentered, HeadingSection, Body} from "./Styles/Layout.Style"
 import { Inter } from "next/font/google";
-import TopNav from "./components/navbars/topnav";
+import TopNav from "./components/navbars/TopNav";
 import GoogleAnalytics from "./components/googleAnalytics/GA";
 import { getSiteBackgroundColor } from "../../lib/siteSettings";
 import StyledComponentsRegistry from "../../lib/registry";
