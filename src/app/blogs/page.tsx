@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import SingleColumnContent from "../components/singleColumnContent/SingleColumnContent";
 import { getPageByUrl } from "../../../lib/page";
 import Categories from "../components/categories/CategoryListing";
-import ImageCardContent from "../components/imageCard/ImageCardContent";
+import ImageCardContent from "../components/imageCard/imageCardContent";
 import { DefaultCard } from "../../../types";
-import RichTextCardContent from "../components/richTextCard/RichTextCardContent";
+import RichTextCardContent from "../components/richTextCard/richTextCardContent";
 import Hero from "../components/hero/HERO";
-import FooterNav from "../components/navbars/FooterNav";
-import SocialLinks from "../components/socialLinks/SocialLinks";
+import FooterNav from "../components/navbars/footernav";
+import SocialLinks from "../components/socialLinks/socialLinks";
 import PageTitle from "../components/pageTitle/PageTitle";
 import {
   ContentSection,
