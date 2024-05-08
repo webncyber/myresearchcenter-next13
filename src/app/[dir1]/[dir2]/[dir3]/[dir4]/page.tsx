@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import SingleColumnContent from "../../../../components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "../../../../components/imageCard/imageCardContent";
+import ImageCardContent from "../../../../components/imageCard/ImageCardContent";
 import { getPageByUrl } from "../../../../../../lib/page";
-import RichTextCardContent from "../../../../components/richTextCard/richTextCardContent";
+import RichTextCardContent from "../../../../components/richTextCard/RichTextCardContent";
 import { DefaultCard } from "../../../../../../types";
 import Hero from "../../../../components/hero/HERO";
-import FooterNav from "../../../../components/navbars/footernav";
-import SocialLinks from "../../../../components/socialLinks/socialLinks";
+import FooterNav from "../../../../components/navbars/FooterNav";
+import SocialLinks from "../../../../components/socialLinks/SocialLinks";
+import PageTitle from "@/app/components/pageTitle/PageTitle";
+import {
+  ContentSection,
+  FooterSection,
+  HeroSection,
+} from "@/app/Styles/Layout.Style";
 
 export async function generateMetadata({
   params,
@@ -76,45 +82,27 @@ export default async function PathOne({
   const pageData = getPageByUrl(fullPath);
   let page = await pageData;
 
-  var contentTopSpacing = {
-    top:
-      page?.contentTopSpacing && page.contentTopSpacing != "0"
-        ? page.contentTopSpacing + "px"
-        : "",
-  };
+  var contentTopSpacing =
+    page?.contentTopSpacing && page.contentTopSpacing != "0"
+      ? page.contentTopSpacing + "px"
+      : "";
 
-  var contentBGColor = { backgroundColor: page?.contentBackgroundColor?.code };
-  var styleData = {};
-
-  if (contentTopSpacing && contentBGColor) {
-    styleData = { ...contentTopSpacing, ...contentBGColor };
-  } else {
-    if (contentBGColor) {
-      styleData = { contentBGColor };
-    }
-
-    if (contentTopSpacing) {
-      styleData = { contentTopSpacing };
-    }
-  }
-
+  var contentBGCode = page?.contentBackgroundColor?.code;
   return (
     <>
       {page.hero && (
-        <div className="hero-section">
+        <HeroSection>
           <Hero
             title={page.hero?.title}
             subTitle={page.hero?.subTitle}
             heroImage={page.hero?.heroImage}
             titleColor={page.hero?.titleColor}
           />
-        </div>
+        </HeroSection>
       )}
 
-      <div style={styleData} className="content-section">
-        <div className="single-column-content">
-          <h2>{page?.title}</h2>
-        </div>
+      <ContentSection>
+        {page?.title && PageTitle(page.title)}
         {page.contentTop &&
           SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
@@ -133,13 +121,13 @@ export default async function PathOne({
             "cb",
             page?.contentBottomBackgroundColor?.code
           )}
-        <div className="footer-section">
+        <FooterSection>
           <div>
             <SocialLinks />
             {!page.hideFooterNavigation && <FooterNav />}
           </div>
-        </div>
-      </div>
+        </FooterSection>
+      </ContentSection>
     </>
   );
 }
