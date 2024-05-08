@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import SingleColumnContent from "../../../../components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "../../../../components/imageCard/ImageCardContent";
+import SingleColumnContent from "@/app/components/singleColumnContent/SingleColumnContent";
+import ImageCardContent from "@/app/components/imageCard/ImageCardContent";
 import { getPageByUrl } from "../../../../../../lib/page";
-import RichTextCardContent from "../../../../components/richTextCard/RichTextCardContent";
+import RichTextCardContent from "@/app/components/richTextCard/RichTextCardContent";
 import { DefaultCard } from "../../../../../../types";
-import Hero from "../../../../components/hero/HERO";
-import FooterNav from "../../../../components/navbars/FooterNav";
-import SocialLinks from "../../../../components/socialLinks/SocialLinks";
+import Hero from "@/app/components/hero/HERO";
+import FooterNav from "@/app/components/navbars/FooterNav";
+import SocialLinks from "@/app/components/socialLinks/SocialLinks";
 import PageTitle from "@/app/components/pageTitle/PageTitle";
 import {
   ContentSection,

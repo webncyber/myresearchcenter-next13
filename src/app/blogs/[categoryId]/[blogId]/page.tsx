@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import SingleColumnContent from "../../../components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "../../../components/imageCard/ImageCardContent";
+import SingleColumnContent from "@/app/components/singleColumnContent/SingleColumnContent";
+import ImageCardContent from "@/app/components/imageCard/ImageCardContent";
 import { getBlogByUrl } from "../../../../../lib/blogs";
 import SocialLinks from "@/app/components/socialLinks/SocialLinks";
 import { DefaultCard } from "../../../../../types";

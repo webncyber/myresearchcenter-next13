@@ -1,9 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import SingleColumnContent from "../../components/singleColumnContent/SingleColumnContent";
+import SingleColumnContent from "@/app/components/singleColumnContent/SingleColumnContent";
 import { getCategoryPageByUrl } from "../../../../lib/categories";
-import { BlogListingByCategory } from "../../components/blogListing/BlogsByCategory";
-import ImageCardContent from "../../components/imageCard/ImageCardContent";
+import { BlogListingByCategory } from "@/app/components/blogListing/BlogsByCategory";
+import ImageCardContent from "@/app/components/imageCard/ImageCardContent";
 import { DefaultCard } from "../../../../types";
 import RichTextCardContent from "@/app/components/richTextCard/RichTextCardContent";
 import Hero from "@/app/components/hero/HERO";

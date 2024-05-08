@@ -1,15 +1,15 @@
 import React from "react";
 import type { Metadata } from "next";
-import SingleColumnContent from "../components/singleColumnContent/SingleColumnContent";
+import SingleColumnContent from "@/app/components/singleColumnContent/SingleColumnContent";
 import { getPageByUrl } from "../../../lib/page";
-import Categories from "../components/categories/CategoryListing";
-import ImageCardContent from "../components/imageCard/ImageCardContent";
+import Categories from "@/app/components/categories/CategoryListing";
+import ImageCardContent from "@/app/components/imageCard/ImageCardContent";
 import { DefaultCard } from "../../../types";
-import RichTextCardContent from "../components/richTextCard/RichTextCardContent";
-import Hero from "../components/hero/HERO";
-import FooterNav from "../components/navbars/FooterNav";
-import SocialLinks from "../components/socialLinks/SocialLinks";
-import PageTitle from "../components/pageTitle/PageTitle";
+import RichTextCardContent from "@/app/components/richTextCard/RichTextCardContent";
+import Hero from "@/app/components/hero/HERO";
+import FooterNav from "@/app/components/navbars/FooterNav";
+import SocialLinks from "@/app/components/socialLinks/SocialLinks";
+import PageTitle from "@/app/components/pageTitle/PageTitle";
 import {
   ContentSection,
   FooterSection,
