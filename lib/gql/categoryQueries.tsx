@@ -118,7 +118,7 @@ export function gqlGetCategoryByURL(url:string | null){
                 title
                 richTextContent(format: "html")
                 sourceCode
-                useSourceCode
+                flipOrder
                 cardSettings{
                   showBoarder
                   boarderSettings

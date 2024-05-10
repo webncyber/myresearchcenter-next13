@@ -127,7 +127,7 @@ export function gqlGetBlogByURL(url:string | null){
                 title
                 richTextContent(format: "html")
                 sourceCode
-                useSourceCode
+                flipOrder
                 cardSettings{
                   showBoarder
                   boarderSettings
@@ -213,7 +213,7 @@ export function gqlGetBlogByURLAndCategory(cat:string | null, url:string | null)
                 title
                 richTextContent(format: "html")
                 sourceCode
-                useSourceCode
+                flipOrder
                 cardSettings{
                   showBoarder
                   boarderSettings
