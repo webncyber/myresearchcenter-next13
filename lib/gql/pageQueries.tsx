@@ -68,6 +68,8 @@ export function gqlGetPageByURL(url:string | null){
     }
       ... on RichTextCard{
         richTextContent(format: "html")
+        sourceCode
+        useSourceCode
         cardSettings{
           showBoarder
           boarderSettings

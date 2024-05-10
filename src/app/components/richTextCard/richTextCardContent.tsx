@@ -22,8 +22,21 @@ export function RichTextCardContent(card: RichTextCard)
         }
     }
 
-    return(
-        <>
+    if(card.useSourceCode && card.sourceCode){
+        return(
+            <>
+            <div style={cardStyle} className="richTextCard" 
+                dangerouslySetInnerHTML={{__html: card.sourceCode}}/>
+                {
+                    card.cardSettings?.cardDivider && (
+                        <hr/>
+                       )
+                }
+            </>
+        )
+    }else{
+        return(
+            <>
             <div style={cardStyle} className="richTextCard" 
                 dangerouslySetInnerHTML={{__html: card.richTextContent}}/>
                 {
@@ -31,8 +44,10 @@ export function RichTextCardContent(card: RichTextCard)
                         <hr/>
                        )
                 }
-        </>
-    )
+            </>
+        )
+    }
+   
 }
 
 export default RichTextCardContent;

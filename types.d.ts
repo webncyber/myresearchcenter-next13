@@ -55,7 +55,9 @@ type DefaultCard = {
 }
 type RichTextCard = DefaultCard &{
     title?: string,
-    richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>
+    richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>,
+    sourceCode?: string,
+    useSourceCode?: boolean,
     cardSettings?:{
         showBoarder?: boolean,
         boarderSettings?: string,
