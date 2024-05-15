@@ -1,13 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
 import SingleColumnContent from "../../../components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "../../../components/imageCard/ImageCardContent";
+import ImageCardContent from "../../../components/imageCard/imageCardContent";
 import { getBlogByUrl } from "../../../../../lib/blogs";
-import SocialLinks from "@/app/components/socialLinks/SocialLinks";
+import SocialLinks from "@/app/components/socialLinks/socialLinks";
 import { DefaultCard } from "../../../../../types";
-import RichTextCardContent from "@/app/components/richTextCard/RichTextCardContent";
+import RichTextCardContent from "@/app/components/richTextCard/richTextCardContent";
 import Hero from "@/app/components/hero/HERO";
-import FooterNav from "@/app/components/navbars/FooterNav";
+import FooterNav from "@/app/components/navbars/footernav";
 import PageTitle from "@/app/components/pageTitle/PageTitle";
 import {
   ContentSection,
