@@ -68,6 +68,8 @@ export function gqlGetPageByURL(url:string | null){
     }
       ... on RichTextCard{
         richTextContent(format: "html")
+        sourceCode
+        flipOrder
         cardSettings{
           showBoarder
           boarderSettings

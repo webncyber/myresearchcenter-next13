@@ -1,4 +1,5 @@
 import "./Styles/Layout.scss";
+import "@/app/globals.css"
 import {Container, ContentCentered, HeadingSection, Body} from "./Styles/Layout.Style"
 import { Inter } from "next/font/google";
 import TopNav from "./components/navbars/topnav";
