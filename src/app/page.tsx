@@ -1,14 +1,7 @@
-import Image from "next/image";
 import type { Metadata } from "next";
-import SingleColumnContent from "./components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "./components/imageCard/imageCardContent";
 import { getPageByUrl } from "../../lib/page";
-import BlogListing from "./components/blogListing/BlogListing";
-import { DefaultCard } from "../../types";
-import RichTextCardContent from "./components/richTextCard/richTextCardContent";
-import Hero from "./components/hero/HERO";
-import FooterNav from "./components/navbars/footernav";
-import SocialLinks from "./components/socialLinks/socialLinks";
+import PageContent from '@/app/components/pageContent/Content'
+
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getPageByUrl("/home");
   let page = await pageData;
@@ -50,74 +43,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const pageData = getPageByUrl("/home");
   let page = await pageData;
-  var contentTopSpacing = {
-    top:
-      page?.contentTopSpacing && page.contentTopSpacing != "0"
-        ? page.contentTopSpacing + "px"
-        : "",
-  };
-  var contentBGColor = { backgroundColor: page?.contentBackgroundColor?.code };
-  var styleData = {};
+  var contentTopSpacing =
+    page?.contentTopSpacing && page.contentTopSpacing != "0"
+      ? page.contentTopSpacing + "px"
+      : "";
 
-  if (contentTopSpacing && contentBGColor) {
-    styleData = { ...contentTopSpacing, ...contentBGColor };
-  } else {
-    if (contentBGColor) {
-      styleData = { contentBGColor };
-    }
+  var contentBGCode = page?.contentBackgroundColor?.code;
 
-    if (contentTopSpacing) {
-      styleData = { contentTopSpacing };
-    }
-  }
-
-  return (
-    <>
-      {page.hero && (
-        <div className="hero-section">
-          <Hero
-            title={page.hero?.title}
-            subTitle={page.hero?.subTitle}
-            heroImage={page.hero?.heroImage}
-            titleColor={page.hero?.titleColor}
-          />
-        </div>
-      )}
-
-      <div style={styleData} className="content-section">
-        <div className="single-column-content">
-          <h2>{page?.title}</h2>
-        </div>
-        {page.contentTop &&
-          SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
-
-        {page.contentList?.map((card: DefaultCard) => {
-          switch (card.__typename) {
-            case "ImageCard":
-              return ImageCardContent(card);
-              break;
-            case "RichTextCard":
-              return RichTextCardContent(card);
-              break;
-          }
-        })}
-        <div>
-          <div>{BlogListing("4")}</div>
-        </div>
-        {page.contentBottom &&
-          SingleColumnContent(
-            page,
-            "cb",
-            page?.contentBottomBackgroundColor?.code
-          )}
-
-        <div className="footer-section">
-          <div>
-            <SocialLinks />
-            {!page.hideFooterNavigation && <FooterNav />}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return PageContent(page, contentBGCode, contentTopSpacing, true)
 }

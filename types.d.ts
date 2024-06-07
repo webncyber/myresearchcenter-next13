@@ -55,7 +55,9 @@ type DefaultCard = {
 }
 type RichTextCard = DefaultCard &{
     title?: string,
-    richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>
+    richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>,
+    sourceCode?: string,
+    flipOrder?: boolean,
     cardSettings?:{
         showBoarder?: boolean,
         boarderSettings?: string,
@@ -63,6 +65,12 @@ type RichTextCard = DefaultCard &{
         backgroundColor?:ColorPalette,
         cardDivider?: boolean
       }
+}
+
+type ContactCard = DefaultCard &{
+    title?: string,
+    errorMessage?: string,
+    successMessage?: string
 }
 
 type ImageCard = DefaultCard & {
@@ -109,4 +117,14 @@ type ContentBackgroundColor = ColorPalette;
 type ColorPalette = {
     title?: string,
     code?: string
+}
+
+type FormSubmitData = {
+    pageURL?: string,
+    fromPage: string,
+    fullname: string, 
+    email: string, 
+    subject: string, 
+    message: string, 
+    emailService: string
 }
