@@ -1,19 +1,6 @@
-import React from "react";
 import type { Metadata } from "next";
-import SingleColumnContent from "../../../components/singleColumnContent/SingleColumnContent";
-import ImageCardContent from "../../../components/imageCard/imageCardContent";
 import { getBlogByUrl } from "../../../../../lib/blogs";
-import SocialLinks from "@/app/components/socialLinks/socialLinks";
-import { DefaultCard } from "../../../../../types";
-import RichTextCardContent from "@/app/components/richTextCard/richTextCardContent";
-import Hero from "@/app/components/hero/HERO";
-import FooterNav from "@/app/components/navbars/footernav";
-import PageTitle from "@/app/components/pageTitle/PageTitle";
-import {
-  ContentSection,
-  FooterSection,
-  HeroSection,
-} from "../../../Styles/Layout.Style";
+import PageContent from '@/app/components/pageContent/Content'
 
 export async function generateMetadata({
   params,
@@ -81,48 +68,5 @@ export default async function BlogDetails({
 
 var contentBGCode = page?.contentBackgroundColor?.code;
 
-  return (
-    <>
-      {page.hero && (
-        <HeroSection>
-           <Hero
-            title={page.hero?.title}
-            subTitle={page.hero?.subTitle}
-            heroImage={page.hero?.heroImage}
-            titleColor={page.hero?.titleColor}
-          />
-        </HeroSection>
-      )}
-    <ContentSection contentBGColor={contentBGCode} contentTopSpacing={contentTopSpacing}>
-    {page?.title && PageTitle(page.title, page.author, date)}
-        {page.contentTop &&
-          SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
-
-        {page.contentList?.map((card: DefaultCard) => {
-          switch (card.__typename) {
-            case "ImageCard":
-              return ImageCardContent(card);
-              break;
-            case "RichTextCard":
-              return RichTextCardContent(card);
-              break;
-          }
-        })}
-
-        {page.contentBottom &&
-          SingleColumnContent(
-            page,
-            "cb",
-            page?.contentBottomBackgroundColor?.code
-          )}
-
-       <FooterSection>
-       <div>
-            <SocialLinks />
-            {!page.hideFooterNavigation && <FooterNav />}
-          </div>
-       </FooterSection>
-    </ContentSection>
-    </>
-  );
+  return PageContent(page, contentBGCode, contentTopSpacing)
 }

@@ -67,6 +67,12 @@ type RichTextCard = DefaultCard &{
       }
 }
 
+type ContactCard = DefaultCard &{
+    title?: string,
+    errorMessage?: string,
+    successMessage?: string
+}
+
 type ImageCard = DefaultCard & {
     title?: string,
       subTitle?: string,
@@ -111,4 +117,14 @@ type ContentBackgroundColor = ColorPalette;
 type ColorPalette = {
     title?: string,
     code?: string
+}
+
+type FormSubmitData = {
+    pageURL?: string,
+    fromPage: string,
+    fullname: string, 
+    email: string, 
+    subject: string, 
+    message: string, 
+    emailService: string
 }

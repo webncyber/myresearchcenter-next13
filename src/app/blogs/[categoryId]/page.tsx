@@ -15,6 +15,7 @@ import {
   FooterSection,
   HeroSection,
 } from "../../Styles/Layout.Style";
+import PageContent from '@/app/components/pageContent/Content'
 
 const blogsPahtName = "/blogs/";
 
@@ -67,7 +68,8 @@ export default async function Blogs({
 }: {
   params: { categoryId: string };
 }) {
-  const pageData = getCategoryPageByUrl(blogsPahtName + params.categoryId);
+  const blogCategoryPath = blogsPahtName + params.categoryId;
+  const pageData = getCategoryPageByUrl(blogCategoryPath);
   let page = await pageData;
   var contentTopSpacing =
   page?.contentTopSpacing && page.contentTopSpacing != "0"
@@ -76,51 +78,6 @@ export default async function Blogs({
 
 var contentBGCode = page?.contentBackgroundColor?.code;
  
-  return (
-    <>
-      {page.hero && (
-        <HeroSection>
-          <Hero
-            title={page.hero?.title}
-            subTitle={page.hero?.subTitle}
-            heroImage={page.hero?.heroImage}
-            titleColor={page.hero?.titleColor}
-          />
-        </HeroSection>
-      )}
-
-      <ContentSection contentBGColor={contentBGCode} contentTopSpacing={contentTopSpacing}>
-        {page?.title && PageTitle(page.title)}
-
-        {page.contentTop &&
-          SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
-
-        <div>{BlogListingByCategory(blogsPahtName + params.categoryId)}</div>
-
-        {page.contentList?.map((card: DefaultCard) => {
-          switch (card.__typename) {
-            case "ImageCard":
-              return ImageCardContent(card);
-              break;
-            case "RichTextCard":
-              return RichTextCardContent(card);
-              break;
-          }
-        })}
-
-        {page.contentBottom &&
-          SingleColumnContent(
-            page,
-            "cb",
-            page?.contentBottomBackgroundColor?.code
-          )}
-        <FooterSection>
-          <div>
-            <SocialLinks />
-            {!page.hideFooterNavigation && <FooterNav />}
-          </div>
-        </FooterSection>
-      </ContentSection>
-    </>
-  );
+  return  PageContent(page, contentBGCode, contentTopSpacing, 
+      false, false, true, blogCategoryPath);
 }
