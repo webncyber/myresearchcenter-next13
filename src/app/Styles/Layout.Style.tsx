@@ -41,6 +41,8 @@ export const ContentSection = styled.div<iContentSection>
     width: 80%;
     position: absolute;    
     padding-right: 0px;
+    
+   
     @media screen and (max-width: 660px) {
         top: ${(props) => props.contentTopSpacing ? props.contentTopSpacing + "px" : "280px"}
       }

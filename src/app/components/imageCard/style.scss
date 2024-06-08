@@ -25,16 +25,23 @@
             margin-bottom: 0.5rem;
             text-transform: capitalize;
         }
-    
+        h2,h3,h4,h5{
+            padding:0px;
+            margin:0px;
+          }
         ul{
+            margin: 0;
             li{
-                padding-bottom: 0.7rem;
+                padding: 0px;
+                margin: 0px;
                 list-style-type: circle;
             }
         }
         ol{
+            margin: 0;
             li{
-                padding-bottom: 0.7rem;
+                padding: 0px;
+                margin: 0px;
             }
         }
         ol > li::marker {
@@ -42,7 +49,8 @@
             font-size: 1rem;
           }
         p{
-            margin-top: 0.5rem;
+            margin: 0;
+            padding: 0;
         }
     
         a{
@@ -89,7 +97,10 @@
         display: flex;
         padding-top: 0.9rem;
        padding-left: 25px;
-       
+       h2,h3,h4,h5{
+        padding:0px;
+        margin:0px;
+      }
         h4{
             padding: 0px;
             margin: 0px;
@@ -105,13 +116,15 @@
     
         ul{
             li{
-                padding-bottom: 0.7rem;
+                padding:0px;
+                margin:0px;
                 list-style-type: circle;
             }
         }
         ol{
             li{
-                padding-bottom: 0.7rem;
+                padding:0px;
+                margin:0px;
             }
         }
         ol > li::marker {

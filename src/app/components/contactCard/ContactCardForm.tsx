@@ -1,7 +1,7 @@
 "use client";
 import { ContactCardStyle } from "./ContactCard.Style";
 import * as React from "react";
-import { Button, Box, Card, Flex, TextField, TextArea, Text } from "@radix-ui/themes";
+import { Button, Box, Card, Flex, TextField, TextArea, Text} from "@radix-ui/themes";
 import { useState } from "react";
 import sendEmail from "../../../../lib/sendemail"
 import {ContactCard, FormSubmitData } from "../../../../types";
@@ -49,6 +49,7 @@ export function ContactCardForm() {
 
   return (
     <ContactCardStyle>
+      <h3><Text>Contact Us</Text></h3>
       <form id="contactForm" onSubmit={submitForm}>
       <Box maxWidth="50%">
         <Card>
