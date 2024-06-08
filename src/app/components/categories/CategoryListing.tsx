@@ -3,7 +3,7 @@ import { getCategories } from "../../../../lib/categories";
 import { Blog, Category } from "../../../../types";
 import Link from 'next/link'
 
-export async function Categories(limit: string, showBlurb: boolean = false) {
+export async function Categories(limit: string) {
   const categoriesData = getCategories(limit);
   let categories = await categoriesData;
   return (
@@ -16,24 +16,28 @@ export async function Categories(limit: string, showBlurb: boolean = false) {
          )
          } 
       {
-        <div className="flex-box">
+        <ul>
           {categories.map((category: Category) => (
-             <div key={category.url}>
-                <h4>{category.title}</h4>
-                <a href={category.url}>
+             <li key={category.url}>
+              <div className='row'>
+              <div className='fit'>
+              <a href={category.url}>
                     <img src={category?.thumbnailImage} />
                 </a>
-                {showBlurb && 
-                (
-                  <div>
-                  <div className="blurb">{category.blurb}</div>
-                </div>
-                )}
+              </div>
+               
+              <div>
+                    <div><a href={category.url}><h4>{category.title}</h4></a></div>
+                    <div className='blurb'>{category.blurb}</div>
+                  </div>
+              
+              </div>
                 
-            </div>
+                
+            </li>
           
           ))}
-         </div>
+         </ul>
       }
     </div>
   );
