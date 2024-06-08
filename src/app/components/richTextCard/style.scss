@@ -1,4 +1,17 @@
 .richTextCard{
     margin: 10px;
     padding: 10px;
+
+    ul, ol{
+        margin: 0;
+        li{
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    p{
+        margin: 0;
+        padding: 0;
+    }
 }

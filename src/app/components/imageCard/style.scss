@@ -30,6 +30,7 @@
             margin:0px;
           }
         ul{
+            margin: 0;
             li{
                 padding: 0px;
                 margin: 0px;
@@ -37,6 +38,7 @@
             }
         }
         ol{
+            margin: 0;
             li{
                 padding: 0px;
                 margin: 0px;
@@ -47,7 +49,8 @@
             font-size: 1rem;
           }
         p{
-            margin-top: 0.5rem;
+            margin: 0;
+            padding: 0;
         }
     
         a{
