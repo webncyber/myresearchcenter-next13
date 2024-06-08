@@ -6,6 +6,10 @@
         font-size: 1.8rem;
         text-transform: capitalize;
     }
+    h2,h3,h4,h5{
+        padding:0px;
+        margin:0px;
+      }
     .content{
         padding-bottom: 1rem;
         width: 90%;
@@ -23,13 +27,15 @@
     
         ul{
             li{
-                padding-bottom: 0.7rem;
+                padding: 0;
+                margin: 0;
                 list-style-type: circle;
             }
         }
         ol{
             li{
-                padding-bottom: 0.7rem;
+                padding: 0;
+                margin: 0;
             }
         }
         ol > li::marker {
