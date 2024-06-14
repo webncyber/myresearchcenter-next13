@@ -11,6 +11,7 @@ export async function  getBlogsListing(limit: string)
         method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-tenant": "root",
             "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
           },
           body: JSON.stringify({
@@ -32,6 +33,7 @@ export async function  getBlogsByCategory(categoryValue: string)
       method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-tenant": "root",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
         },
         body: JSON.stringify({
@@ -48,6 +50,7 @@ export async function  getBlogsByCategory(categoryValue: string)
         method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-tenant": "root",
             "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
           },
           body: JSON.stringify({
@@ -75,6 +78,7 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
       method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-tenant": "root",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
         },
         body: JSON.stringify({
@@ -121,6 +125,7 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
         method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-tenant": "root",
             "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
           },
           body: JSON.stringify({

@@ -10,6 +10,7 @@ export async function  getCategories(limit: string | null)
         method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-tenant": "root",
             "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
           },
           body: JSON.stringify({
@@ -32,6 +33,7 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
       method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-tenant": "root",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
         },
         body: JSON.stringify({

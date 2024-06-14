@@ -16,6 +16,7 @@ export async function getTopNavigation(): Promise<SiteSettings> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-tenant": "root",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
       body: JSON.stringify({
@@ -43,6 +44,7 @@ export async function getFooterNavigation(): Promise<SiteSettings> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-tenant": "root",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
       body: JSON.stringify({
@@ -71,6 +73,7 @@ export async function getSocialLinks(): Promise<SiteSettings> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-tenant": "root",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
       body: JSON.stringify({
@@ -97,6 +100,7 @@ export async function getSiteBackgroundColor(): Promise<SiteSettings> {
         method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-tenant": "root",
             "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
           },
           body: JSON.stringify({
