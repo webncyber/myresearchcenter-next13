@@ -29,7 +29,7 @@ export async function generateMetadata({
     images: heroImagePath,
   };
   const metaDesc =
-    "Research Center is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
+    "Idea Guide is where you can find your ideal blog posts for the products you are searching for, tips and tricks, or compare products.";
   return {
     title: page.metaData?.browserTitle,
     description: page.metaData?.description,
@@ -42,11 +42,11 @@ export async function generateMetadata({
       url: canonicalUrl,
       title: page?.title,
       description: page.metaData?.description,
-      siteName: "myresearchcenter.com",
+      siteName: "ideaguide.net",
       images: [
         {
           url:
-            heroImagePath != undefined ? heroImagePath : "/Images/bkgHome.jpg",
+            heroImagePath = heroImagePath ? heroImagePath : "/Images/bkgHome.jpg",
         },
       ],
     },
