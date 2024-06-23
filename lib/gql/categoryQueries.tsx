@@ -101,6 +101,7 @@ export function gqlGetCategoryByURL(url:string | null){
                     subContent(format: "html")
                     cardUrl
                     image
+                    swapImageContent
                     cardSettings{
                       leftColumnWidth
                       showBoarder

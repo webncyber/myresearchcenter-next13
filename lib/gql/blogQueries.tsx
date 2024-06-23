@@ -110,6 +110,7 @@ export function gqlGetBlogByURL(url:string | null){
                     subContent(format: "html")
                     cardUrl
                     image
+                    swapImageContent
                     cardSettings{
                       leftColumnWidth
                       showBoarder
@@ -196,6 +197,7 @@ export function gqlGetBlogByURLAndCategory(cat:string | null, url:string | null)
                     subContent(format: "html")
                     cardUrl
                     image
+                    swapImageContent
                     cardSettings{
                       leftColumnWidth
                       showBoarder

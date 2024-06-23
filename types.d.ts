@@ -80,6 +80,7 @@ type ImageCard = DefaultCard & {
       subContent?:  ReactElement<any, string | JSXElementConstructor<any>>,
       cardUrl?: string,
       image?: string,
+      swapImageContent?: boolean,
       cardSettings?:{
         leftColumnWidth: number,
         showBoarder?: boolean,

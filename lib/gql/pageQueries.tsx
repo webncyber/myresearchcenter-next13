@@ -54,6 +54,7 @@ export function gqlGetPageByURL(url:string | null){
             subContent(format: "html")
             cardUrl
             image
+            swapImageContent
             cardSettings{
               leftColumnWidth
               showBoarder
