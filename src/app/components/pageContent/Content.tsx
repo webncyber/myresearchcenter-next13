@@ -7,44 +7,52 @@ import FooterNav from "@/app/components/navbars/footernav";
 import SocialLinks from "@/app/components/socialLinks/socialLinks";
 import PageTitle from "@/app/components/pageTitle/PageTitle";
 import ContactCardForm from "@/app/components/contactCard/ContactCardForm";
+import EmailSignUpCardForm from "@/app/components/emailSignUpCard/EmailSignUpCard";
+import GridCardContent from "../gridCard/GridCardContent";
 import BlogListing from "@/app/components/blogListing/BlogListing";
 import Categories from "@/app/components/categories/CategoryListing";
 import { BlogListingByCategory } from "@/app/components/blogListing/BlogsByCategory";
 import {
-    ContentSection,
-    FooterSection,
-    HeroSection,
-  } from "../../Styles/Layout.Style";
+  ContentSection,
+  FooterSection,
+  HeroSection,
+} from "../../Styles/Layout.Style";
+import { Card,Box } from "@radix-ui/themes";
 
-export default function PageContent(page: Page, contentBGCode?: 
-    string, contentTopSpacing?: string, topXBlogs?: boolean, 
-      showCategories?: boolean, showBlogsByCategory?: boolean, blogCategoryPath?: string)
-{
-    return(
-        <>
-         {page.hero && (
+export default function PageContent(
+  page: Page,
+  contentBGCode?: string,
+  contentTopSpacing?: string,
+  topXBlogs?: boolean,
+  showCategories?: boolean,
+  showBlogsByCategory?: boolean,
+  blogCategoryPath?: string
+) {
+  return (
+    <>
+      {page.hero && (
         <HeroSection>
           <Hero
             title={page.hero?.title}
             subTitle={page.hero?.subTitle}
             heroImage={page.hero?.heroImage}
             titleColor={page.hero?.titleColor}
+            showEmailSignUp={page.hero?.showEmailSignUp}
           />
         </HeroSection>
       )}
       <ContentSection
         contentBGColor={contentBGCode}
-        contentTopSpacing={contentTopSpacing}>
+        contentTopSpacing={contentTopSpacing}
+      >
         {page?.title && PageTitle(page.title)}
         {page.contentTop &&
           SingleColumnContent(page, "c", page?.contentTopBackgroundColor?.code)}
 
-        {showCategories && (
-          <div>{Categories("0")}</div>
-        )}  
+        {showCategories && <div>{Categories("0")}</div>}
 
         {showBlogsByCategory && (
-         <div>{BlogListingByCategory(blogCategoryPath)}</div>
+          <div>{BlogListingByCategory(blogCategoryPath)}</div>
         )}
 
         {page.contentList?.map((card: DefaultCard) => {
@@ -54,20 +62,22 @@ export default function PageContent(page: Page, contentBGCode?:
             case "RichTextCard":
               return RichTextCardContent(card);
             case "ContactCard":
-            return (
-              <ContactCardForm />
-            )
+              return <ContactCardForm />;
+            case "GridCard": 
+              return  GridCardContent(card);
+            case "EmailSignUpCard":
+              return <Box maxWidth="30%">
+                 <EmailSignUpCardForm />
+              </Box>
           }
         })}
-       
-       {topXBlogs && 
-            (
-                <div>
-                <div>{BlogListing("4")}</div>
-                </div>
-            )
-        }
-       
+
+        {topXBlogs && (
+          <div>
+            <div>{BlogListing("4")}</div>
+          </div>
+        )}
+
         {page.contentBottom &&
           SingleColumnContent(
             page,
@@ -82,7 +92,6 @@ export default function PageContent(page: Page, contentBGCode?:
           </div>
         </FooterSection>
       </ContentSection>
-
-        </>
-    )
+    </>
+  );
 }

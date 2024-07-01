@@ -66,7 +66,8 @@ export async function getCategoryPageByUrl(url: string)  : Promise<Category>
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
                 heroImage: pageData.hero.heroImage,
-                titleColor: pageData.hero.titleColor
+                titleColor: pageData.hero.titleColor,
+                showEmailSignUp: pageData.hero?.showEmailSignUp
             } : undefined,
             contentTopSpacing: pageData?.contentTopSpacing,
             contentBackgroundColor: pageData?.contentBackgroundColor,

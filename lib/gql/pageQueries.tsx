@@ -29,6 +29,7 @@ export function gqlGetPageByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              showEmailSignUp
               titleColor{
                 code
               }
@@ -82,8 +83,36 @@ export function gqlGetPageByURL(url:string | null){
           cardDivider
         }
       }
-      ... on ColumnsCard{
+          
+      ... on GridCard{
         entryId
+        title
+        content(format: "html")       
+        row{
+          rowSpacing
+          columnDivision
+          disabled
+          rowTitle
+          content(format: "html")
+          card{
+            showAsCard
+            disabled
+            insetImage
+            cardVariant
+            backgroundColor{
+              code
+            }
+            content(format: "html")
+          }
+        }
+        cardSettings{
+          showAsCard
+          cardVariant
+          cardDivider
+          backgroundColor{
+            code
+          }
+        }
       }
             
           }

@@ -13,6 +13,7 @@ export async function GET(request: Request)
       method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-tenant": "root",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
         },
         body: JSON.stringify({

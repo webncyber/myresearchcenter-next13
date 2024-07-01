@@ -42,7 +42,8 @@ export async function getPageByUrl(url: string)  : Promise<Page>
                 title: pageData.hero?.title,
                 subTitle: pageData.hero?.subTitle,
                 heroImage: pageData.hero?.heroImage,
-                titleColor: pageData.hero?.titleColor
+                titleColor: pageData.hero?.titleColor,
+                showEmailSignUp:pageData.hero?.showEmailSignUp
             } : undefined, 
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,

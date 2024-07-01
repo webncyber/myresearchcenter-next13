@@ -65,7 +65,8 @@ export async function getHeroDataByUrl(url: string, categoryId: string | undefin
             title: heroData.hero?.title,
             subTitle: heroData.hero?.subTitle,
             url: heroData.hero?.heroImage,
-            titleColor: heroData.hero?.titleColor
+            titleColor: heroData.hero?.titleColor,
+            showEmailSignUp: heroData.hero?.showEmailSignUp
 
         }
         return hero;

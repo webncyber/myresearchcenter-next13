@@ -1,7 +1,8 @@
 import { Hero as HeroType} from "../../../../types";
+import EmailSignUpCardForm from "@/app/components/emailSignUpCard/EmailSignUpCard";
 import "./style.scss";
 
-const Hero = ({title, subTitle, heroImage, titleColor} : HeroType) => {
+const Hero = ({title, subTitle, heroImage, titleColor, showEmailSignUp} : HeroType) => {
   if(title == undefined && heroImage == undefined)
   {
     title = "Page Not Found"
@@ -29,13 +30,28 @@ const Hero = ({title, subTitle, heroImage, titleColor} : HeroType) => {
               >
                 {subTitle}
               </div>
+              <div className="hero_signup-container">
+                <div className="hero_signup-container_form">
+                  {showEmailSignUp && (
+                    <EmailSignUpCardForm/>
+                  )}
+                </div>
+              </div>       
             </>
           ) : (
             <>
               <h1 className="title">{title}</h1>
               <div className="sub-title">{subTitle}</div>
+              <div className="hero_signup-container">
+                <div className="hero_signup-container_form">
+                  {showEmailSignUp && (
+                    <EmailSignUpCardForm/>
+                  )}
+                </div>
+              </div>      
             </>
           )}
+          
         </div>
       )}
 
@@ -46,14 +62,31 @@ const Hero = ({title, subTitle, heroImage, titleColor} : HeroType) => {
               <h1 style={{ color: titleColor.code }}>
                 {title}
               </h1>
+              <div className="hero_signup-container">
+                <div className="hero_signup-container_form">
+                  {showEmailSignUp && (
+                    <EmailSignUpCardForm/>
+                  )}
+                </div>
+              </div>      
             </div>
           ) : (
             <div>
               <h1>{title}</h1>
+              <div className="hero_signup-container">
+                <div className="hero_signup-container_form">
+                  {showEmailSignUp && (
+                    <EmailSignUpCardForm/>
+                  )}
+                </div>
+              </div>      
             </div>
+           
           )}
+          
         </>
       )}
+      
     </div>
   </>
   );

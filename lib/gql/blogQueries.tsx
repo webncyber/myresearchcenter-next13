@@ -14,6 +14,7 @@ export function gqlGetBlogsByCategoryId(entryId: any)
             title,
             subTitle 
             heroImage
+            showEmailSignUp
           }
           publishedDate
           author
@@ -41,6 +42,7 @@ export function gqlGetBlogsListing(limit: string | null){
                 title,
                 subTitle 
                 heroImage
+                showEmailSignUp
               }
               publishedDate
               author
@@ -63,6 +65,7 @@ export function gqlGetBlogsListing(limit: string | null){
                 title,
                 subTitle 
                 heroImage
+                showEmailSignUp
               }
               publishedDate
               author
@@ -141,11 +144,37 @@ export function gqlGetBlogByURL(url:string | null){
                 }
                 
               }
-              ... on ColumnsCard{
+              ... on GridCard{
                 entryId
+                title       
+                content(format: "html")
+                row{
+                  rowSpacing
+                  columnDivision
+                  disabled
+                  rowTitle
+                  content(format: "html")
+                  card{
+                    showAsCard
+                    disabled
+                    insetImage
+                    cardVariant
+                    backgroundColor{
+                      code
+                    }
+                    content(format: "html")
+                  }
+                }
+                cardSettings{
+                  showAsCard
+                  cardVariant
+                  cardDivider
+                  backgroundColor{
+                    code
+                  }
+                }
               }
-              
-            
+ 
             }
             contentBottom(format: "html"),
             contentBottomBackgroundColor{
@@ -156,6 +185,7 @@ export function gqlGetBlogByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              showEmailSignUp
               titleColor{
                 code
               }
@@ -228,10 +258,36 @@ export function gqlGetBlogByURLAndCategory(cat:string | null, url:string | null)
                 }
                 
               }
-              ... on ColumnsCard{
+              ... on GridCard{
                 entryId
+                title       
+                content(format: "html")
+                row{
+                  rowSpacing
+                  disabled
+                  columnDivision
+                  rowTitle
+                  content(format: "html")
+                  card{
+                    disabled
+                    showAsCard
+                    insetImage
+                    cardVariant
+                    backgroundColor{
+                      code
+                    }
+                    content(format: "html")
+                  }
+                }
+                cardSettings{
+                  showAsCard
+                  cardVariant
+                  cardDivider
+                  backgroundColor{
+                    code
+                  }
+                }
               }
-              
             
             }
             contentBottom(format: "html"),
