@@ -80,7 +80,7 @@ type EmailSignUpCard = DefaultCard &{
 }
 
 type GridCard = DefaultCard & {
-    row: GridRow[],
+    row?: GridRow[],
     content?: ReactElement<any, string | JSXElementConstructor<any>>,
     cardSettings?:{
         showAsCard?: boolean,

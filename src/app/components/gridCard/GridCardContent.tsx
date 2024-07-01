@@ -35,7 +35,7 @@ export function GridCardContent(gridCard: GridCard) {
             </h4>
           )}
           {gridCard.content && buildRichTextContent(gridCard.content)}
-          {gridCard.row.map((row: GridRow, gridRowIndex) => (
+          {gridCard.row && gridCard.row.map((row: GridRow, gridRowIndex) => (
             <>
               {!row.disabled && (
                 <Flex
@@ -163,19 +163,24 @@ export function GridCardContent(gridCard: GridCard) {
             </h4>
           )}
             {gridCard.content && buildRichTextContent(gridCard.content)}
-          {gridCard.row.map((row: GridRow, gridRowIndex) => (
+          {gridCard.row && gridCard.row.map((row: GridRow, gridRowIndex) => (
             <>
+              {!row.disabled && 
+                <>
+                  {row?.rowTitle && (
+                    <h4>{row.rowTitle}</h4>
+                  )}  
+                  {row?.content && (
+                    buildRichTextContent(row.content)
+                  )}    
+                </>
+              }  
               {!row.disabled && (
                 <Flex
                   key={gridRowIndex}
                   gap={row.cardSpacing ? row.cardSpacing : "3"}
                 >
-                  {row?.rowTitle && (
-                   <div><h4>{row.rowTitle}</h4></div>
-                  )}  
-                  {row?.content && (
-                    buildRichTextContent(row.content)
-                  )}    
+                
                   {row.card && (
                     <>
                       {row.card.map((card: CardType, cardIndex) => (

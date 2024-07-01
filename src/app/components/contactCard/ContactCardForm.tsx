@@ -5,16 +5,14 @@ import {
   Button,
   Box,
   Card,
-  Grid,
   Flex,
   TextField,
   TextArea,
   Text,
-  Inset
 } from "@radix-ui/themes";
 import { useState } from "react";
 import sendEmail from "../../../../lib/sendemail";
-import { ContactCard, FormSubmitData } from "../../../../types";
+import {FormSubmitData } from "../../../../types";
 
 export function ContactCardForm() {
   const [inputFullname, setFullname] = useState("");
@@ -98,55 +96,6 @@ export function ContactCardForm() {
           </Card>
         </Box>
       </form>
-
-      <Flex gap="3">
-        <Box width="33%">
-        <Card style={{height:"100%"}}>
-     content of a page when looking at its layout. The point of using Lorem
-          Ipsum is that it has a more-or-less normal distribution of letters, as
-          opposed to using 'Content here, content here', making it look like
-          readable English. Many desktop publishing packages and web page
-          editors now use Lorem Ipsum as their default model text, and a
-        </Card>
-        </Box>
-        <Box width="33%">
-          <Card>
-          <Inset clip="padding-box" side="top" pb="current">
-      <img
-        src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-        alt="Bold typography"
-        style={{
-          display: 'block',
-          objectFit: 'cover',
-          width: '100%',
-          height: 140,
-          backgroundColor: 'var(--gray-5)',
-        }}
-      />
-    </Inset>
-           Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishin
-          </Card>
-        </Box>
-        <Box width="33%">
-         <Card>
-             Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum
-         </Card>
-        </Box>
-      </Flex>
     </ContactCardStyle>
   );
 }
