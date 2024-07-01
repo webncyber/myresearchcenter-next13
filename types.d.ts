@@ -40,6 +40,7 @@ type Hero = {
     title?: string,
     subTitle?: string,
     heroImage?: string,
+    showEmailSignUp?:boolean,
     titleColor?:{
         code?: string
       }
@@ -51,10 +52,10 @@ type Category = Page & {
 }
 
 type DefaultCard = {
-    __typename:? string
+    __typename:? string,
+    title?: string,
 }
 type RichTextCard = DefaultCard &{
-    title?: string,
     richTextContent?: ReactElement<any, string | JSXElementConstructor<any>>,
     sourceCode?: string,
     flipOrder?: boolean,
@@ -68,18 +69,53 @@ type RichTextCard = DefaultCard &{
 }
 
 type ContactCard = DefaultCard &{
+    errorMessage?: string,
+    successMessage?: string
+}
+
+type EmailSignUpCard = DefaultCard &{
     title?: string,
     errorMessage?: string,
     successMessage?: string
 }
 
+type GridCard = DefaultCard & {
+    row?: GridRow[],
+    content?: ReactElement<any, string | JSXElementConstructor<any>>,
+    cardSettings?:{
+        showAsCard?: boolean,
+        cardVariant?:string,
+        backgroundColor?:ColorPalette,
+        cardDivider?: boolean
+      }
+}
+
+type GridRow = {
+    rowTitle?: string,
+    content?: ReactElement<any, string | JSXElementConstructor<any>>,
+    disabled?: boolean,
+    rowSpacing?: string,
+    cardSpacing?: string,
+    columnDivision?: string,
+    card: card[]
+}
+
+type Card = {
+    disabled?: boolean,
+    showAsCard?: boolean,
+    insetImage?: string,
+    cardVariant?: string,
+    backgroundColor?:ColorPalette,
+    content?: ReactElement<any, string | JSXElementConstructor<any>>,
+}
+
 type ImageCard = DefaultCard & {
-    title?: string,
       subTitle?: string,
       content?: ReactElement<any, string | JSXElementConstructor<any>>,
       subContent?:  ReactElement<any, string | JSXElementConstructor<any>>,
       cardUrl?: string,
       image?: string,
+      swapImageContent?: boolean,
       cardSettings?:{
         leftColumnWidth: number,
         showBoarder?: boolean,
@@ -121,10 +157,10 @@ type ColorPalette = {
 
 type FormSubmitData = {
     pageURL?: string,
-    fromPage: string,
-    fullname: string, 
+    fromPage?: string,
+    fullname?: string, 
     email: string, 
-    subject: string, 
-    message: string, 
+    subject?: string, 
+    message?: string, 
     emailService: string
 }

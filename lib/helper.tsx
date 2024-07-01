@@ -21,6 +21,17 @@ export function buildRichTextContent(c: any){
     }
 }
 
+export function HandleRadixVariants(variant?: string) {
+  switch (variant) {
+    case "classic":
+      return "classic";
+    case "ghost":
+      return "ghost";
+    default:
+      return "surface";
+  }
+}
+
 
 export function buildRichTextContent_Old2(c: any)
 {

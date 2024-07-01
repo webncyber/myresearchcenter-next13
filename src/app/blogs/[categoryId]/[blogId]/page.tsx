@@ -63,7 +63,7 @@ export default async function BlogDetails({
   let date = new Date(pubDate);
   var contentTopSpacing =
   page?.contentTopSpacing && page.contentTopSpacing != "0"
-    ? page.contentTopSpacing + "px"
+    ? page.contentTopSpacing
     : "";
 
 var contentBGCode = page?.contentBackgroundColor?.code;

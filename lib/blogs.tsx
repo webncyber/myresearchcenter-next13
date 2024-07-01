@@ -97,7 +97,8 @@ export async function getBlogByCategoryAndUrl(category:string, url: string) : Pr
             title: pageData.hero.title,
             subTitle: pageData.hero.subTitle,
             heroImage: pageData.hero.heroImage,
-            titleColor: pageData.hero.titleColor
+            titleColor: pageData.hero.titleColor,
+            showEmailSignUp: pageData.hero?.showEmailSignUp
         } : undefined,
         contentTopSpacing: pageData?.contentTopSpacing,
         contentTop: pageData.contentTop != "<p><br></p>" ? pageData.contentTop : undefined,
@@ -156,7 +157,8 @@ export async function getBlogByUrl(url: string) : Promise<Blog>
                 title: pageData.hero.title,
                 subTitle: pageData.hero.subTitle,
                 heroImage: pageData.hero.heroImage,
-                titleColor: pageData.hero.titleColor
+                titleColor: pageData.hero.titleColor,
+                showEmailSignUp: pageData.hero?.showEmailSignUp
             } : undefined,
             contentBackgroundColor: pageData?.contentBackgroundColor,
             contentTopBackgroundColor: pageData?.contentTopBackgroundColor,

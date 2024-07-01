@@ -31,7 +31,8 @@ export function ImageCardContent(card: ImageCard) {
   return (
     <>
       <div style={cardStyle} className="image-card">
-        {((card && card.title) || (card.content && card.content != "<p><br></p>")) && (
+        {((card && card.title) ||
+          (card.content && card.content != "<p><br></p>")) && (
           <div className="single-column-content">
             <div className="intor-content">
               {card.title && <h3>{card?.title}</h3>}
@@ -42,19 +43,40 @@ export function ImageCardContent(card: ImageCard) {
 
         <div className="twoColumnContent">
           <div className="content">
-            <div style={{ width: leftColWidth + "%" }}>
-              {card.cardUrl ? (
-                <Link href={card.cardUrl} target="_blank">
-                  <img src={card?.image}></img>
-                </Link>
-              ) : (
-                <img src={card?.image}></img>
-              )}
-            </div>
-            <div style={{ width: rightColWidth + "%" }}>
-              <h4>{card?.subTitle}</h4>
-              {card.subContent && buildRichTextContent(card.subContent)}
-            </div>
+            {card?.swapImageContent ? (
+              <>
+                <div style={{ width: leftColWidth + "%" }}>
+                  <h4>{card?.subTitle}</h4>
+                  {card.subContent && buildRichTextContent(card.subContent)}
+                </div>
+                <div style={{ width: rightColWidth + "%" }}>
+                  {card.cardUrl ? (
+                    <Link href={card.cardUrl} target="_blank">
+                      <img src={card?.image}></img>
+                    </Link>
+                  ) : (
+                    <img src={card?.image}></img>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{ width: leftColWidth + "%" }}>
+                  {card.cardUrl ? (
+                    <Link href={card.cardUrl} target="_blank">
+                      <img src={card?.image}></img>
+                    </Link>
+                  ) : (
+                    <img src={card?.image}></img>
+                  )}
+                </div>
+
+                <div style={{ width: rightColWidth + "%" }}>
+                  <h4>{card?.subTitle}</h4>
+                  {card.subContent && buildRichTextContent(card.subContent)}
+                </div>
+              </>
+            )}
           </div>
         </div>
         {card.cardSettings?.cardDivider && <hr />}

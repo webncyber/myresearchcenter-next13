@@ -1,7 +1,6 @@
 .hero{
     border: 0;
     height: 90vh;
-    display: flex;
     padding: 0;
 /*     overflow: hidden;
     position: relative; */
@@ -9,13 +8,12 @@
     align-items: baseline;
     background-size: cover;
     background-position: center center;
-   div:first-child {
    
     padding-left: 2rem;
     width: 100%;
         h1{
             width: 95%;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             text-align: center;
             color: white;
             font-weight: bold;
@@ -53,15 +51,36 @@
               }
         }
 
-        @media screen and (max-width: 660px) {
+        @media screen and (max-width: 1000px) {
           padding-top: 1rem;
-            
+          &_signup-container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            &_form{
+              width: 70%;
+              span{
+                color: #ffffff;
+              }
+            }
+          }
         }
       
-         @media screen and (min-width: 661px) {
+         @media screen and (min-width: 1001px) {
           padding-top: 4.5rem;
+          &_signup-container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            &_form{
+              width: 25%;
+              span{
+                color: #ffffff;
+              }
+            }
+          }
         }
-   }
 
+        
   
 }

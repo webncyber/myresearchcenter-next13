@@ -59,6 +59,7 @@ export function gqlGetCategoryHeroByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              showEmailSignUp
               titleColor{
                 code
               }
@@ -101,6 +102,7 @@ export function gqlGetCategoryByURL(url:string | null){
                     subContent(format: "html")
                     cardUrl
                     image
+                    swapImageContent
                     cardSettings{
                       leftColumnWidth
                       showBoarder
@@ -132,10 +134,36 @@ export function gqlGetCategoryByURL(url:string | null){
                 }
                 
               }
-              ... on ColumnsCard{
+              ... on GridCard{
                 entryId
+                title      
+                content(format: "html") 
+                row{
+                  rowSpacing
+                  columnDivision
+                  disabled
+                  rowTitle
+                  content(format: "html")
+                  card{
+                    showAsCard
+                    insetImage
+                    cardVariant
+                    disabled
+                    backgroundColor{
+                      code
+                    }
+                    content(format: "html")
+                  }
+                }
+                cardSettings{
+                  showAsCard
+                  cardVariant
+                  cardDivider
+                  backgroundColor{
+                    code
+                  }
+                }
               }
-              
             
             }
             contentBottom(format: "html"),
@@ -147,6 +175,7 @@ export function gqlGetCategoryByURL(url:string | null){
               title,
               subTitle 
               heroImage
+              showEmailSignUp
               titleColor{
                 code
               }

@@ -45,7 +45,7 @@ export default async function Blogs() {
   let page = await pageData;
   var contentTopSpacing =
   page?.contentTopSpacing && page.contentTopSpacing != "0"
-    ? page.contentTopSpacing + "px"
+    ? page.contentTopSpacing 
     : "";
 
 var contentBGCode = page?.contentBackgroundColor?.code;
